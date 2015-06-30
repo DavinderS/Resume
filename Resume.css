@@ -1,0 +1,54 @@
+body {
+	background-color:black;
+	font: 400 16px 'Arvo', serif;
+	font-weight: bold;
+	font-style: normal;
+	color: white;
+	margin: 0;
+	cursor: default;
+	user-select: none;
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+.loading {
+	background-color:black;
+	position:absolute;
+	left: 0;
+	right: 0;
+	top:0;
+	bottom: 0;
+}
+.gradientText {
+	text-align: center;
+
+}
+.welcomeText {
+	font-size: 4em;
+}
+.center {
+	position: relative;
+ 	top: 100px;
+}
+.selectBar {
+	width: 330px;
+	height: 80px;
+	margin: 10px auto;
+}
+.button {
+	display: inline-block;
+	width: 150px;
+	height: 80px;
+	text-align: center;
+	line-height: 80px;
+	border: 2px solid grey;
+	border-radius: 30px;
+	color:rgb(200,200,200);
+	text-decoration: none;
+}
+.button:hover {
+	background-color: rgb(25,25,25);
+	cursor: pointer;
+}
