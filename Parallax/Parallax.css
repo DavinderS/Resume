@@ -11,8 +11,11 @@ body {
 }
 
 .parallaxBlock {
+	display: table;
 	height: 100%;
+	width: 100%;
 }
-.verticalCenter {
-	margin:auto auto;
+.parallaxVerticalCenter {
+	display:table-cell;
+	vertical-align: middle;
 }
