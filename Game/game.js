@@ -13,26 +13,34 @@ window.onload = function() {
     var background = {
         x: 0,
         y: 0,
-        height: window.innerHeight + 200,
-        width: window.innerWidth * 3 + 200
+        height: window.innerWidth * 3 * 0.7,
+        width: window.innerWidth * 3
     }
     background.image = paper.rect(-shake.value, -shake.value, background.width + shake.value * 2, background.height + shake.value * 2).attr("fill", "000")
     var stars = {
             x: 0,
             y: 0,
+            image: paper.image("space.jpg", 0, 0, background.width, background.width*0.7),
         }
 
     var player = new Player(paper)
+    // Set initial Location
+
     var enemyFactory = new Enemies(paper)
     var bullets = new Bullets(paper)
     var enemies = enemyFactory.enemies
-    enemyFactory.createEnemy();
-    enemyFactory.createEnemy();
-    enemyFactory.createEnemy();
-    enemyFactory.createEnemy();
-
-
-    var pause = true
+    enemyFactory.createEnemy(0,0, 100, 100, 1000);
+    enemyFactory.createEnemy(0,0, 100, 100, 1000);
+    enemyFactory.createEnemy(0,0, 100, 100, 1000);
+    enemyFactory.createEnemy(0,0, 100, 100, 1000);
+    enemyFactory.createEnemy(0,0, 100, 100, 1000);
+    var pause = false
+    var pauseWindow = paper.set()
+    pauseWindow.push(
+            paper.rect(window.innerWidth/2-100, window.innerHeight/2-100, 200, 200, 10).attr("fill","#111"),
+            paper.rect(window.innerWidth/2-90, window.innerHeight/2-90, 180, 180, 10).attr("stroke", "159"),
+            paper.text(window.innerWidth/2, window.innerHeight/2, "Press space to start\n use WASD to move and\n mouse to aim and shoot").attr("fill", "#000").attr("stroke", "#999")
+    )
     var keys = []
     window.onmousemove = function(event) {
         event = event || window.event; // IE-ism
@@ -44,7 +52,7 @@ window.onload = function() {
     window.onmouseup = function(event) {
         keys["mouse"] = false
     }
-
+    player.updateLocation(keys, shake, background)
     function update() {
         var t1 = performance.now()
         if (pause) {
@@ -91,15 +99,38 @@ window.onload = function() {
             var t2 = performance.now()
             player.performance = Math.round((t2 - t1) * 100) / 100
             player.performanceText.attr("text", "performance: " + player.performance)
-            pause = player.checkDeath()
+            if (player.checkDeath())
+            {
+                pause = false
+                deathWindow = paper.set();
+                deathWindow.push(
+            paper.rect(window.innerWidth/2-100, window.innerHeight/2-100, 200, 200, 10).attr("fill","#111"),
+            paper.rect(window.innerWidth/2-90, window.innerHeight/2-90, 180, 180, 10).attr("stroke", "159"),
+            paper.text(window.innerWidth/2, window.innerHeight/2, "GAME OVER").attr("fill", "#999")
+            )
+                deathWindow.transform("t"+player.screenOffsetX+","+ player.screenOffsetY)
+            }
         }
     }
 
-    setInterval(update, 1000 / 60);
+    setInterval(update, 1000 / 30);
 
 
     document.body.addEventListener("keydown", function(e) {
         keys[e.keyCode] = true;
+        if (e.keyCode == 32 && !player.checkDeath())
+        {
+            pause = !pause
+            if (pause == false)
+            {
+                pauseWindow.transform("t"+player.screenOffsetX+","+ player.screenOffsetY)
+                pauseWindow.toFront();
+                pauseWindow.show();
+            } else
+            {
+                pauseWindow.hide();
+            }
+        }
     });
     document.body.addEventListener("keyup", function(e) {
         keys[e.keyCode] = false;
