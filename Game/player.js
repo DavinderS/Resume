@@ -6,7 +6,7 @@ function Player(raphaelPaper) {
     paper = raphaelPaper
         this.speedx = 0,
         this.speedy = 0,
-        this.speed = 4,
+        this.speed = 5,
         this.accel = 0.3,
         this.decel = 0.1
     	this.mousex = 0,
@@ -26,7 +26,7 @@ function Player(raphaelPaper) {
         //this.thruster = paper.image('thruster.png', 0, 0, this.width/100*40, this.height/60*11)
         //this.thruster2 = paper.image('thruster.png', 0, 0, this.width/100*40, this.height/60*11)
         //this.image = paper.image('spaceship.png', 0, 0, this.width, this.height)
-    this.image = paper.image("Spaceship.png",0, 0, this.width, this.height).attr("fill","F00")
+    this.image = paper.image("spaceship.png",0, 0, this.width, this.height).attr("fill","F00")
 
     this.thrusterWidth = thrusterWidth;
     this.thrusterHeight = thrusterHeight
@@ -62,7 +62,6 @@ Player.prototype.onHit = function(bullets) {
     })
     bullets.status = false
     if (this.health == 0) {
-
         this.image.remove()
         this.thruster.remove()
         this.thruster2.remove()
@@ -70,7 +69,7 @@ Player.prototype.onHit = function(bullets) {
 }
 Player.prototype.checkDeath = function()
 {
-	if (this.health > 0)
+	if (this.health <= 0)
 		return true
 	else
 		return false
@@ -131,7 +130,7 @@ Player.prototype.updateLocation = function(keys, shake, background) {
     this.performanceText.transform("t" + (this.screenOffsetX + shake.x + 60) + "," + (this.screenOffsetY + shake.y + 30))
     this.image.transform("t" + (this.x) + "," + (this.y) + "r" + this.tr)
     this.healthBar.transform("t" + (this.x) + "," + (this.y - 10))
-    var offset = 6
+    var offset = 7
     var XInitial = this.x + this.width/2 - this.thrusterHeight / 2
     var XRotationOffset = -(-this.thrusterHeight / 2 - this.width / 2) * Math.cos(this.tr * Math.PI / 180)
     var XOffset = offset * Math.sin(this.tr * Math.PI / 180)

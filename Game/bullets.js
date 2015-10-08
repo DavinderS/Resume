@@ -16,7 +16,7 @@
 	            this.delay[id] = 5
 	            this.delayCounter[id] = 0
 	        } else {
-	            this.delay[id] = 100
+	            this.delay[id] = 50
 	            this.delayCounter[id] = 0
 	        }
 	    }
@@ -48,7 +48,7 @@
 	            damage: 100,
 	            transformations: [x + bulletSpread * Math.sin((angle + bulletAccuracy) * Math.PI / 180), y - bulletSpread * Math.cos((angle + bulletAccuracy) * Math.PI / 180), Math.cos((angle + bulletAccuracy) * Math.PI / 180), Math.sin((angle + bulletAccuracy) * Math.PI / 180), (angle + bulletAccuracy)],
 	            status: true,
-	            speed: 15,
+	            speed: 12,
 	            radius: radius,
 	            id: id
 	        })
@@ -131,12 +131,16 @@
 	                            r: enemies[j].r,
 	                            deathTimer: 0
 	                        })
+	                        if (enemies[j].imageURL == "boss.png")
+	                        	player.money+=490
 	                        enemies[j].image.remove()
 	                        enemies[j].healthBar.remove()
 	                        enemies.splice(j, 1)
 	                        player.money += 10;
 	                        player.moneyText.attr("text", "money: " + player.money)
-	                        enemyFactory.createEnemy()
+	                        enemyFactory.createEnemy(player.screenOffsetX, player.screenOffsetY, 100, 100, 1000)
+	                        if (player.money == 100)
+	                        	enemyFactory.createEnemy(player.screenOffsetX, player.screenOffsetY, 300, 300, 10000, "boss.png", "boss_hit.png")
 
 
 	                    }

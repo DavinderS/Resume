@@ -8,36 +8,40 @@ function Enemies(raphaelPaper) {
     return this
 }
 
-Enemies.prototype.createEnemy = function() {
+Enemies.prototype.createEnemy = function(offsetX, offsetY, width, height, health, image, imageHit) {
     var rand = Math.random()
         // Select an enemy location
-    var x = 500;
-    var y = 200;
-   if (rand < 0.25) {
-        x = 0;
-        y = Math.random() * (window.innerHeight + 200)
+    var x = 0;
+    var y = 0;
+    imageURL = image || "enemy.png"
+    imageHitURL = imageHit || "enemy_hit.png"
+    if (rand < 0.25) {
+        x = offsetX - 200;
+        y = Math.random() * (window.innerHeight + 200) + offsetY;
     } else if (rand < 0.5) {
-        x = window.innerWidth + 200;
-        y = Math.random() * (window.innerHeight + 200)
+        x = window.innerWidth + 200  + offsetX;
+        y = Math.random() * (window.innerHeight + 200)  + offsetY
     } else if (rand < 0.75) {
-        x = Math.random() * (window.innerWidth + 200);
-        y = 0
+        x = Math.random() * (window.innerWidth + 200)  + offsetX;
+        y = offsetY - 200
     } else {
-        x = Math.random() * (window.innerWidth + 200);
-        y = window.innerHeight + 200
+        x = Math.random() * (window.innerWidth + 200)  + offsetX;
+        y = window.innerHeight + 200  + offsetY
     }
     this.enemies.push({
         x: x,
         y: y,
         speed: 2,
-        rotationSpeed: 3,
-        width: 100,
-        height: 100,
+        rotationSpeed: 1,
+        width: width,
+        height: height,
         r: 0,
-        health: 1000,
-        maxHealth: 1000,
-        image: paper.image("image.gif", 0, 0, 100, 100).attr("fill", "#FFF").transform("t" + x + "," + y),
-        healthBar: paper.rect(0, 0, 100, 10).attr("fill", "#F00").transform("t" + x + "," + y),
+        health: health,
+        maxHealth: health,
+        imageURL: imageURL,
+        imageHitURL: imageHitURL,
+        image: paper.image(imageURL, 0, 0, width, height).attr("fill", "#FFF").transform("t" + x + "," + y),
+        healthBar: paper.rect(0, 0, width, 10).attr("fill", "#F00").transform("t" + x + "," + y),
         hit: 0,
     })
 }
@@ -45,9 +49,9 @@ Enemies.prototype.updateHitAnimation = function() {
     if (this.enemies[i].hit > 0) {
         this.enemies[i].hit--;
         if (this.enemies[i].hit == 0) {
-            this.enemies[i].image.node.href.baseVal = "image.gif"
+            this.enemies[i].image.node.href.baseVal = this.enemies[i].imageURL
         } else {
-            this.enemies[i].image.node.href.baseVal = "image_hit.png"
+            this.enemies[i].image.node.href.baseVal = this.enemies[i].imageHitURL
         }
     }
 }
