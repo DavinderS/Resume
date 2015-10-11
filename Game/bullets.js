@@ -112,7 +112,7 @@
 	                        enemies[j].y,
 	                        enemies[j].width,
 	                        enemies[j].height,
-	                        enemies[j].r)) {
+	                        enemies[j].rotation)) {
 	                    enemies[j].health -= this.bullets[i].damage;
 	                    enemies[j].healthBar.attr({
 	                            width: enemies[j].width * (enemies[j].health / enemies[j].maxHealth)
@@ -127,8 +127,8 @@
 	                            shake.time = 1
 	                        }
 	                        enemyFactory.deathAnimationTimers.push({
-	                            image: paper.image("Explosions/explosions_0.png", enemies[j].x, enemies[j].y, enemies[j].width, enemies[j].height).transform("t0,0r"+enemies[j].r),
-	                            r: enemies[j].r,
+	                            image: paper.image("Explosions/explosions_0.png", enemies[j].x, enemies[j].y, enemies[j].width, enemies[j].height).transform("t0,0r"+enemies[j].rotation),
+	                            r: enemies[j].rotation,
 	                            deathTimer: 0
 	                        })
 	                        if (enemies[j].imageURL == "boss.png")
@@ -140,7 +140,7 @@
 	                        player.moneyText.attr("text", "money: " + player.money)
 	                        enemyFactory.createEnemy(player.screenOffsetX, player.screenOffsetY, 100, 100, 1000)
 	                        if (player.money == 100)
-	                        	enemyFactory.createEnemy(player.screenOffsetX, player.screenOffsetY, 300, 300, 10000, "boss.png", "boss_hit.png")
+	                        	enemyFactory.createEnemy(player.screenOffsetX, player.screenOffsetY, 300, 300, 10000, 1, 0.5, "boss.png", "boss_hit.png")
 
 
 	                    }
