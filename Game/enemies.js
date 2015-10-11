@@ -8,11 +8,13 @@ function Enemies(raphaelPaper) {
     return this
 }
 
-Enemies.prototype.createEnemy = function(offsetX, offsetY, width, height, health, image, imageHit) {
+Enemies.prototype.createEnemy = function(offsetX, offsetY, width, height, health, speed, rotationSpeed, image, imageHit) {
     var rand = Math.random()
         // Select an enemy location
     var x = 0;
     var y = 0;
+    speed = 2 || speed
+    rotationSpeed = 1 || rotationSpeed
     imageURL = image || "enemy.png"
     imageHitURL = imageHit || "enemy_hit.png"
     if (rand < 0.25) {
@@ -31,11 +33,11 @@ Enemies.prototype.createEnemy = function(offsetX, offsetY, width, height, health
     this.enemies.push({
         x: x,
         y: y,
-        speed: 2,
-        rotationSpeed: 1,
+        speed: speed,
+        rotationSpeed: rotationSpeed,
         width: width,
         height: height,
-        r: 0,
+        rotation: 0,
         health: health,
         maxHealth: health,
         imageURL: imageURL,
@@ -63,50 +65,50 @@ Enemies.prototype.updateLocation = function(playerX, playerY, playerWidth, playe
     } else {
         var trig = 0
     }
-    var oldr = this.enemies[i].r
-    this.enemies[i].r = (Math.atan(opposite / adjacent)) / (Math.PI / 180) + trig
-    // If the angle is less than 0, then this.enemies[i].r goes from 270 to negative 90. therefore, you need to check if the -360 version is closer
-    if(Math.abs(this.enemies[i].r - oldr - 360) < Math.abs(this.enemies[i].r - oldr))
+    var oldr = this.enemies[i].rotation
+    this.enemies[i].rotation = (Math.atan(opposite / adjacent)) / (Math.PI / 180) + trig
+    // If the angle is less than 0, then this.enemies[i].rotation goes from 270 to negative 90. therefore, you need to check if the -360 version is closer
+    if(Math.abs(this.enemies[i].rotation - oldr - 360) < Math.abs(this.enemies[i].rotation - oldr))
     {
-        this.enemies[i].r = oldr-this.enemies[i].rotationSpeed
+        this.enemies[i].rotation = oldr-this.enemies[i].rotationSpeed
     } 
-    else if(Math.abs(this.enemies[i].r - oldr + 360) < Math.abs(this.enemies[i].r - oldr))
+    else if(Math.abs(this.enemies[i].rotation - oldr + 360) < Math.abs(this.enemies[i].rotation - oldr))
     {
-        this.enemies[i].r = oldr+this.enemies[i].rotationSpeed
+        this.enemies[i].rotation = oldr+this.enemies[i].rotationSpeed
     }
     // If the difference is positive by at least 2 degrees, then spin up
-    else if (this.enemies[i].r - oldr > 2)
+    else if (this.enemies[i].rotation - oldr > 2)
     {
-        this.enemies[i].r = oldr+this.enemies[i].rotationSpeed
+        this.enemies[i].rotation = oldr+this.enemies[i].rotationSpeed
     }
     // If the different is negative by atleast 2 degrees, then spin down
-    else if (this.enemies[i].r - oldr < -2)
+    else if (this.enemies[i].rotation - oldr < -2)
     {
-        this.enemies[i].r = oldr-this.enemies[i].rotationSpeed
+        this.enemies[i].rotation = oldr-this.enemies[i].rotationSpeed
     }
     // Prevent the angle from going over 360 degrees (270 because raphael)
-    if (this.enemies[i].r < -90)
-        this.enemies[i].r += 360
-    if (this.enemies[i].r > 270)
-        this.enemies[i].r -= 360
+    if (this.enemies[i].rotation < -90)
+        this.enemies[i].rotation += 360
+    if (this.enemies[i].rotation > 270)
+        this.enemies[i].rotation -= 360
     // Speed * angle of movement. Sin for vertical, cos for horizontal
     if (playerY > this.enemies[i].y) {
-        this.enemies[i].y += this.enemies[i].speed * Math.sin(this.enemies[i].r * Math.PI / 180)
+        this.enemies[i].y += this.enemies[i].speed * Math.sin(this.enemies[i].rotation * Math.PI / 180)
     }
     if (playerY < this.enemies[i].y) {
-        this.enemies[i].y += this.enemies[i].speed * Math.sin(this.enemies[i].r * Math.PI / 180)
+        this.enemies[i].y += this.enemies[i].speed * Math.sin(this.enemies[i].rotation * Math.PI / 180)
     }
     if (playerX > this.enemies[i].x) {
-        this.enemies[i].x += this.enemies[i].speed * Math.cos(this.enemies[i].r * Math.PI / 180)
+        this.enemies[i].x += this.enemies[i].speed * Math.cos(this.enemies[i].rotation * Math.PI / 180)
     }
     if (playerX < this.enemies[i].x) {
-        this.enemies[i].x += this.enemies[i].speed * Math.cos(this.enemies[i].r * Math.PI / 180)
+        this.enemies[i].x += this.enemies[i].speed * Math.cos(this.enemies[i].rotation * Math.PI / 180)
     }
-    this.enemies[i].image.transform("t" + this.enemies[i].x + "," + this.enemies[i].y + "r" + this.enemies[i].r)
+    this.enemies[i].image.transform("t" + this.enemies[i].x + "," + this.enemies[i].y + "r" + this.enemies[i].rotation)
     this.enemies[i].healthBar.transform("t" + this.enemies[i].x  + "," + (this.enemies[i].y-20))
 }
 Enemies.prototype.fireWeapon = function(bullets) {
-    bullets.fireWeapon(this.enemies[i].x+this.enemies[i].width/2, this.enemies[i].y+this.enemies[i].height/2, this.enemies[i].r, 0, this.enemies[i].image.id)
+    bullets.fireWeapon(this.enemies[i].x+this.enemies[i].width/2, this.enemies[i].y+this.enemies[i].height/2, this.enemies[i].rotation, 0, this.enemies[i].image.id)
 }
 Enemies.prototype.update = function(playerX, playerY, playerWidth, playerHeight, bullets) {
     // Move enemy
