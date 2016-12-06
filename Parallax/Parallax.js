@@ -9,6 +9,7 @@ $(document).ready(function() {
 	var target = 0;
 	var page = 0
     document.onmousewheel = function(e) {
+        event.returnValue = false;
         if (moving == false) {
             if (e.deltaY > 0) {
                 target = window.pageYOffset + window.innerHeight
@@ -28,7 +29,8 @@ $(document).ready(function() {
             }
         }
     }
-    update = function(target) {
+
+    function update(target) {
         $('html, body').animate({
             scrollTop: target
         }, 1000, function() {
