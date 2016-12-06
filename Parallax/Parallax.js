@@ -8,16 +8,17 @@ $(document).ready(function() {
 	var moving = false;
 	var target = 0;
 	var page = 0
-    document.onswipe = function(e) {
-        event.returnValue = false;
+    var touchY;
+
+    function scroll(delta) {
         if (moving == false) {
-            if (e.deltaY > 0) {
+            if (delta > 0) {
                 target = window.pageYOffset + window.innerHeight
                 if (target < document.body.scrollHeight) {
                     page++;
                     moving = true
                 }
-            } else if (e.deltaY < 0) {
+            } else if (delta < 0) {
                 target = window.pageYOffset - window.innerHeight
                 if (target >= 0) {
                     page--;
@@ -29,26 +30,16 @@ $(document).ready(function() {
             }
         }
     }
+    
+    document.addEventListener('touchstart', function(e) {
+        touchY = e.changedTouches[0].screenY
+    }, false);
+    document.addEventListener('touchend', function(e) {
+        scroll(touchY - e.changedTouches[0].screenY)
+    }, false);
+
     document.onmousewheel = function(e) {
-        event.returnValue = false;
-        if (moving == false) {
-            if (e.deltaY > 0) {
-                target = window.pageYOffset + window.innerHeight
-                if (target < document.body.scrollHeight) {
-                    page++;
-                    moving = true
-                }
-            } else if (e.deltaY < 0) {
-                target = window.pageYOffset - window.innerHeight
-                if (target >= 0) {
-                    page--;
-                    moving = true
-                }
-            }
-            if (moving) {
-                update(target)
-            }
-        }
+        scroll(e.deltaY);
     }
 
     function update(target) {
