@@ -8,6 +8,27 @@ $(document).ready(function() {
 	var moving = false;
 	var target = 0;
 	var page = 0
+    document.onswipe = function(e) {
+        event.returnValue = false;
+        if (moving == false) {
+            if (e.deltaY > 0) {
+                target = window.pageYOffset + window.innerHeight
+                if (target < document.body.scrollHeight) {
+                    page++;
+                    moving = true
+                }
+            } else if (e.deltaY < 0) {
+                target = window.pageYOffset - window.innerHeight
+                if (target >= 0) {
+                    page--;
+                    moving = true
+                }
+            }
+            if (moving) {
+                update(target)
+            }
+        }
+    }
     document.onmousewheel = function(e) {
         event.returnValue = false;
         if (moving == false) {
