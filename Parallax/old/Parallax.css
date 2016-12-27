@@ -1,0 +1,21 @@
+body {
+	margin: 0;
+	font: 400 30px 'Arvo', serif;
+	font-weight: bold;
+	font-style: normal;
+	text-align: center;
+	background-color:black;
+	color: white;
+	height:100%;
+  	overflow: hidden;
+}
+
+.parallaxBlock {
+	display: table;
+	height: 100%;
+	width: 100%;
+}
+.parallaxVerticalCenter {
+	display:table-cell;
+	vertical-align: middle;
+}
