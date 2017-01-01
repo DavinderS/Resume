@@ -12,7 +12,6 @@ $(window).ready(function() {
     }
 
 
-
     hideLoader = function() {
         $(".loadingPanel").fadeOut(750, showContent);
     }
