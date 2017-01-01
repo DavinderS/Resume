@@ -37,7 +37,7 @@ function Player(raphaelPaper) {
     this.moneyText = paper.text(0, 0, "money: 0").attr("fill", "#FFF");
     this.money = 0;
     this.deathAnimation = 0
-    this.performanceText = paper.text(0, 0, "Performance: 0").attr("fill", "#FFF");
+   // this.performanceText = paper.text(0, 0, "Performance: 0").attr("fill", "#FFF");
     this.performance = 0;
     return this
 }

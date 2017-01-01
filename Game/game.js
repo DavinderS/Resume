@@ -62,7 +62,7 @@ window.onload = function() {
             player.updateLocation(keys, shake, background)
                 // Create player bullets
             if (keys["mouse"])
-                bullets.fireWeapon(player.x+player.width/2, player.y+player.height/2, player.tr, 10, 'player', shake)
+                bullets.fireWeapon(player.x+player.width/2, player.y+player.height/2, player.tr, 10, 'player', shake, player.money)
                 //Enemy DeathAnimation
             for (i in enemyFactory.deathAnimationTimers) {
                 var oldAttrs = enemyFactory.deathAnimationTimers[i].image.attrs;
@@ -98,7 +98,7 @@ window.onload = function() {
             }
             var t2 = performance.now()
             player.performance = Math.round((t2 - t1) * 100) / 100
-            player.performanceText.attr("text", "performance: " + player.performance)
+        //    player.performanceText.attr("text", "performance: " + player.performance)
             if (player.checkDeath())
             {
                 pause = false
@@ -113,7 +113,7 @@ window.onload = function() {
         }
     }
 
-    setInterval(update, 1000 / 30);
+    setInterval(update, 1000 / 60);
 
 
     document.body.addEventListener("keydown", function(e) {
