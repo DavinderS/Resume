@@ -6,17 +6,21 @@ body {
 	color:black;
 }
 h1 {
-	font-size: 72px;
-	display:inline-block;
+	font-size: 48px;
 	margin: 0px;
 	font-weight: normal;
+	text-align: center;
+	letter-spacing: 15px;
+	margin-bottom:20px;
 
 }
 h2 {
-	font-size: 32px;
-	display:inline-block;
+	font-size: 36px;
 	margin: 0px;
 	font-weight: normal;
+	text-align: center;
+	letter-spacing: 5px;
+	margin-bottom:20px;
 	
 }
 h3 {
@@ -51,10 +55,7 @@ ul {
 	height: 100vh;
 
 }
-.test {
 
-
-}
 .background {
 	background: fixed;
 	background-size: cover;
@@ -66,13 +67,9 @@ ul {
 }
 
 .titleBlock {
-	position: absolute;
-	top:50%;
-	transform: translateY(-50%);
 	width: 100%;
 	text-align: center;
 	padding-bottom: 30px;
-	color:white;
 	z-index: 1;
 }
 
