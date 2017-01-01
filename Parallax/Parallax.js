@@ -4,8 +4,8 @@ $(window).ready(function() {
     resizeText = function() {
         //650
         //403
-        $("#test")[0].innerText = window.innerHeight;
-        
+        $("#test")[0].innerText = window.outerHeight;
+
         if (window.innerWidth > 403) {
             $("h1").addClass("h1Tablet");
         } else {
