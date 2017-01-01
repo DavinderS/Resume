@@ -2,12 +2,19 @@ $(window).ready(function() {
     var test = true;
 
     resizeText = function() {
-        if (window.innerWidth < 650) {
+        //650
+        //403
+        if (window.innerWidth > 403) {
+            $("h1").addClass("h1Tablet");
+        } else {
+            $("h1").removeClass("h1Tablet");
+        }
+        if (window.innerWidth < 876) {
             $("h1").addClass("h1Mobile");
-            $("h2").addClass("h2Mobile");
+            $(".titleDescription").addClass("titleDescriptionMobile");
         } else {
             $("h1").removeClass("h1Mobile");
-            $("h2").removeClass("h2Mobile");
+            $(".titleDescription").removeClass("titleDescriptionMobile");
         }
     }
 
