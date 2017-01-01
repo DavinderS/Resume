@@ -127,7 +127,7 @@ Player.prototype.updateLocation = function(keys, shake, background) {
         this.screenOffsetY = this.y - window.innerHeight / 2 // CHANGE
     paper.setViewBox(this.screenOffsetX + shake.x, this.screenOffsetY + shake.y, window.innerWidth, window.innerHeight)
     this.moneyText.transform("t" + (this.screenOffsetX + shake.x + 30) + "," + (this.screenOffsetY + shake.y + 10))
-    this.performanceText.transform("t" + (this.screenOffsetX + shake.x + 60) + "," + (this.screenOffsetY + shake.y + 30))
+    //this.performanceText.transform("t" + (this.screenOffsetX + shake.x + 60) + "," + (this.screenOffsetY + shake.y + 30))
     this.image.transform("t" + (this.x) + "," + (this.y) + "r" + this.tr)
     this.healthBar.transform("t" + (this.x) + "," + (this.y - 10))
     var offset = 7
