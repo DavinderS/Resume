@@ -4,6 +4,8 @@ $(window).ready(function() {
     resizeText = function() {
         //650
         //403
+        $("#test")[0].innerText = window.innerHeight;
+        
         if (window.innerWidth > 403) {
             $("h1").addClass("h1Tablet");
         } else {
@@ -17,7 +19,6 @@ $(window).ready(function() {
             $(".titleDescription").removeClass("titleDescriptionMobile");
         }
     }
-
 
     hideLoader = function() {
         $(".loadingPanel").fadeOut(750, showContent);
