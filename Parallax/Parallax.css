@@ -1,38 +1,97 @@
 body {
 	margin: 0px;
 	overflow-x: hidden;
-	font-family: "Rockwell Extra Bold","Rockwell Bold",monospace;
+	font-family: "Lato", sans-serif;
+	background-color: white;
+	color:black;
 }
 h1 {
-	font-size: 64px;
+	font-size: 72px;
 	display:inline-block;
-	border-bottom:1px solid white;
 	margin: 0px;
+	font-weight: normal;
+
 }
-p {
+h2 {
 	font-size: 32px;
 	display:inline-block;
 	margin: 0px;
+	font-weight: normal;
+	
+}
+h3 {
+	font-size: 32px;
+	display:inline-block;
+	font-weight: normal;
+	display: block;
+}
+h4 {
+	font-size: 24px;
+	margin: 0px;
+	font-weight: normal;
+	text-align: center;
+	letter-spacing: 5px;
+	margin-bottom:20px;
+
+}
+p {
+	margin: 0px 30px;
+	color:grey;
+}
+ul {
+	margin: 0;
 }
 .h1Mobile {
-	font-size:32px;
+	font-size:48px;
 }
-.pMobile {
-	font-size:16px;
+.h2Mobile {
+	font-size:24px;
 }
+.initialBackground {
+	height: 100%;
+}
+
 .background {
-  width:  100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-image:url(car.jpg);
- }
- .centerBlock {
- 	top:50%;
- 	width: 100%;
- 	position: absolute;
- 	transform: translateY(-50%);
- 	padding-bottom: 30px;
- 	text-align: center;
- 	color:white;
- }
+	background: fixed;
+	background-size: cover;
+	background-position: center;
+
+}
+.blockImage {
+	height: 100%;
+}
+
+.titleBlock {
+	position: absolute;
+	top:50%;
+	transform: translateY(-50%);
+	width: 100%;
+	text-align: center;
+	padding-bottom: 30px;
+	color:white;
+	z-index: 1;
+}
+
+.content {
+}
+
+.button {
+	width: 150px;
+	height: 50px;
+	position: absolute;
+	text-align: center;
+	line-height:50px;
+	border: 2px solid white;
+	color:white;
+	background-color:black;
+	top: -54px;
+	right: 50px;
+}
+
+.block {
+	text-align: justify-all;
+	padding: 60px 0px;
+	max-width:900px;
+	vertical-align: top;
+	margin:0 auto;
+}
