@@ -48,9 +48,13 @@ ul {
 	font-size:24px;
 }
 .initialBackground {
-	height: 100%;
-}
+	height: 100vh;
 
+}
+.test {
+
+
+}
 .background {
 	background: fixed;
 	background-size: cover;
@@ -58,7 +62,7 @@ ul {
 
 }
 .blockImage {
-	height: 100%;
+	height: 100vh;
 }
 
 .titleBlock {
