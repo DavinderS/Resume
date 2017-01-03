@@ -9,6 +9,28 @@ body {
 html {
 	height: 100vh;
 }
+
+.background {
+	background: fixed;
+	background-size: cover;
+	background-position: center;
+	height: 100vh;
+}
+
+.titleBlock {
+	z-index: 1;
+	position: absolute;
+	height:60vh;
+	width:100%;
+	top:20%;
+	background-color:black;
+}
+#mainPage {
+	left:0;
+}
+#workExperience {
+	left:200%;
+}
 .title {
 	font-size: 36px;
 	margin: 0px;
@@ -33,34 +55,20 @@ html {
 	padding-left: 1px;
 	top:calc(50% - 24px);
 }
+
 .titleDescription {
 	font-size:24px;
+	letter-spacing: 15px;
+	padding-left: 15px;
+
 }
 .titleDescriptionMobile {
 	font-size:18px;
 }
 
-
-.background {
-	background: fixed;
-	background-size: cover;
-	background-position: center;
-	height: 100vh;
-}
-
-.titleBlock {
-	z-index: 1;
-	position: absolute;
-	height:60vh;
-	width:100%;
-	left:0;
-	top:20%;
-	background-color:black;
-}
-
 .button {
 	display:none;
-	font-size: 18px;
+	font-size: 24px;
 	margin: 0px;
 	font-weight: normal;
 	letter-spacing: 5px;
@@ -75,6 +83,12 @@ html {
 	text-align: center;
 	/* The text-spacing makes weird stuff happen so need to add padding*/
 	padding-left: 7.5px;
-	cursor: pointer;
 	border: 1px solid transparent;
+}
+.buttonText {
+	cursor: pointer;
+	display: inline;
+}
+.buttonTextMobile {
+	font-size: 18px;
 }

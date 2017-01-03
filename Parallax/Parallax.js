@@ -1,9 +1,8 @@
 $(window).ready(function() {
 
-    var interval = 1000;
 
     // Animations
-    setTimeout(showBlock, 500);
+    var interval = 1000;
     function showBlock() {
     $(".titleBlock").fadeIn(interval, moveBlock);
     }
@@ -17,21 +16,33 @@ $(window).ready(function() {
         $(".button").fadeIn(interval);
     }
 
+    setTimeout(showBlock, 500);
 
-
+    //Button Handlers
+    $("#workExperienceButton").click(function() {
+        $("#mainPage").animate({left:"-200%"}, 2000);
+        $("#workExperience").animate({left:"0%"}, 2000);
+    });
+    $("#backButton").click(function() {
+        $("#mainPage").animate({left:"0%"}, 2000);
+        $("#workExperience").animate({left:"200%"}, 2000);
+    });
 
 
 
     // Resizing
     resizeText = function() {
-        if (window.innerWidth < 876) {
+        if (window.innerWidth < 550) {
             $(".title").addClass("titleMobile");
             $(".titleDescription").addClass("titleDescriptionMobile");
+            $(".buttonText").addClass("buttonTextMobile");
         } else {
             $(".title").removeClass("titleMobile");
             $(".titleDescription").removeClass("titleDescriptionMobile");
+            $(".buttonText").removeClass("buttonTextMobile");
+
         }
     }
-    resizeText();
     $(window).resize(resizeText);
+    resizeText();
 })
