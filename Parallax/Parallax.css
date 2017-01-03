@@ -16,22 +16,22 @@ html {
 	letter-spacing: 15px;
 	position: absolute;
 	top:calc(50% - 36px);
-  	color: white;
-   	background: fixed url(car.jpg) no-repeat;
+	color: white;
+	background: fixed url(car.jpg) no-repeat;
 	background-size: cover;
 	background-position: center;
-   -webkit-background-clip: text;
-   -webkit-text-fill-color: transparent;
-   width:100%;
-   text-align: center;
-   /* The text-spacing makes weird stuff happen so need to add padding*/
-   padding-left: 7.5px;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	width:100%;
+	text-align: center;
+	/* The text-spacing makes weird stuff happen so need to add padding*/
+	padding-left: 7.5px;
 }
 .titleMobile {
 	font-size:28px;
 	letter-spacing: 2px;
-  	padding-left: 1px;
-  	top:calc(50% - 24px);
+	padding-left: 1px;
+	top:calc(50% - 24px);
 }
 .titleDescription {
 	font-size:24px;
@@ -59,20 +59,22 @@ html {
 }
 
 .button {
+	display:none;
 	font-size: 18px;
 	margin: 0px;
 	font-weight: normal;
 	letter-spacing: 5px;
 	position: absolute;
-	top:calc(50% + 60px);
-  	color: white;
-   	background: fixed url(car.jpg) no-repeat;
+	color: white;
+	background: fixed url(car.jpg) no-repeat;
 	background-size: cover;
 	background-position: center;
-   -webkit-background-clip: text;
-   -webkit-text-fill-color: transparent;
-   width:100%;
-   text-align: center;
-   /* The text-spacing makes weird stuff happen so need to add padding*/
-   padding-left: 7.5px;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	width:100%;
+	text-align: center;
+	/* The text-spacing makes weird stuff happen so need to add padding*/
+	padding-left: 7.5px;
+	cursor: pointer;
+	border: 1px solid transparent;
 }
