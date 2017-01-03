@@ -2,8 +2,8 @@ body {
 	margin: 0px;
 	overflow-x: hidden;
 	font-family: "Lato", sans-serif;
-	background-color: white;
-	color:black;
+	background-color: black;
+	color:white;
 	min-height: 100vh;
     overflow-y: scroll;
     -webkit-overflow-scrolling:touch;
@@ -30,7 +30,7 @@ h1 {
    padding-left: 7.5px;
 }
 .h1Mobile {
-	font-size:24px;
+	font-size:28px;
 	letter-spacing: 2px;
   	padding-left: 1px;
   	top:calc(50% - 36px);
@@ -95,19 +95,6 @@ ul {
 .content {
 }
 
-.button {
-	width: 150px;
-	height: 50px;
-	position: absolute;
-	text-align: center;
-	line-height:50px;
-	border: 2px solid white;
-	color:white;
-	background-color:black;
-	top: -54px;
-	right: 50px;
-}
-
 .block {
 	text-align: justify-all;
 	padding: 60px 0px;
@@ -116,10 +103,4 @@ ul {
 	margin:0 auto;
 	display: inline-block;
 	margin-right: 0 -2px;
-}
-.blockContainer {
-	margin: 0;
-	padding: 0;
-	border-top:5px solid black;
-	border-bottom:5px solid black;
 }

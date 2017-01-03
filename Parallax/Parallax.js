@@ -2,15 +2,7 @@ $(window).ready(function() {
     var test = true;
 
     resizeText = function() {
-        //650
-        //403
-        $("#test")[0].innerText = window.outerHeight;
 
-        if (window.innerWidth > 403) {
-            $("h1").addClass("h1Tablet");
-        } else {
-            $("h1").removeClass("h1Tablet");
-        }
         if (window.innerWidth < 876) {
             $("h1").addClass("h1Mobile");
             $(".titleDescription").addClass("titleDescriptionMobile");
