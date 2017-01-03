@@ -1,40 +1,27 @@
 $(window).ready(function() {
-    var test = true;
-
     resizeText = function() {
 
         if (window.innerWidth < 876) {
-            $("h1").addClass("h1Mobile");
+            $(".title").addClass("titleMobile");
             $(".titleDescription").addClass("titleDescriptionMobile");
         } else {
-            $("h1").removeClass("h1Mobile");
+            $(".title").removeClass("titleMobile");
             $(".titleDescription").removeClass("titleDescriptionMobile");
         }
     }
-
-    hideLoader = function() {
-        $(".loadingPanel").fadeOut(750, showContent);
-    }
-    showContent = function() {
-        $(".content").fadeIn(750, showButtons);
-    }
-    showButtons = function() {
-    /*    $(".button").animate({
-            top: "20px"
-        },
-        750);*/
-    }
-
-
+    var interval = 1000;
     resizeText();
     $(window).resize(resizeText);
-    if (test == false)
-    {
-    setTimeout(hideLoader,3000);
-} else {
-        $(".loadingPanel").hide();
-        $(".content").show();
+    setTimeout(showBlock, 500);
+    function showBlock() {
+    $(".titleBlock").fadeIn(interval, moveBlock);
+    }
+    function moveBlock() {
+       setTimeout(function() {$(".titleBlock").animate({top:"0", height:"100vh"},interval)}, interval);
+    }
+    function showButtons() {
 
-}
+    }
+
 
 })
