@@ -5,8 +5,6 @@ body {
 	background-color: black;
 	color:white;
 	min-height: 100vh;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling:touch;
 }
 html {
 	height: 100vh;
