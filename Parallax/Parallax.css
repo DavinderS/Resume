@@ -101,7 +101,7 @@ html {
 	border: 1px solid transparent;
 	cursor: pointer;
 	font-size: 26px;
-	top:calc(50% + 36px);
+	bottom:calc(0% + 20px);
 }
 .buttonTablet {
 	font-size: 22px;
