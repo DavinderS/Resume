@@ -31,13 +31,14 @@ html {
 #workExperience {
 	left:200%;
 }
+
+
 .title {
-	font-size: 36px;
+	font-size: 48px;
 	margin: 0px;
 	font-weight: normal;
 	letter-spacing: 15px;
 	position: absolute;
-	top:calc(50% - 36px);
 	color: white;
 	background: fixed url(car.jpg) no-repeat;
 	background-size: cover;
@@ -47,28 +48,41 @@ html {
 	width:100%;
 	text-align: center;
 	/* The text-spacing makes weird stuff happen so need to add padding*/
-	padding-left: 7.5px;
+	top:calc(50% - 36px);
 }
-.titleMobile {
-	font-size:28px;
+.titleTablet {
+	font-size:36px;
 	letter-spacing: 2px;
 	padding-left: 1px;
 	top:calc(50% - 24px);
 }
+.titleMobile {
+	font-size:24px;
+	letter-spacing: 2px;
+	padding-left: 1px;
+	top:calc(50% - 12px);
+}
+
+
 
 .titleDescription {
-	font-size:24px;
+	font-size:36px;
 	letter-spacing: 15px;
 	padding-left: 15px;
 
 }
+.titleDescriptionTablet {
+	font-size:24px;
+}
+
 .titleDescriptionMobile {
 	font-size:18px;
 }
 
+
+
 .button {
 	display:none;
-	font-size: 24px;
 	margin: 0px;
 	font-weight: normal;
 	letter-spacing: 5px;
@@ -82,13 +96,14 @@ html {
 	width:100%;
 	text-align: center;
 	/* The text-spacing makes weird stuff happen so need to add padding*/
-	padding-left: 7.5px;
 	border: 1px solid transparent;
-}
-.buttonText {
 	cursor: pointer;
-	display: inline;
+	font-size: 26px;
+	top:calc(50% + 36px);
 }
-.buttonTextMobile {
+.buttonTablet {
+	font-size: 22px;
+}
+.buttonMobile {
 	font-size: 18px;
 }

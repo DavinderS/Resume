@@ -8,8 +8,8 @@ $(window).ready(function() {
     }
     function moveBlock() {
        setTimeout(function() {
-        $(".titleBlock").animate({top:"0", height:"100vh"},interval)
-        $(".title").animate({top:"30%"}, interval, showButtons)
+        $(".titleBlock").animate({top:"0%", height:"100vh"},interval)
+        $(".title").animate({top:"35%"}, interval, showButtons)
     }, interval);
     }
     function showButtons() {
@@ -20,26 +20,36 @@ $(window).ready(function() {
 
     //Button Handlers
     $("#workExperienceButton").click(function() {
-        $("#mainPage").animate({left:"-200%"}, 2000);
+        $("#mainPage").animate({left:"-100%"}, 2000);
         $("#workExperience").animate({left:"0%"}, 2000);
     });
     $("#backButton").click(function() {
         $("#mainPage").animate({left:"0%"}, 2000);
-        $("#workExperience").animate({left:"200%"}, 2000);
+        $("#workExperience").animate({left:"100%"}, 2000);
     });
 
 
 
     // Resizing
     resizeText = function() {
-        if (window.innerWidth < 550) {
+        if (window.innerWidth > 430 && window.innerWidth <= 640) {
+            $(".title").addClass("titleTablet");
+            $(".titleDescription").addClass("titleDescriptionTablet");
+            $(".button").addClass("buttonTablet");
+
+        } else {
+            $(".title").removeClass("titleTablet");
+            $(".titleDescription").removeClass("titleDescriptionTablet");
+            $(".button").removeClass("buttonTablet");
+        }
+        if (window.innerWidth < 430) {
             $(".title").addClass("titleMobile");
             $(".titleDescription").addClass("titleDescriptionMobile");
-            $(".buttonText").addClass("buttonTextMobile");
+            $(".button").addClass("buttonMobile");
         } else {
             $(".title").removeClass("titleMobile");
             $(".titleDescription").removeClass("titleDescriptionMobile");
-            $(".buttonText").removeClass("buttonTextMobile");
+            $(".button").removeClass("buttonMobile");
 
         }
     }
