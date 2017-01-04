@@ -20,12 +20,18 @@ $(window).ready(function() {
 
     //Button Handlers
     $("#workExperienceButton").click(function() {
-        $("#mainPage").animate({left:"-100%"}, 2000);
+        $("#workExperience").show();
         $("#workExperience").animate({left:"0%"}, 2000);
+        $("#mainPage").animate({left:"-100%"}, 2000, function() {
+            $("#mainPage").hide();
+        });
     });
     $("#backButton").click(function() {
+        $("#mainPage").show();
         $("#mainPage").animate({left:"0%"}, 2000);
-        $("#workExperience").animate({left:"100%"}, 2000);
+        $("#workExperience").animate({left:"100%"},2000, function() {
+            $("#workExperience").hide();
+        });
     });
 
 
@@ -42,7 +48,7 @@ $(window).ready(function() {
             $(".titleDescription").removeClass("titleDescriptionTablet");
             $(".button").removeClass("buttonTablet");
         }
-        if (window.innerWidth < 430) {
+        if (window.innerWidth <= 430) {
             $(".title").addClass("titleMobile");
             $(".titleDescription").addClass("titleDescriptionMobile");
             $(".button").addClass("buttonMobile");

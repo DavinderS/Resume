@@ -29,7 +29,8 @@ html {
 	left:0;
 }
 #workExperience {
-	left:200%;
+	left:100%;
+	display: none;
 }
 
 
@@ -72,7 +73,7 @@ html {
 
 }
 .titleDescriptionTablet {
-	font-size:24px;
+	font-size:34px;
 }
 
 .titleDescriptionMobile {
@@ -84,6 +85,7 @@ html {
 .button {
 	display:none;
 	margin: 0px;
+	line-height:36px;
 	font-weight: normal;
 	letter-spacing: 5px;
 	position: absolute;
@@ -106,4 +108,5 @@ html {
 }
 .buttonMobile {
 	font-size: 18px;
+	letter-spacing: 1px;
 }
