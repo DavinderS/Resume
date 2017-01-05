@@ -65,7 +65,7 @@ $(window).ready(function() {
         swipeY = e.originalEvent.touches[0].clientY;
     })
     $(document).bind('touchmove', function(e) {
-        scrollHandler(swipeY - e.originalEvent.touches[0].clientY)
+        scrollHandler(e.originalEvent.touches[0].clientY - swipeY)
     })
     $(window).bind('mousewheel', function(event) {
         scrollHandler(event.originalEvent.wheelDelta);
