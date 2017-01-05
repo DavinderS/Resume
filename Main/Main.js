@@ -4,9 +4,20 @@ $(window).on('beforeunload', function() {
 $(window).ready(function() {
     var currentBlock = 0;
     var scrollInProgress = false;
-    var resizeInProgress = false;
-    var resizeCurrent = null;
     var swipeY = null;
+    function detectmob() { 
+        if( navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    var mobile = detectmob();
+    if (!mobile) {
+        $("body").removeClass("desktop");
+    }
+    $(".title").text(mobile);
     // Resizing
     resize = function() {
         if (window.innerWidth > 430 && window.innerWidth <= 640) {
@@ -31,21 +42,7 @@ $(window).ready(function() {
             $(".description").removeClass("descriptionMobile");
             $(".button").removeClass("buttonMobile");
         }
-        resizeCurrent = $(".block").eq(currentBlock).offset().top;
-        console.log(scrollInProgress)
-        if (!scrollInProgress) {
-            resizeInitial = resizeCurrent;
-            scrollInProgress = true;
-            $('html, body').animate({
-            scrollTop: $(".block").eq(currentBlock).offset().top
-        }, 500, function() {
-            scrollInProgress = false;
-            if (resizeInitial != resizeCurrent) {
-                resize();
-            }
-        });
-        }
-
+            $(window).scrollTop($(".block").eq(currentBlock).offset().top);
     }
 
     $(".caretDown").click(function() {
@@ -61,32 +58,33 @@ $(window).ready(function() {
                 $('html, body').animate({
                     scrollTop: $(document).scrollTop() - window.innerHeight
                 }, 1000, function() {
-                    resize();
                     scrollInProgress = false;
                 });
             }
         }
         else {
+            
             if (!scrollInProgress && $(document).height() != $(document).scrollTop() + window.innerHeight) {
                 currentBlock += 1
                 scrollInProgress = true;
                 $('html, body').animate({
                     scrollTop: $(document).scrollTop() + window.innerHeight
                 }, 1000, function() {
-                    resize();
                     scrollInProgress = false;
                 });
             }
         }
     }
+    /*
     $(document).bind('touchstart',function(e) {
         swipeY = e.originalEvent.touches[0].clientY;
     })
     $(document).bind('touchmove', function(e) {
         scrollHandler(e.originalEvent.touches[0].clientY - swipeY)
-    })
+    })*/
     $(window).bind('mousewheel', function(event) {
         scrollHandler(event.originalEvent.wheelDelta);
     });
     $(window).resize(resize);
+    resize();
 })
