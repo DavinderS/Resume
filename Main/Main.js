@@ -20,7 +20,14 @@ $(window).ready(function() {
         $('html, body').css('overflowY', 'auto'); 
         $(".caretDown, .caretText, .caretUp").hide();
         $(window).bind("orientationchange", function() {
-         $(".block, .blockContainer").css("height", window.innerHeight);
+            $('html, body').css('overflowY', 'hidden'); 
+            $(".loadingPanel").show();
+            console.log("SHOW")
+         setTimeout(function() {
+            $(".block, .blockContainer").css("height", window.innerHeight)
+                        $('html, body').css('overflowY', 'auto'); 
+            $(".loadingPanel").hide();
+        }, 200)
         });
     }
     // Resizing
