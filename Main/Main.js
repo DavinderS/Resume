@@ -18,7 +18,7 @@ $(window).ready(function() {
         $(".blockContainer").addClass("blockContainerMobile");
         $(".block").addClass("blockMobile");
         $('html, body').css('overflowY', 'auto'); 
-        $(".caretDown, .caretText").hide();
+        $(".caretDown, .caretText, caretUp").hide();
     }
     // Resizing
     resize = function() {
@@ -44,7 +44,10 @@ $(window).ready(function() {
             $(".description").removeClass("descriptionMobile");
             $(".button").removeClass("buttonMobile");
         }
+        if (!mobile)
+        {
             $(window).scrollTop($(".block").eq(currentBlock).offset().top);
+        }
     }
 
     $(".caretDown").click(function() {
