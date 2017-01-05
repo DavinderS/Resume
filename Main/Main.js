@@ -14,19 +14,20 @@ $(window).ready(function() {
         }
     }
     var mobile = detectmob();
-    console.log("");
+    console.log("ready");
     if (mobile) {
         $(".block, .blockContainer").css("height", window.innerHeight);
         $('html, body').css('overflowY', 'auto'); 
         $(".caretDown, .caretText, .caretUp").hide();
         $(window).bind("orientationchange", function() {
             $(".loadingPanel").show();
+            $(window).scrollTop(0);
+
          setTimeout(function() {
             $(".block, .blockContainer").css("height", window.innerHeight)
             $(".loadingPanel").hide();
-            $(window).scrollTop(100);
-
-        }, 200)
+            $(window).scrollTop(0);
+        }, 300)
         });
     }
     // Resizing
