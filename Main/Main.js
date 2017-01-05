@@ -18,7 +18,7 @@ $(window).ready(function() {
         $(".blockContainer").addClass("blockContainerMobile");
         $(".block").addClass("blockMobile");
         $('html, body').css('overflowY', 'auto'); 
-        $(".caretDown, .caretText, caretUp").hide();
+        $(".caretDown, .caretText, .caretUp").hide();
     }
     // Resizing
     resize = function() {
