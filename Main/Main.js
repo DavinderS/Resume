@@ -14,7 +14,7 @@ $(window).ready(function() {
         }
     }
     var mobile = detectmob();
-    mobile = true;
+    console.log("ready");
     if (mobile) {
         $(".block, .blockContainer").css("height", window.innerHeight);
         $('html, body').css('overflowY', 'auto'); 
@@ -24,6 +24,8 @@ $(window).ready(function() {
          setTimeout(function() {
             $(".block, .blockContainer").css("height", window.innerHeight)
             $(".loadingPanel").hide();
+            $(window).scrollTop(0);
+
         }, 200)
         });
     }
