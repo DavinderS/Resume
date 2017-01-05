@@ -45,6 +45,7 @@ $(window).ready(function() {
                 $('html, body').animate({
                     scrollTop: $(document).scrollTop() - window.innerHeight
                 }, 1000, function() {
+                    resize();
                     scrollInProgress = false;
                 });
             }
@@ -56,6 +57,7 @@ $(window).ready(function() {
                 $('html, body').animate({
                     scrollTop: $(document).scrollTop() + window.innerHeight
                 }, 1000, function() {
+                    resize();
                     scrollInProgress = false;
                 });
             }
