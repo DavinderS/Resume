@@ -20,11 +20,9 @@ $(window).ready(function() {
         $('html, body').css('overflowY', 'auto'); 
         $(".caretDown, .caretText, .caretUp").hide();
         $(window).bind("orientationchange", function() {
-            $('html, body').css('overflowY', 'hidden'); 
             $(".loadingPanel").show();
          setTimeout(function() {
             $(".block, .blockContainer").css("height", window.innerHeight)
-                        $('html, body').css('overflowY', 'auto'); 
             $(".loadingPanel").hide();
         }, 200)
         });
