@@ -1,9 +1,12 @@
+$(window).on('beforeunload', function() {
+    $(window).scrollTop(0);
+});
 $(window).ready(function() {
-
-
+    var currentBlock = 0;
+    var scrollInProgress = false;
 
     // Resizing
-    resizeText = function() {
+    resize = function() {
         if (window.innerWidth > 430 && window.innerWidth <= 640) {
             $(".title").addClass("titleTablet");
             $(".titleDescription").addClass("titleDescriptionTablet");
@@ -25,9 +28,40 @@ $(window).ready(function() {
             $(".titleDescription").removeClass("titleDescriptionMobile");
             $(".description").removeClass("descriptionMobile");
             $(".button").removeClass("buttonMobile");
-
         }
+        $(window).scrollTop($(".block").eq(currentBlock).offset().top);
     }
-    $(window).resize(resizeText);
-    resizeText();
+
+    $(".caretDown").click(function() {
+       $('html, body').animate({
+        scrollTop: $("#aboutImage").offset().top
+    }, 1000);
+   })
+
+    $(window).bind('mousewheel', function(event) {
+        if (event.originalEvent.wheelDelta >= 0) {
+            if (!scrollInProgress && $(document).scrollTop() != 0) {
+                currentBlock -= 1;
+                scrollInProgress = true;
+                $('html, body').animate({
+                    scrollTop: $(document).scrollTop() - window.innerHeight
+                }, 1000, function() {
+                    scrollInProgress = false;
+                });
+            }
+        }
+        else {
+            if (!scrollInProgress && $(document).height() != $(document).scrollTop() + window.innerHeight) {
+                currentBlock += 1
+                scrollInProgress = true;
+                $('html, body').animate({
+                    scrollTop: $(document).scrollTop() + window.innerHeight
+                }, 1000, function() {
+                    scrollInProgress = false;
+                });
+            }
+        }
+    });
+    $(window).resize(resize);
+    resize();
 })
