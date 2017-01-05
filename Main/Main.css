@@ -9,20 +9,61 @@ body {
 html {
 	height: 100vh;
 }
+.caretText {
+	position: absolute;
+	bottom: calc(0% + 50px);
+	left: 50%;
+	transform: translateX(-50%);
+}
 .caretDown {
 	position: absolute;
 	bottom: calc(0% + 20px);
 	left: 50%;
-	transform: translateX(-50%);
-	transform: scale(3,1);
+	transform: scale(2,0.5) translateX(-25%);
 	font-size:30px;
-	cursor: pointer;
     user-select: none;
+    cursor: pointer;
+    animation: caretDownAnimation 1s linear infinite;
+}
+.caretUp {
+	position: absolute;
+	top: calc(0% + 20px);
+	left: 50%;
+	transform: scale(2,0.5) translateX(-25%);
+	font-size:30px;
+    user-select: none;
+    cursor: pointer;
+    animation: caretUpAnimation 1s linear infinite;
+}
+@keyframes caretDownAnimation {
+  0 {
+    bottom: calc(0% + 20px);
+  }
+  50% {
+    bottom: calc(0% + 10px);
+  }
+  100% {
+    bottom: calc(0% + 20px);
+  }
+}
+@keyframes caretUpAnimation {
+  0 {
+    top: calc(0% + 20px);
+  }
+  50% {
+    top: calc(0% + 10px);
+  }
+  100% {
+    top: calc(0% + 20px);
+  }
 }
 .blockContainer {
 	position: relative;
 	height:100vh;
 	width:100%;
+}
+.blockContainerMobile {
+	height:800px;
 }
 .titleContainer {
 	position: absolute;
@@ -89,6 +130,9 @@ html {
 	background-size: cover;
 	background-position: center;
 	height: 100vh;
+}
+.blockMobile {
+	height: 800px;
 }
 #aboutImage {
 	background-image:url('bg.jpg');
