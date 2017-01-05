@@ -4,6 +4,8 @@ $(window).on('beforeunload', function() {
 $(window).ready(function() {
     var currentBlock = 0;
     var scrollInProgress = false;
+    var resizeInProgress = false;
+    var resizeCurrent = null;
     var swipeY = null;
     // Resizing
     resize = function() {
@@ -29,9 +31,21 @@ $(window).ready(function() {
             $(".description").removeClass("descriptionMobile");
             $(".button").removeClass("buttonMobile");
         }
-        $('html, body').animate({
+        resizeCurrent = $(".block").eq(currentBlock).offset().top;
+        console.log(scrollInProgress)
+        if (!scrollInProgress) {
+            resizeInitial = resizeCurrent;
+            scrollInProgress = true;
+            $('html, body').animate({
             scrollTop: $(".block").eq(currentBlock).offset().top
+        }, 500, function() {
+            scrollInProgress = false;
+            if (resizeInitial != resizeCurrent) {
+                resize();
+            }
         });
+        }
+
     }
 
     $(".caretDown").click(function() {
@@ -75,5 +89,4 @@ $(window).ready(function() {
         scrollHandler(event.originalEvent.wheelDelta);
     });
     $(window).resize(resize);
-    resize();
 })
