@@ -1,0 +1,91 @@
+body {
+	margin: 0px;
+	overflow-x: hidden;
+	font-family: "Avant Garde",Avantgarde,"Century Gothic",CenturyGothic,AppleGothic,sans-serif;
+	color:white;
+	min-height: 100vh;
+	background-color:rgb(0,0,0);
+}
+html {
+	height: 100vh;
+}
+
+.background {
+	background-size: cover;
+	background-position: center;
+	height: 100vh;
+	background-image:url('car.jpg');
+}
+
+.blockContainer {
+	position: absolute;
+	height:100vh;
+	width:100%;
+}
+.titleContainer {
+	position: absolute;
+	top: 50%;
+	left:50%;
+	transform: translateY(-50%) translateX(-50%);
+	text-align: center;
+	width:100%;
+}
+
+.title {
+	font-size: 48px;
+	letter-spacing: 5px;
+
+}
+.titleTablet {
+	font-size:36px;
+}
+.titleMobile {
+	font-size:24px;
+}
+
+.titleDescription {
+	font-size:36px;
+	letter-spacing: 5px;
+}
+.titleDescriptionTablet {
+	font-size:24px;
+}
+
+.titleDescriptionMobile {
+	font-size:18px;
+}
+
+
+.description {
+	font-size:24px;
+	text-align: justify-all;
+	margin: 0px 40px;
+}
+.descriptionTablet {
+	font-size:18px;
+}
+.descriptionMobile {
+	font-size:18px;
+}
+
+
+.aboutBlock {
+	padding: 40px 20px 40px 20px;
+}
+.aboutTitle {
+	width:100px;
+	display: inline-block;
+	vertical-align: top;
+}
+.aboutText {
+	text-align: justify-all;
+	width:calc(100% - 100px);
+	display: inline-block;
+}
+.block {
+	background-size: cover;
+	background-position: center;
+	height: 100vh;
+	background-image:url('3.jpg');
+}
+
