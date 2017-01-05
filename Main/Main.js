@@ -14,11 +14,14 @@ $(window).ready(function() {
         }
     }
     var mobile = detectmob();
+    mobile = true;
     if (mobile) {
-        $(".blockContainer").addClass("blockContainerMobile");
-        $(".block").addClass("blockMobile");
+        $(".block, .blockContainer").css("height", window.innerHeight);
         $('html, body').css('overflowY', 'auto'); 
         $(".caretDown, .caretText, .caretUp").hide();
+        $(window).bind("orientationchange", function() {
+         $(".block, .blockContainer").css("height", window.innerHeight);
+        });
     }
     // Resizing
     resize = function() {

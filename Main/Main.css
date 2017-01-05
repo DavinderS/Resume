@@ -63,9 +63,7 @@ html {
 	height:100vh;
 	width:100%;
 }
-.blockContainerMobile {
-	height:800px;
-}
+
 .titleContainer {
 	position: absolute;
 	top: 50%;
@@ -132,9 +130,7 @@ html {
 	background-position: center;
 	height: 100vh;
 }
-.blockMobile {
-	height: 800px;
-}
+
 #aboutImage {
 	background-image:url('bg.jpg');
 
