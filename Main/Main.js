@@ -29,7 +29,9 @@ $(window).ready(function() {
             $(".description").removeClass("descriptionMobile");
             $(".button").removeClass("buttonMobile");
         }
-        $(window).scrollTop($(".block").eq(currentBlock).offset().top);
+        $('html, body').animate({
+            scrollTop: $(".block").eq(currentBlock).offset().top
+        });
     }
 
     $(".caretDown").click(function() {
