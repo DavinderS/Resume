@@ -4,7 +4,7 @@ $(window).on('beforeunload', function() {
 $(window).ready(function() {
     var currentBlock = 0;
     var scrollInProgress = false;
-
+    var swipeY = null;
     // Resizing
     resize = function() {
         if (window.innerWidth > 430 && window.innerWidth <= 640) {
@@ -37,9 +37,8 @@ $(window).ready(function() {
         scrollTop: $("#aboutImage").offset().top
     }, 1000);
    })
-
-    $(window).bind('mousewheel', function(event) {
-        if (event.originalEvent.wheelDelta >= 0) {
+    function scrollHandler(delta) {
+        if (delta >= 0) {
             if (!scrollInProgress && $(document).scrollTop() != 0) {
                 currentBlock -= 1;
                 scrollInProgress = true;
@@ -61,6 +60,15 @@ $(window).ready(function() {
                 });
             }
         }
+    }
+    $(document).bind('touchstart',function(e) {
+        swipeY = e.originalEvent.touches[0].clientY;
+    })
+    $(document).bind('touchmove', function(e) {
+        scrollHandler(swipeY - e.originalEvent.touches[0].clientY)
+    })
+    $(window).bind('mousewheel', function(event) {
+        scrollHandler(event.originalEvent.wheelDelta);
     });
     $(window).resize(resize);
     resize();
