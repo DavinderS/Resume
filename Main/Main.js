@@ -22,7 +22,6 @@ $(window).ready(function() {
         $(window).bind("orientationchange", function() {
             $('html, body').css('overflowY', 'hidden'); 
             $(".loadingPanel").show();
-            console.log("SHOW")
          setTimeout(function() {
             $(".block, .blockContainer").css("height", window.innerHeight)
                         $('html, body').css('overflowY', 'auto'); 
