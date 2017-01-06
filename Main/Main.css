@@ -9,6 +9,42 @@ body {
 html {
 	height: 100vh;
 }
+.fullScreenOverlay {
+	position: fixed;
+	height:100vh;
+	width:100%;
+	background-color:rgba(0,0,0,0.9);
+	z-index:3;
+	overflow-y: auto;
+}
+.exitOverlay {
+	position: absolute;
+	font-size:30px;
+	top:40px;
+	right:40px;
+	color:white;
+	user-select: none;
+	cursor: pointer;
+}
+.workPeriod {
+	width:calc(50% - 10px);
+	display:inline-block;
+	text-align: right;
+}
+.workCompany {
+	margin-right:10px;
+	width:calc(50% - 10px);
+	display: inline-block;
+	vertical-align: top;
+	margin-bottom:30px;
+}
+.overlayBlock {
+	position: absolute;
+	top:80px;
+	left:40px;
+	width:calc(100% - 80px);
+	text-align: justify-all;
+}
 .caretText {
 	position: absolute;
 	bottom: calc(0% + 55px);
@@ -211,7 +247,7 @@ html {
 	width:100%;
 	height: 40px;
 	background-color:rgba(200,0,0,0.5);
-	z-index: 5;
+	z-index: 2;
 	line-height: 40px;
 	text-align: center;
 }

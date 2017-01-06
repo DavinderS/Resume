@@ -5,6 +5,7 @@ $(window).ready(function() {
     var currentBlock = 0;
     var scrollInProgress = false;
     var swipeY = null;
+    var disableScroll = false;
     function detectmob() { 
         if( navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)){
             return true;
@@ -26,11 +27,11 @@ $(window).ready(function() {
             $(".loadingPanel").show();
             $(window).scrollTop(0);
 
-         setTimeout(function() {
-            $(".block, .blockContainer").css("height", window.innerHeight)
-            $(".loadingPanel").hide();
-            $(window).scrollTop(0);
-        }, 300)
+            setTimeout(function() {
+                $(".block, .blockContainer").css("height", window.innerHeight)
+                $(".loadingPanel").hide();
+                $(window).scrollTop(0);
+            }, 300)
         });
     }
 
@@ -74,32 +75,48 @@ $(window).ready(function() {
 
     $(".caretDown").click(function() {
         scrollHandler(-1);
-   })
+    })
     $(".caretUp").click(function() {
         scrollHandler(1);
-   })
-    function scrollHandler(delta) {
-        if (delta >= 0) {
-            if (!scrollInProgress && $(document).scrollTop() != 0) {
-                currentBlock -= 1;
-                scrollInProgress = true;
-                $('html, body').animate({
-                    scrollTop: $(document).scrollTop() - window.innerHeight
-                }, 1000, function() {
-                    scrollInProgress = false;
-                });
-            }
+    })
+    $(".logo").click(function(e) {
+        target = e.currentTarget.id;
+        disableScroll = true;
+        console.log(target);
+        if (target == "communitechLogo") {
+            //$(".fullScreenOverlay").load("WorkExperience_Communitech.html");
+            $(".fullScreenOverlay").show();
+            $(".overlayText").html("Developed an application that utilized a database <ul><li>NodeJS based application that primarily utilized Mongoose (MongoDB) and BackboneJS</li><li>I was given a template that took care of setting up the database and provided an example of a few webpages and some interaction between the server and the client</li><li>Used the examples to build a Schema and used existing methods to post/get/update and delete information from the database</li>Used a wireframe created by another student to create the HTML/CSS for the application</li><li> Used GitHub to save files and Heroku to show client app progress</li>");
         }
-        else {
-            
-            if (!scrollInProgress && $(document).height() != $(document).scrollTop() + window.innerHeight) {
-                currentBlock += 1
-                scrollInProgress = true;
-                $('html, body').animate({
-                    scrollTop: $(document).scrollTop() + window.innerHeight
-                }, 1000, function() {
-                    scrollInProgress = false;
-                });
+    })
+    $(".exitOverlay").click(function() {
+        disableScroll = false;
+        $(".fullScreenOverlay").hide();
+    })
+    function scrollHandler(delta) {
+        if (!disableScroll)
+        {
+            if (delta >= 0) {
+                if (!scrollInProgress && $(document).scrollTop() != 0) {
+                    currentBlock -= 1;
+                    scrollInProgress = true;
+                    $('html, body').animate({
+                        scrollTop: $(document).scrollTop() - window.innerHeight
+                    }, 1000, function() {
+                        scrollInProgress = false;
+                    });
+                }
+            } else {
+
+                if (!scrollInProgress && $(document).height() != $(document).scrollTop() + window.innerHeight) {
+                    currentBlock += 1
+                    scrollInProgress = true;
+                    $('html, body').animate({
+                        scrollTop: $(document).scrollTop() + window.innerHeight
+                    }, 1000, function() {
+                        scrollInProgress = false;
+                    });
+                }
             }
         }
     }
