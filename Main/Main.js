@@ -17,6 +17,7 @@ $(window).ready(function() {
 
     if (mobile) {
         $(".block, .blockContainer").css("height", window.innerHeight);
+        $(".logo").css("height", window.innerHeight/2-100)
         $('html, body').css('overflowY', 'auto'); 
         $(".caretDown, .caretText, .caretUp").hide();
         $("#gameButton").replaceWith("<div class='button' onclick='gameAlert()'>PLAY</div>")
@@ -40,7 +41,7 @@ $(window).ready(function() {
             }, 3000)
         })
     }
-    
+
     // Resizing
     resize = function() {
         if (window.innerWidth > 430 && window.innerWidth <= 640) {
