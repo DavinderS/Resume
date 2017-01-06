@@ -11,7 +11,7 @@ html {
 }
 .caretText {
 	position: absolute;
-	bottom: calc(0% + 50px);
+	bottom: calc(0% + 55px);
 	left: 50%;
 	transform: translateX(-50%);
 	text-align: center;
@@ -141,7 +141,53 @@ html {
 #carImage {
 	background-image:url('car.jpg');
 }
+#workImage {
+	background-image:url('work.jpg');
+}
+#sapLogo {
+	background-image:url('SAP_logo.png');
+}
+#ttcLogo {
+	background-image:url('TTC_logo.jpg');
+}
+#eitLogo {
+	background-image:url('EIT_Logo.jpg');
+}
+#communitechLogo {
+	background-image:url('Communitech_Logo.jpg');
+}
+#haaLogo {
+	background-image:url('HAA_Logo.png');
+}
+.logo {
+	margin:10px;
+	height: calc(50vh - 100px);
+	background-size: contain;
+	background-color:white;
+	background-repeat: no-repeat;
+	background-position: center;
+	display:inline-block;
 
+}
+.logoFitThree {
+	width:calc(33% - 40px);
+
+}
+.logoFitTwo {
+	width:calc(50% - 50px);
+
+}
+.overlay {
+	width:100%;
+	height:100%;
+	display:inline-block;
+	background-color:rgba(0,0,0,0);
+	cursor: pointer;
+}
+.overlay:hover {
+	background-color:rgba(0,0,0,0.5);
+
+}
 .button {
 	letter-spacing: 5px;
 	width:140px;
@@ -152,9 +198,24 @@ html {
 	text-decoration: none;
 	display: block;
 	margin: 20px auto;
+	cursor: pointer;
+    user-select: none;
 }
-
 .button:hover {
 	background-color: white;
 	color:black;
+}
+.alert {
+	position: fixed;
+	display: none;
+	width:100%;
+	height: 40px;
+	background-color:rgba(200,0,0,0.5);
+	z-index: 5;
+	line-height: 40px;
+	text-align: center;
+}
+.top {
+	top: 45px;
+	transform:  translateX(-50%);
 }

@@ -14,11 +14,13 @@ $(window).ready(function() {
         }
     }
     var mobile = detectmob();
-    console.log("ready");
+
     if (mobile) {
         $(".block, .blockContainer").css("height", window.innerHeight);
         $('html, body').css('overflowY', 'auto'); 
         $(".caretDown, .caretText, .caretUp").hide();
+        $("#gameButton").replaceWith("<div class='button' onclick='gameAlert()'>PLAY</div>")
+
         $(window).bind("orientationchange", function() {
             $(".loadingPanel").show();
             $(window).scrollTop(0);
@@ -30,6 +32,15 @@ $(window).ready(function() {
         }, 300)
         });
     }
+
+    gameAlert = function() {
+        $(".alert").slideDown(500, function() {
+            setTimeout(function() {
+                $(".alert").slideUp(500);
+            }, 3000)
+        })
+    }
+    
     // Resizing
     resize = function() {
         if (window.innerWidth > 430 && window.innerWidth <= 640) {
@@ -91,13 +102,6 @@ $(window).ready(function() {
             }
         }
     }
-    /*
-    $(document).bind('touchstart',function(e) {
-        swipeY = e.originalEvent.touches[0].clientY;
-    })
-    $(document).bind('touchmove', function(e) {
-        scrollHandler(e.originalEvent.touches[0].clientY - swipeY)
-    })*/
     if (!mobile) {
         $(window).bind('mousewheel', function(event) {
             scrollHandler(event.originalEvent.wheelDelta);
