@@ -9,13 +9,21 @@ body {
 html {
 	height: 100vh;
 }
+li {
+	margin-bottom:10px;
+}
 .fullScreenOverlay {
 	position: fixed;
 	height:100vh;
 	width:100%;
-	background-color:rgba(0,0,0,0.9);
+	background-color:rgba(0,0,0,0.95);
 	z-index:3;
 	overflow-y: auto;
+	font-size:1.5em;
+	display: none;
+}
+.fullScreenOverlay::-webkit-scrollbar {
+    width: 0 !important;
 }
 .exitOverlay {
 	position: absolute;
@@ -30,17 +38,24 @@ html {
 	width:calc(50% - 10px);
 	display:inline-block;
 	text-align: right;
-}
-.workCompany {
-	margin-right:10px;
-	width:calc(50% - 10px);
-	display: inline-block;
-	vertical-align: top;
 	margin-bottom:30px;
+
+}
+.overlayTitle {
+	width: calc(100% - 80px);
+	margin-top: 10px;
+	margin-left:50px;
+	margin-right:50px;
+	font-size:1.4em;
+	text-align: center;
+}
+.position {
+}
+.overlayText {
+	margin-top: 40px;
 }
 .overlayBlock {
 	position: absolute;
-	top:80px;
 	left:40px;
 	width:calc(100% - 80px);
 	text-align: justify-all;
@@ -62,6 +77,26 @@ html {
     cursor: pointer;
     animation: caretDownAnimation 1s linear infinite;
 }
+.caretLeft {
+	position: absolute;
+	left: calc(0% + 20px);
+	top: 50%;
+	transform: scale(0.5,2) translateY(-25%);
+	font-size:30px;
+    user-select: none;
+    cursor: pointer;
+    animation: caretLeftAnimation 1s linear infinite;
+}
+.caretRight {
+	position: absolute;
+	right: calc(0% + 20px);
+	top: 50%;
+	transform: scale(0.5,2) translateY(-25%);
+	font-size:30px;
+    user-select: none;
+    cursor: pointer;
+    animation: caretRightAnimation 1s linear infinite;
+}
 .caretUp {
 	position: absolute;
 	top: calc(0% + 20px);
@@ -71,6 +106,28 @@ html {
     user-select: none;
     cursor: pointer;
     animation: caretUpAnimation 1s linear infinite;
+}
+@keyframes caretLeftAnimation {
+  0 {
+    left: calc(0% + 20px);
+  }
+  50% {
+    left: calc(0% + 10px);
+  }
+  100% {
+    left: calc(0% + 20px);
+  }
+}
+@keyframes caretRightAnimation {
+  0 {
+    right: calc(0% + 20px);
+  }
+  50% {
+    right: calc(0% + 10px);
+  }
+  100% {
+    right: calc(0% + 20px);
+  }
 }
 @keyframes caretDownAnimation {
   0 {
@@ -196,22 +253,20 @@ html {
 	background-image:url('HAA_Logo.png');
 }
 .logo {
-	margin:10px;
-	height: calc(50vh - 100px);
+	margin: 10px 5px;
+	height: calc(50vh - 120px);
 	background-size: contain;
 	background-color:white;
 	background-repeat: no-repeat;
 	background-position: center;
+}
+.screen33 {
+	width:calc(33% - 15px);
 	display:inline-block;
-
 }
-.logoFitThree {
-	width:calc(33% - 40px);
-
-}
-.logoFitTwo {
-	width:calc(50% - 50px);
-
+.screen50 {
+	width:calc(50% - 20px);
+	display:inline-block;
 }
 .overlay {
 	width:100%;
