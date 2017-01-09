@@ -17,6 +17,7 @@ $(window).ready(function() {
         }
     }
     var mobile = detectmob();
+    mobile = true;
     if (mobile) {
         $(".block, .blockContainer").css("height", window.innerHeight);
         $(".logo").css("height", window.innerHeight/2-100)
@@ -49,7 +50,14 @@ $(window).ready(function() {
         if (animationInProgress)
         {
         animationInProgress.stop(true, true);
-    }
+    }   
+        if (window.innerWidth < 750) {
+            $(".plusIcon").addClass("plusIconMobile");
+
+        } else {
+            $(".plusIcon").removeClass("plusIconMobile");
+
+        }
         if (window.innerWidth > 430 && window.innerWidth <= 640) {
             $(".title").addClass("titleTablet");
             $(".titleDescription").addClass("titleDescriptionTablet");
@@ -71,6 +79,7 @@ $(window).ready(function() {
             $(".titleDescription").removeClass("titleDescriptionMobile");
             $(".description").removeClass("descriptionMobile");
             $(".button").removeClass("buttonMobile");
+
         }
         if (!mobile)
         {
@@ -84,6 +93,10 @@ $(window).ready(function() {
     $(".caretUp").click(function() {
         scrollHandler(1);
     })
+    $(".plusIcon").click(function(e) {
+        target = e.currentTarget.id;
+        console.log(target);
+    });
     $(".logo").click(function(e) {
         target = e.currentTarget.id;
         disableScroll = true;

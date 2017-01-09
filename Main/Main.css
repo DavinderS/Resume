@@ -22,9 +22,7 @@ li {
 	font-size:1.5em;
 	display: none;
 }
-.fullScreenOverlay::-webkit-scrollbar {
-    width: 0 !important;
-}
+
 .exitOverlay {
 	position: absolute;
 	font-size:30px;
@@ -223,7 +221,38 @@ li {
 	background-position: center;
 	height: 100vh;
 }
-
+#lamboImage {
+	position: absolute;
+	bottom: 0;
+	width:100%;
+}
+.plusIcon {
+	width:50px;
+	cursor:pointer;
+}
+.plusIconMobile {
+	width:30px;
+}
+#wheel {
+	position: absolute;
+	bottom: calc(13vw - 15px);
+	left:calc(25vw - 15px);
+}
+#engine {
+	position: absolute;
+	bottom: calc(23vw - 15px);
+	left:calc(16vw - 15px);
+}
+#hood {
+	position: absolute;
+	bottom: calc(17vw - 15px);
+	left:calc(85vw - 15px);
+}
+#door {
+	position: absolute;
+	bottom: calc(18vw - 15px);
+	left:calc(56vw - 15px);
+}
 #aboutImage {
 	background-image:url('bg.jpg');
 
