@@ -149,6 +149,7 @@ $(window).ready(function() {
 
     })
     function scrollHandler(delta) {
+        
         if (!disableScroll)
         {
             if (delta >= 0) {
