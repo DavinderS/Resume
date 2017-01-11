@@ -17,13 +17,13 @@ $(window).ready(function() {
         }
     }
     var mobile = detectmob();
+    mobile=false;
     if (mobile) {
         $(".logo").addClass("height20");
         $(".logo").removeClass("screen50");
         $(".logo").removeClass("screen33");
         $(".screen33").hide();
         $(".screen50").hide();
-        $(".seperator").hide();
         $(".block, .blockContainer").css("height", window.innerHeight);
         $(".logo").css("height", window.innerHeight/5 - 42)
         $('html, body').css('overflowY', 'auto'); 
@@ -156,8 +156,8 @@ $(window).ready(function() {
                     currentBlock -= 1;
                     scrollInProgress = true;
                     animationInProgress = $('html, body').animate({
-                        scrollTop: $(document).scrollTop() - window.innerHeight - window.innerHeight
-                    }, 1500, function() {
+                        scrollTop: $(document).scrollTop() - window.innerHeight
+                    }, 750, function() {
                         scrollInProgress = false;
                     });
                 }
@@ -167,8 +167,8 @@ $(window).ready(function() {
                     currentBlock += 1
                     scrollInProgress = true;
                     animationInProgress = $('html, body').animate({
-                        scrollTop: $(document).scrollTop() + window.innerHeight + window.innerHeight
-                    }, 1500, function() {
+                        scrollTop: $(document).scrollTop() + window.innerHeight
+                    }, 750, function() {
                         scrollInProgress = false;
                     });
                 }
