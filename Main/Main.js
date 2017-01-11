@@ -7,7 +7,7 @@ $(window).ready(function() {
     var swipeY = null;
     var disableScroll = false;
     var animationInProgress;
-
+    var scrollPosition = 0;
     function detectmob() { 
         if( navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)){
             return true;
@@ -152,22 +152,24 @@ $(window).ready(function() {
         if (!disableScroll)
         {
             if (delta >= 0) {
-                if (!scrollInProgress && $(document).scrollTop() != 0) {
+                if (!scrollInProgress && scrollPosition!= 0) {
                     currentBlock -= 1;
                     scrollInProgress = true;
-                    animationInProgress = $('html, body').animate({
-                        scrollTop: $(document).scrollTop() - window.innerHeight
+                    scrollPosition += 100;
+                    animationInProgress = $('.content').animate({
+                        top: scrollPosition + "%"
                     }, 750, function() {
                         scrollInProgress = false;
                     });
                 }
             } else {
 
-                if (!scrollInProgress && $(document).height() != $(document).scrollTop() + window.innerHeight) {
+                if (!scrollInProgress  && scrollPosition != -500) {
                     currentBlock += 1
                     scrollInProgress = true;
-                    animationInProgress = $('html, body').animate({
-                        scrollTop: $(document).scrollTop() + window.innerHeight
+                    scrollPosition -= 100;
+                    animationInProgress = $('.content').animate({
+                        top: scrollPosition + "%"
                     }, 750, function() {
                         scrollInProgress = false;
                     });
@@ -175,6 +177,12 @@ $(window).ready(function() {
             }
         }
     }
+    $(document).bind('touchstart',function(e) {
+        swipeY = e.originalEvent.touches[0].clientY;
+    })
+    $(document).bind('touchmove', function(e) {
+        scrollHandler(e.originalEvent.touches[0].clientY - swipeY)
+    })
     if (!mobile) {
         $(window).bind('mousewheel', function(event) {
             scrollHandler(event.originalEvent.wheelDelta);

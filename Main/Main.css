@@ -176,6 +176,10 @@ user-drag: none;
     top: calc(0% + 20px);
   }
 }
+.content {
+	position: absolute;
+	width:100%;
+}
 .blockContainer {
 	overflow: hidden;
 	position: relative;
