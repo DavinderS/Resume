@@ -17,10 +17,15 @@ $(window).ready(function() {
         }
     }
     var mobile = detectmob();
-    mobile = true;
     if (mobile) {
+        $(".logo").addClass("height20");
+        $(".logo").removeClass("screen50");
+        $(".logo").removeClass("screen33");
+        $(".screen33").hide();
+        $(".screen50").hide();
+        $(".seperator").hide();
         $(".block, .blockContainer").css("height", window.innerHeight);
-        $(".logo").css("height", window.innerHeight/2-100)
+        $(".logo").css("height", window.innerHeight/5 - 42)
         $('html, body').css('overflowY', 'auto'); 
         $(".caretDown, .caretText, .caretUp").hide();
         $("#gameButton").replaceWith("<div class='button' onclick='gameAlert()'>PLAY</div>")
@@ -49,8 +54,8 @@ $(window).ready(function() {
     resize = function() {
         if (animationInProgress)
         {
-        animationInProgress.stop(true, true);
-    }   
+            animationInProgress.stop(true, true);
+        }   
         if (window.innerWidth < 750) {
             $(".plusIcon").addClass("plusIconMobile");
 
@@ -83,7 +88,7 @@ $(window).ready(function() {
         }
         if (!mobile)
         {
-            $(window).scrollTop($(".block").eq(currentBlock).offset().top);
+            $(window).scrollTop($(".blockContainer").eq(currentBlock).offset().top);
         }
     }
 
@@ -93,9 +98,21 @@ $(window).ready(function() {
     $(".caretUp").click(function() {
         scrollHandler(1);
     })
-    $(".plusIcon").click(function(e) {
+    document.onkeydown = function(e) {
+        if (e.keyCode == 40) {
+            scrollHandler(-1);
+        } else if (e.keyCode == 38) {
+            scrollHandler(1);
+        }
+    }
+    $(".plusIcon").hover(function(e) {
         target = e.currentTarget.id;
         console.log(target);
+        if (target == engine) {
+            
+        }
+    }, function(e) {
+        console.log("fuk")
     });
     $(".logo").click(function(e) {
         target = e.currentTarget.id;
@@ -139,8 +156,8 @@ $(window).ready(function() {
                     currentBlock -= 1;
                     scrollInProgress = true;
                     animationInProgress = $('html, body').animate({
-                        scrollTop: $(document).scrollTop() - window.innerHeight
-                    }, 1000, function() {
+                        scrollTop: $(document).scrollTop() - window.innerHeight - window.innerHeight
+                    }, 1500, function() {
                         scrollInProgress = false;
                     });
                 }
@@ -150,8 +167,8 @@ $(window).ready(function() {
                     currentBlock += 1
                     scrollInProgress = true;
                     animationInProgress = $('html, body').animate({
-                        scrollTop: $(document).scrollTop() + window.innerHeight
-                    }, 1000, function() {
+                        scrollTop: $(document).scrollTop() + window.innerHeight + window.innerHeight
+                    }, 1500, function() {
                         scrollInProgress = false;
                     });
                 }

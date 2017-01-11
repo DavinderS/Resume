@@ -12,6 +12,13 @@ html {
 li {
 	margin-bottom:10px;
 }
+img {
+user-drag: none; 
+-moz-user-select: none;
+-webkit-user-drag: none;
+-webkit-user-select: none;
+-ms-user-select: none;
+}
 .fullScreenOverlay {
 	position: fixed;
 	height:100vh;
@@ -46,8 +53,6 @@ li {
 	margin-right:50px;
 	font-size:1.4em;
 	text-align: center;
-}
-.position {
 }
 .overlayText {
 	margin-top: 40px;
@@ -128,7 +133,7 @@ li {
   }
 }
 @keyframes caretDownAnimation {
-  0 {
+  0% {
     bottom: calc(0% + 20px);
   }
   50% {
@@ -139,7 +144,7 @@ li {
   }
 }
 @keyframes caretUpAnimation {
-  0 {
+  0% {
     top: calc(0% + 20px);
   }
   50% {
@@ -150,11 +155,15 @@ li {
   }
 }
 .blockContainer {
+	overflow: hidden;
 	position: relative;
 	height:100vh;
 	width:100%;
 }
-
+.vehicleInfoText {
+	position: absolute;
+	top:60px; 
+}
 .titleContainer {
 	position: absolute;
 	top: 50%;
@@ -221,37 +230,10 @@ li {
 	background-position: center;
 	height: 100vh;
 }
-#lamboImage {
-	position: absolute;
-	bottom: 0;
+.seperator {
+	height:100%;
 	width:100%;
-}
-.plusIcon {
-	width:50px;
-	cursor:pointer;
-}
-.plusIconMobile {
-	width:30px;
-}
-#wheel {
-	position: absolute;
-	bottom: calc(13vw - 15px);
-	left:calc(25vw - 15px);
-}
-#engine {
-	position: absolute;
-	bottom: calc(23vw - 15px);
-	left:calc(16vw - 15px);
-}
-#hood {
-	position: absolute;
-	bottom: calc(17vw - 15px);
-	left:calc(85vw - 15px);
-}
-#door {
-	position: absolute;
-	bottom: calc(18vw - 15px);
-	left:calc(56vw - 15px);
+	background-color: black;
 }
 #aboutImage {
 	background-image:url('bg.jpg');
@@ -262,6 +244,12 @@ li {
 }
 #carImage {
 	background-image:url('car.jpg');
+}
+#contactImage {
+	background-image:url('contact.jpg');
+}
+#vehicleImage {
+	background-image:url('vehicle.jpg');
 }
 #workImage {
 	background-image:url('work.jpg');
@@ -292,6 +280,9 @@ li {
 .screen33 {
 	width:calc(33% - 15px);
 	display:inline-block;
+}
+.height20 {
+	height: calc(25vh - 100px);
 }
 .screen50 {
 	width:calc(50% - 20px);
