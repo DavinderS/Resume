@@ -84,7 +84,7 @@ user-drag: none;
 }
 .caretText {
 	position: absolute;
-	bottom: calc(0% + 55px);
+	bottom: calc(0% + 20px);
 	left: 50%;
 	transform: translateX(-50%);
 	text-align: center;
@@ -176,9 +176,6 @@ user-drag: none;
 .content {
 	position: absolute;
 	width:100%;
-
-}
-.desktop {
 	overflow: hidden;
 	position: fixed;
 	top:0;
@@ -186,6 +183,7 @@ user-drag: none;
 	left:0;
 	right:0;
 }
+
 .moveDown {
     animation-name: example;
     animation-duration: 2s;
@@ -279,10 +277,11 @@ user-drag: none;
 
 }
 #gameImage {
-	background-image:url('game.jpg');
+	background-image:url('game.png');
 }
 #carImage {
-	background-image:url('car.jpg');
+	display: none;
+	background-image:url('cluster.jpg');
 }
 #contactImage {
 	background-image:url('contact.jpg');
