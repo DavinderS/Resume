@@ -17,7 +17,9 @@ $(window).ready(function() {
             }, 3000)
         })
     }
-
+ $(".caretDown").click(function() {
+        scrollHandler(-1);
+   })
     // Resizing
     resize = function() {
         if (animationInProgress)
@@ -99,7 +101,6 @@ $(window).ready(function() {
 
     })
     function scrollHandler(delta) {
-
         if (!disableScroll)
         {
             if (delta >= 0) {
@@ -111,6 +112,7 @@ $(window).ready(function() {
                         top: scrollPosition + "%"
                     }, 750,"SteppedEase", function() {
                         scrollInProgress = false;
+
                     });
                 }
             } else {
