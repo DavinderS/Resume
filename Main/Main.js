@@ -1,6 +1,6 @@
-$(window).on('beforeunload', function() {
+/*$(window).on('beforeunload', function() {
     $(window).scrollTop(0);
-});
+});*/
 $(window).ready(function() {
     var currentBlock = 0;
     var scrollInProgress = false;
@@ -129,9 +129,11 @@ $(window).ready(function() {
         }
     }
     $(document).bind('touchstart',function(e) {
+        e.preventDefault();
         swipeY = e.originalEvent.touches[0].clientY;
     })
     $(document).bind('touchmove', function(e) {
+        e.preventDefault();
         scrollHandler(e.originalEvent.touches[0].clientY - swipeY)
     })
 
