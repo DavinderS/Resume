@@ -1,14 +1,9 @@
 body {
 	margin: 0px;
-	overflow: hidden;
 	font-family: "Avant Garde",Avantgarde,"Century Gothic",CenturyGothic,AppleGothic,sans-serif;
 	color:white;
 	background-color:rgb(0,0,0);
-	position: fixed;
-	top:0;
-	bottom: 0;
-	left:0;
-	right:0;
+
 }
 html {
 	height: 100vh;
@@ -83,8 +78,8 @@ user-drag: none;
 }
 .overlayBlock {
 	position: absolute;
-	left:40px;
-	width:calc(100% - 80px);
+	left:10%;
+	width:80%;
 	text-align: justify-all;
 }
 .caretText {
@@ -181,6 +176,15 @@ user-drag: none;
 .content {
 	position: absolute;
 	width:100%;
+
+}
+.desktop {
+	overflow: hidden;
+	position: fixed;
+	top:0;
+	bottom: 0;
+	left:0;
+	right:0;
 }
 .moveDown {
     animation-name: example;
