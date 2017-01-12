@@ -86,8 +86,8 @@ $(window).ready(function() {
     }, function(e) {
         console.log("fuk")
     });
-    $(".logo").click(function(e) {
-        target = e.currentTarget.id;
+    $(".overlay").click(function(e) {
+        target = e.currentTarget.nextSibling.id;
         disableScroll = true;
         $(".fullScreenOverlay").show();
         if (target == "sapLogo") {

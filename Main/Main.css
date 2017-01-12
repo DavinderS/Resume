@@ -327,7 +327,8 @@ user-drag: none;
 	max-width:initial;
 }
 .overlay {
-	position: absolute;height: 20vh;
+	position: absolute;
+	height: 20vh;
 	width:100%;
 	display:inline-block;
 	background-color:rgba(0,0,0,0.5);
