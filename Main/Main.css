@@ -7,7 +7,8 @@ body {
 	position: fixed;
 	top:0;
 	bottom: 0;
-	width:100%;
+	left:0;
+	right:0;
 }
 html {
 	height: 100vh;
@@ -43,7 +44,8 @@ user-drag: none;
 }
 .fullScreenOverlay {
 	position: fixed;
-	height:100%;
+	top:0;
+	bottom: 0;
 	width:100%;
 	background-color:rgba(0,0,0,0.95);
 	z-index:4;
@@ -303,27 +305,30 @@ user-drag: none;
 	background-image:url('HAA_Logo.png');
 }
 .logo {
-	margin: 10px 5px;
-	height: calc(50vh - 120px);
+	height: calc(20% - 5px);
+	margin-bottom: 5px;
 	background-size: contain;
-	background-color:white;
 	background-repeat: no-repeat;
 	background-position: center;
-}
-.screen33 {
-	width:calc(33% - 15px);
+	background-color: white;
+	max-width:320px;
+	width:100%;
 	display:inline-block;
 }
-.height20 {
-	height: calc(25vh - 100px);
-}
-.screen50 {
-	width:calc(50% - 20px);
+.logoText {
 	display:inline-block;
+	height:20%;
+	vertical-align: top;
+	width:calc(100% - 320px);
+	line-height: 20vh;
+	text-align: center;
+}
+.logoMobile{
+	max-width:initial;
 }
 .overlay {
+	position: absolute;height: 20vh;
 	width:100%;
-	height:100%;
 	display:inline-block;
 	background-color:rgba(0,0,0,0.5);
 	cursor: pointer;
@@ -360,6 +365,6 @@ user-drag: none;
 	text-align: center;
 }
 .top {
-	top: 45px;
+	top: 10px;
 	transform:  translateX(-50%);
 }

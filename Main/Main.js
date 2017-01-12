@@ -8,39 +8,7 @@ $(window).ready(function() {
     var disableScroll = false;
     var animationInProgress;
     var scrollPosition = 0;
-    function detectmob() { 
-        if( navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)){
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-    var mobile = detectmob();
-    mobile=false;
-    if (mobile) {
-        $(".logo").addClass("height20");
-        $(".logo").removeClass("screen50");
-        $(".logo").removeClass("screen33");
-        $(".screen33").hide();
-        $(".screen50").hide();
-        $(".block, .blockContainer").css("height", window.innerHeight);
-        $(".logo").css("height", window.innerHeight/5 - 42)
-        $('html, body').css('overflowY', 'auto'); 
-        $(".caretDown, .caretText, .caretUp").hide();
-        $("#gameButton").replaceWith("<div class='button' onclick='gameAlert()'>PLAY</div>")
 
-        $(window).bind("orientationchange", function() {
-            $(".loadingPanel").show();
-            $(window).scrollTop(0);
-
-            setTimeout(function() {
-                $(".block, .blockContainer").css("height", window.innerHeight)
-                $(".loadingPanel").hide();
-                $(window).scrollTop(0);
-            }, 300)
-        });
-    }
 
     gameAlert = function() {
         $(".alert").slideDown(500, function() {
@@ -61,6 +29,13 @@ $(window).ready(function() {
 
         } else {
             $(".plusIcon").removeClass("plusIconMobile");
+        }
+        if (window.innerWidth < 550) {
+            $(".logo").addClass("logoMobile");
+            $(".logoText").hide();
+        } else {
+            $(".logo").removeClass("logoMobile");
+            $(".logoText").show();
 
         }
         if (window.innerWidth > 430 && window.innerWidth <= 640) {
@@ -86,10 +61,7 @@ $(window).ready(function() {
             $(".button").removeClass("buttonMobile");
 
         }
-        if (!mobile)
-        {
-            $(window).scrollTop($(".blockContainer").eq(currentBlock).offset().top);
-        }
+        $(window).scrollTop($(".blockContainer").eq(currentBlock).offset().top);
     }
 
     $(".caretDown").click(function() {
@@ -117,9 +89,6 @@ $(window).ready(function() {
     $(".logo").click(function(e) {
         target = e.currentTarget.id;
         disableScroll = true;
-        if (mobile) {
-            $('html, body').css('overflowY', 'hidden');
-        }
         $(".fullScreenOverlay").show();
         if (target == "sapLogo") {
             $(".overlayBlock").html("<div class='overlayTitle'>SAP - Application Developer</div><div class='overlayText'>Developed a beach cleanup application <ul><li>NodeJS based application that primarily utilized Mongoose (MongoDB) and BackboneJS</li><li>I was given a template that took care of setting up the database and provided an example of a few webpages, a schema and some interaction between the server and the client</li><li>Used the examples to build a custom Schema and used existing methods to post/get/update and delete information from the database</li>Used a wireframe created by another student to create the HTML/CSS for the application</li><li> Used GitHub to save files and Heroku to show the client the applications progress</li></ul></div>");
@@ -143,13 +112,10 @@ $(window).ready(function() {
     $(".exitOverlay").click(function() {
         disableScroll = false;
         $(".fullScreenOverlay").hide();
-        if (mobile) {
-         $('html, body').css('overflowY', 'auto'); 
-        }
 
     })
     function scrollHandler(delta) {
-        
+
         if (!disableScroll)
         {
             if (delta >= 0) {
@@ -184,11 +150,9 @@ $(window).ready(function() {
     $(document).bind('touchmove', function(e) {
         scrollHandler(e.originalEvent.touches[0].clientY - swipeY)
     })
-    if (!mobile) {
-        $(window).bind('mousewheel', function(event) {
-            scrollHandler(event.originalEvent.wheelDelta);
-        });
-    }
+    $(window).bind('mousewheel', function(event) {
+        scrollHandler(event.originalEvent.wheelDelta);
+    });
     $(window).resize(resize);
     resize();
 })
