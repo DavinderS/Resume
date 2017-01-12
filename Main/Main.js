@@ -63,13 +63,6 @@ $(window).ready(function() {
         }
         $(window).scrollTop($(".blockContainer").eq(currentBlock).offset().top);
     }
-
-    $(".caretDown").click(function() {
-        scrollHandler(-1);
-    })
-    $(".caretUp").click(function() {
-        scrollHandler(1);
-    })
     document.onkeydown = function(e) {
         if (e.keyCode == 40) {
             scrollHandler(-1);
@@ -77,15 +70,6 @@ $(window).ready(function() {
             scrollHandler(1);
         }
     }
-    $(".plusIcon").hover(function(e) {
-        target = e.currentTarget.id;
-        console.log(target);
-        if (target == engine) {
-            
-        }
-    }, function(e) {
-        console.log("fuk")
-    });
     $(".overlay").click(function(e) {
         target = e.currentTarget.nextSibling.id;
         disableScroll = true;
@@ -125,7 +109,7 @@ $(window).ready(function() {
                     scrollPosition += 100;
                     animationInProgress = $('.content').animate({
                         top: scrollPosition + "%"
-                    }, 1250, function() {
+                    }, 750,"SteppedEase", function() {
                         scrollInProgress = false;
                     });
                 }
@@ -137,7 +121,7 @@ $(window).ready(function() {
                     scrollPosition -= 100;
                     animationInProgress = $('.content').animate({
                         top: scrollPosition + "%"
-                    }, 1250, function() {
+                    }, 750,"SteppedEase", function() {
                         scrollInProgress = false;
                     });
                 }
