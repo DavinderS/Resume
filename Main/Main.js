@@ -17,9 +17,9 @@ $(window).ready(function() {
             }, 3000)
         })
     }
- $(".caretDown").click(function() {
+    $(".caretDown").click(function() {
         scrollHandler(-1);
-   })
+    })
     // Resizing
     resize = function() {
         if (animationInProgress)
@@ -95,53 +95,55 @@ $(window).ready(function() {
         }
 
     })
-    $(".exitOverlay").click(function() {
-        disableScroll = false;
-        $(".fullScreenOverlay").hide();
+$(".exitOverlay").click(function() {
+    disableScroll = false;
+    $(".fullScreenOverlay").hide();
 
-    })
-    function scrollHandler(delta) {
-        if (!disableScroll)
-        {
-            if (delta >= 0) {
-                if (!scrollInProgress && scrollPosition!= 0) {
-                    currentBlock -= 1;
-                    scrollInProgress = true;
-                    scrollPosition += 100;
-                    animationInProgress = $('.content').animate({
-                        top: scrollPosition + "%"
-                    }, 750,"SteppedEase", function() {
-                        scrollInProgress = false;
-
-                    });
-                }
-            } else {
-
-                if (!scrollInProgress  && scrollPosition != -500) {
-                    currentBlock += 1
-                    scrollInProgress = true;
-                    scrollPosition -= 100;
-                    animationInProgress = $('.content').animate({
-                        top: scrollPosition + "%"
-                    }, 750,"SteppedEase", function() {
+})
+function scrollHandler(delta) {
+    if (!disableScroll)
+    {
+        if (delta >= 0) {
+            if (!scrollInProgress && scrollPosition!= 0) {
+                currentBlock -= 1;
+                scrollInProgress = true;
+                scrollPosition += 100;
+                $('.content').fadeOut(1000, function() {
+                    $('.content').css("top", scrollPosition + "%");
+                    $('.content').fadeIn(1000, function() {
                         scrollInProgress = false;
                     });
-                }
+                });
+            }
+        } else {
+            if (!scrollInProgress  && scrollPosition != -500) {
+                currentBlock += 1
+                scrollInProgress = true;
+                scrollPosition -= 100;
+                $('.content').fadeOut(1000, function() {
+                    $('.content').css("top", scrollPosition + "%");
+                    $('.content').fadeIn(1000, function() {
+                        scrollInProgress = false;
+                    });
+                });
+
+
             }
         }
     }
-    $(document).bind('touchstart',function(e) {
-        e.preventDefault();
-        swipeY = e.originalEvent.touches[0].clientY;
-    })
-    $(document).bind('touchmove', function(e) {
-        e.preventDefault();
-        scrollHandler(e.originalEvent.touches[0].clientY - swipeY)
-    })
+}
+$(document).bind('touchstart',function(e) {
+    e.preventDefault();
+    swipeY = e.originalEvent.touches[0].clientY;
+})
+$(document).bind('touchmove', function(e) {
+    e.preventDefault();
+    scrollHandler(e.originalEvent.touches[0].clientY - swipeY)
+})
 
-    $(window).bind('mousewheel', function(event) {
-        scrollHandler(event.originalEvent.wheelDelta);
-    });
-    $(window).resize(resize);
-    resize();
+$(window).bind('mousewheel', function(event) {
+    scrollHandler(event.originalEvent.wheelDelta);
+});
+$(window).resize(resize);
+resize();
 })
