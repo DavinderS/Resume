@@ -125,7 +125,7 @@ $(window).ready(function() {
                     scrollPosition += 100;
                     animationInProgress = $('.content').animate({
                         top: scrollPosition + "%"
-                    }, 750, function() {
+                    }, 1250, function() {
                         scrollInProgress = false;
                     });
                 }
@@ -137,7 +137,7 @@ $(window).ready(function() {
                     scrollPosition -= 100;
                     animationInProgress = $('.content').animate({
                         top: scrollPosition + "%"
-                    }, 750, function() {
+                    }, 1250, function() {
                         scrollInProgress = false;
                     });
                 }
