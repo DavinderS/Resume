@@ -40,6 +40,11 @@ $(window).ready(function() {
             $(".logoText").show();
 
         }
+        if (window.innerWidth < 510) {
+            $(".topBar").addClass("topBarMobile");
+        } else {
+            $(".topBar").removeClass("topBarMobile");
+        }
         if (window.innerWidth > 430 && window.innerWidth <= 640) {
             $(".title").addClass("titleTablet");
             $(".titleDescription").addClass("titleDescriptionTablet");
@@ -108,9 +113,12 @@ function scrollHandler(delta) {
                 currentBlock -= 1;
                 scrollInProgress = true;
                 scrollPosition += 100;
-                $('.content').fadeOut(1000, function() {
+                $('.selectedSlider').animate({
+                    left:-scrollPosition/6 + "%"
+                }, 500);
+                $('.content').fadeOut(500, function() {
                     $('.content').css("top", scrollPosition + "%");
-                    $('.content').fadeIn(1000, function() {
+                    $('.content').fadeIn(500, function() {
                         scrollInProgress = false;
                     });
                 });
@@ -120,9 +128,12 @@ function scrollHandler(delta) {
                 currentBlock += 1
                 scrollInProgress = true;
                 scrollPosition -= 100;
-                $('.content').fadeOut(1000, function() {
+                $('.selectedSlider').animate({
+                    left:-scrollPosition/6 + "%"
+                }, 500);
+                $('.content').fadeOut(500, function() {
                     $('.content').css("top", scrollPosition + "%");
-                    $('.content').fadeIn(1000, function() {
+                    $('.content').fadeIn(500, function() {
                         scrollInProgress = false;
                     });
                 });
