@@ -164,42 +164,26 @@ function scrollHandler(delta) {
 }
 $(document).bind('touchstart',function(e) {
 
-    swipeStart = e.originalEvent.touches[0].clientY;
-    contentPosition = $('.content').offset().top
-
 })
-var swipeDistance;
-var swipeDistance2;
-$(document).bind('touchmove', function(e) {
-    swipeDistance = e.originalEvent.touches[0].clientY - swipeStart;
-    swipeDistance2 = (e.originalEvent.touches[0].clientY-swipeStart + contentPosition)/window.innerHeight * 100
-    if (swipeDistance2 > 0) {
-        swipeDistance2 = 0;
-    } else if (swipeDistance2 < -500) {
-        swipeDistance2 = -500;
-    }
-    $('.content').css("top", swipeDistance2 + "%");
 
-    if (swipeDistance > 100 || swipeDistance < -100)
-    {
-       // scrollHandler(swipeDistance)
-    }
+$(document).bind('touchmove', function(e) {
+
 })
 $(document).bind('touchend', function(e) {
-    if (!animationInProgress)
-    {
-    if (swipeDistance2 + 25 < scrollPosition) {
-        scrollPosition = scrollPosition - 100;
-    } else if (swipeDistance2 - 25 > scrollPosition) {
-        scrollPosition = scrollPosition + 100;
+    console.log(e)
+    clearTimeout($.data(this, 'scrollTimer'));
+    $.data(this, 'scrollTimer', setTimeout(function() {
+        // do something
+        if (!animationInProgress) {
 
-    } 
-    animationInProgress =  $('.content').animate({
-                    top:scrollPosition + "%"
+        animationInProgress = true;
+        $('.content').animate({
+            scrollTop: window.innerHeight * Math.round($('.content').scrollTop()/window.innerHeight)
         }, 500, function() {
             animationInProgress = false;
-        });
-        }
+        })
+    }
+    }, 500));
 })
 
 $(window).bind('mousewheel', function(event) {

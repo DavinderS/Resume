@@ -171,8 +171,9 @@ user-drag: none;
 .content {
 	position: absolute;
 	width:100%;
-	overflow: hidden;
+    -webkit-overflow-scrolling: touch;
 	position: fixed;
+	overflow-y: scroll;
 	top:0;
 	bottom: 0;
 	left:0;
