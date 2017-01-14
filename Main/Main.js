@@ -1,7 +1,7 @@
 /*$(window).on('beforeunload', function() {
     $(window).scrollTop(0);
 });*/
-$(window).ready(function() {
+$(window).load(function() {
     var currentBlock = 0;
     var scrollInProgress = false;
     var swipeY = null;
@@ -10,6 +10,7 @@ $(window).ready(function() {
     var scrollPosition = 0;
     var scrollRatio = 0;
     $("#carImage").fadeIn(1000);
+
     gameAlert = function() {
         $(".alert").slideDown(500, function() {
             setTimeout(function() {
@@ -19,6 +20,23 @@ $(window).ready(function() {
     }
     $(".caretDown").click(function() {
         scrollHandler(-1);
+    })
+    $(".barBlock").click(function(e) {
+        target = e.target.id.split("_")[1];
+        console.log(target)
+        console.log(currentBlock)
+        scrollPosition = -target * 100;
+        scrollInProgress = true;
+        $('.selectedSlider').animate({
+            left:-scrollPosition/6 + "%"
+        }, 500);
+        $('.content').fadeOut(500, function() {
+            $('.content').css("top", scrollPosition + "%");
+            $('.content').fadeIn(500, function() {
+                scrollInProgress = false;
+            });
+        });
+
     })
     // Resizing
     resize = function() {
@@ -144,14 +162,15 @@ function scrollHandler(delta) {
     }
 }
 $(document).bind('touchstart',function(e) {
-    e.preventDefault();
     swipeY = e.originalEvent.touches[0].clientY;
 })
 $(document).bind('touchmove', function(e) {
-    e.preventDefault();
-    scrollHandler(e.originalEvent.touches[0].clientY - swipeY)
+    swipeDistance = e.originalEvent.touches[0].clientY - swipeY;
+    if (swipeDistance > 100 || swipeDistance < -100)
+    {
+        scrollHandler(swipeDistance)
+    }
 })
-
 $(window).bind('mousewheel', function(event) {
     scrollHandler(event.originalEvent.wheelDelta);
 });
