@@ -167,6 +167,7 @@ $(document).bind('touchstart',function(e) {
 })
 
 $(document).bind('touchmove', function(e) {
+    clearTimeout($.data(this, 'scrollTimer'));
 
 })
 $(document).bind('touchend', function(e) {
