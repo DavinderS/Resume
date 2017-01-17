@@ -4,7 +4,12 @@
 $(window).load(function() {
     var currentBlock = 0;
     var scrollInProgress = false;
-    var swipeStart = null;
+    var swipeStartX = 0;
+    var swipeStartY = 0;
+    var swipeEndX = 0;
+    var swipeEndY = 0;
+    var swipeToleranceX = 30;
+    var swipeToleranceY = 30;
     var contentPosition = 0;
     var disableScroll = false;
     var animationInProgress;
@@ -179,25 +184,26 @@ function scrollHandler(delta) {
     }
 }
 $(document).bind('touchstart',function(e) {
-    
+    swipeStartX = e.originalEvent.touches[0].screenX;
+    swipeStartY = e.originalEvent.touches[0].screenY;
+    swipeEndX = e.originalEvent.touches[0].screenX;
+    swipeEndY = e.originalEvent.touches[0].screenY;
 })
 
 $(document).bind('touchmove', function(e) {
-    clearTimeout($.data(this, 'scrollTimer'));
-
+    swipeEndX = e.originalEvent.touches[0].screenX;
+    swipeEndY = e.originalEvent.touches[0].screenY;
 })
 $(document).bind('touchend', function(e) {
-    clearTimeout($.data(this, 'scrollTimer'));
-    $.data(this, 'scrollTimer', setTimeout(function() {
-        if (!animationInProgress) {
-        animationInProgress = true;
-        $('.content').animate({
-            scrollTop: window.innerHeight * Math.round($('.content').scrollTop()/window.innerHeight)
-        }, 500, function() {
-            animationInProgress = false;
-        })
+    console.log(swipeStartX, swipeEndX, swipeStartY, swipeEndY);
+    var deltaX = swipeStartX - swipeEndX;
+    var deltaY = swipeStartY - swipeEndY;
+    if(deltaX < -swipeToleranceX || deltaY < -swipeToleranceY) {
+        scrollHandler(-1)
+    } else if(deltaX > swipeToleranceX || deltaY > swipeToleranceY) {
+        scrollHandler(1)
     }
-    }, 500));
+
 })
 
 $(window).bind('mousewheel', function(event) {
