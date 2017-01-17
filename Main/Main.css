@@ -26,9 +26,15 @@ user-drag: none;
 	z-index:3;
 	opacity: 1;
 }
+.topBarMobile {
+	height:80px;
+}
+.hideInitial {
+	display: none;
+}
 .barBlock {
 	min-width:90px;
-	width:16.6666666%;
+	width:calc(16.6666666% - 1px);
 	text-align: center;
 	height:40px;
 	line-height: 40px;
@@ -36,13 +42,19 @@ user-drag: none;
 	display: inline-block;
 	cursor: pointer;
 }
+.barBlockMobile {
+	width:calc(33.3333333% - 1px);
+}
 .selectedSlider {
-	background-color: rgb(100,0,0);
+	background-color: rgb(40, 100, 120);
 	width:16.6666666%;
 	min-width:90px;
 	height: 40px;
 	z-index: 2;
 	position: fixed;
+}
+.selectedSliderMobile {
+	width:33.333333%;
 }
 .barItem {
 	z-index: 5;
@@ -80,10 +92,7 @@ user-drag: none;
 
 }
 .overlayTitle {
-	width: calc(100% - 80px);
-	margin-top: 10px;
-	margin-left:50px;
-	margin-right:50px;
+	width: 100%;
 	font-size:1.4em;
 	text-align: center;
 }
@@ -92,13 +101,13 @@ user-drag: none;
 }
 .overlayBlock {
 	position: absolute;
-	left:10%;
-	width:80%;
-	text-align: justify-all;
+	left: 20px;
+	right: 20px;
+	top: 80px;
 }
 .caretText {
 	position: absolute;
-	bottom: calc(0% + 20px);
+	bottom: 60px;
 	left: 50%;
 	transform: translateX(-50%);
 	text-align: center;
@@ -173,7 +182,6 @@ user-drag: none;
 	width:100%;
     -webkit-overflow-scrolling: touch;
 	position: fixed;
-	overflow-y: scroll;
 	top:0;
 	bottom: 0;
 	left:0;
@@ -198,9 +206,9 @@ user-drag: none;
 	height:calc(100vh - 40px);
 	width:100%;
 }
-.vehicleInfoText {
-	position: absolute;
-	top:60px; 
+.blockContainerMobile {
+	margin-top:80px;
+	height:calc(100vh - 80px);
 }
 .titleContainer {
 	position: absolute;
@@ -209,7 +217,10 @@ user-drag: none;
 	transform: translateY(-50%) translateX(-50%);
 	text-align: center;
 	width:100%;
-	max-height: calc(100% - 60px);
+	background-color: rgba(0,0,0,0.8);
+	max-height: 100%;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .title {
@@ -239,7 +250,6 @@ user-drag: none;
 
 .description {
 	font-size:24px;
-	text-align: justify-all;
 	margin: 0px 40px;
 }
 .descriptionTablet {
@@ -259,26 +269,24 @@ user-drag: none;
 	vertical-align: top;
 }
 .aboutText {
-	text-align: justify-all;
 	width:calc(100% - 100px);
 	display: inline-block;
 }
 .block {
 	background: fixed;
 	background-size: cover;
-	background-position: center;
+	background-position: 50% calc(50% + 40px);
 	height: 100%;
 }
 
 #aboutImage {
-	background-image:url('bg.jpg');
+	background-image:url('code.jpg');
 
 }
 #gameImage {
-	background-image:url('game.png');
+	background-image:url('game.jpg');
 }
 #carImage {
-	display: none;
 	background-image:url('cluster.jpg');
 }
 #contactImage {
@@ -305,25 +313,33 @@ user-drag: none;
 #haaLogo {
 	background-image:url('HAA_Logo.png');
 }
+#linkedin {
+	background-image:url(linkedin.png);   
+}
+#email {
+	background-image:url(email.png);   
+}
 .logo {
 	vertical-align: top;
-	height: calc(20% - 10px);
-	margin-top: 10px;
+	height: 20%;
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-color: white;
 	max-width:320px;
 	width:100%;
-	display:inline-block;
 }
 .logoText {
+	pointer-events:none;
 	display:inline-block;
 	height:20%;
 	vertical-align: top;
 	width:calc(100% - 320px);
-	line-height: 20vh;
+	line-height: calc(20vh - 8px);
 	text-align: center;
+	position: absolute;
+	left: 320px;
+	z-index:3;
 }
 .logoMobile{
 	max-width:initial;
@@ -354,8 +370,7 @@ user-drag: none;
     user-select: none;
 }
 .button:hover {
-	background-color: white;
-	color:black;
+	background-color: rgb(40,120,140);
 }
 .alert {
 	position: fixed;
@@ -371,4 +386,13 @@ user-drag: none;
 .top {
 	top: 10px;
 	transform:  translateX(-50%);
+}
+.icon {
+	background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width:80px;
+	background-color: rgb(40, 100, 120);
+    height:80px;
+    display: inline-block;
 }

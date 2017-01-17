@@ -11,20 +11,23 @@
     <meta name="theme-color" content="#b20707">
 </head>
 <body>
-<div class="selectedSlider"></div>
-<div class="topBar"><div class="barBlock" id="barBlock_0">INTRO</div><div class="barBlock" id="barBlock_1">ABOUT</div><div class="barBlock" id="barBlock_2">WORK</div><div class="barBlock" id="barBlock_3">GAME</div><div class="barBlock" id="barBlock_4">VEHICLE</div><div class="barBlock" id="barBlock_5">CONTACT</div></div>
-    <div class="content">
         <div class="loadingPanel">
             <div class="loaderContainer">
                 <div class="loader">
                 </div>
             </div>
         </div>
+<div class="selectedSlider hideInitial"></div>
+<div class="topBar hideInitial" ><div class="barBlock" id="barBlock_0">INTRO</div><div class="barBlock" id="barBlock_1">ABOUT</div><div class="barBlock" id="barBlock_2">WORK</div><div class="barBlock" id="barBlock_3">GAME</div><div class="barBlock" id="barBlock_4">SKILLS</div><div class="barBlock" id="barBlock_5" style="border-right: none;">CONTACT</div></div>
         <div class="fullScreenOverlay">
             <div class="overlayBlock">
             </div>
             <div class="exitOverlay">X</div>
         </div>
+
+    <div class="content hideInitial">
+
+
         <div class="alert">This game is not supported on mobile devices</div>
         <div class="blockContainer">
             <div class="block" id="carImage">
@@ -32,6 +35,7 @@
                     <span class="title">DAVINDER SHINH</span><br>
                     <span class="titleDescription">DEVELOPER</span>
                 </div>  
+                <div class="caretText">Scroll, swipe or use the top bar to navigate</div>
                 <div class="caretDown">V</div>
             </div>
         </div>
@@ -39,17 +43,17 @@
             <div class="block" id="aboutImage">
                 <div class="titleContainer">
                     <span class="title">ABOUT</span><br>
-                    <div class="description">I am a full stack developer that has experience with just about anything involving code. This includes responsive web development (This site is responsive), databases, client/server applications, continous computational language, IOT applications and more. If there is a development task or language I do not have experience with, learning is only 1-2 weeks of work</div>
+                    <div class="description">I am a developer that has experience with just about anything involving code. This includes responsive web development (Including this site), databases, client/server applications, continous computational language, socket programming, IOT applications and more. If there is a development task or language I do not have experience with, I am always ready to learn, and learn quick</div>
                 </div>  
             </div>
         </div>
         <div class="blockContainer">
             <div class="block" id="workImage">
-              <div class="overlay"></div><div class="logo" id="sapLogo"></div><div class="logoText">September - December 2016</div>
-                <div class="overlay"></div><div class="logo" id="haaLogo"></div><div class="logoText">January - April 2016</div>
-                <div class="overlay"></div><div class="logo" id="ttcLogo"></div><div class="logoText">May - August 2014</div>
-                <div class="overlay"></div><div class="logo" id="eitLogo"></div><div class="logoText">September - December 2014</div>
-                <div class="overlay"></div><div class="logo" id="communitechLogo"></div><div class="logoText">January - April 2014</div>
+            <div class="logoText">September - December 2016</div><div class="overlay"></div><div class="logo" id="sapLogo"></div>
+            <div class="logoText">January - April 2016</div><div class="overlay"></div><div class="logo" id="haaLogo"></div>
+            <div class="logoText">May - August 2014</div><div class="overlay"></div><div class="logo" id="ttcLogo"></div>
+            <div class="logoText">September - December 2014</div><div class="overlay"></div><div class="logo" id="eitLogo"></div>
+            <div class="logoText">January - April 2014</div><div class="overlay"></div><div class="logo" id="communitechLogo"></div>
             </div>
         </div>
         <div class="blockContainer">
@@ -64,9 +68,8 @@
         <div class="blockContainer">
             <div class="block" id="vehicleImage">
                 <div class="titleContainer">
-                    <span class="title">VEHICLE DEMO</span><br>
-                    <div class="description">This is a demo showing an interactive method that allows users to view vehicle information <br>(Work in Progress)</div>
-                    <a href="vehicleDemo/vehicleDemo.html" class="button" id="gameButton">PLAY</a>
+                    <span class="title">SKILLSET</span><br>
+                    <div class="description"><div>JavaScript: AngularJS, Bootstrap, AG-Grid, AJAX, ArcGIS, MapBox, Leaflet, RaphaelJS and many more</div><div>Java: MQTT Broker Publisher and Subscriber, GSON, Socket Programming</div><div>Python: SQLAlchemy, Flask, Redis</div><div>SQL: SQL Server, BusinessObjects Universe, DML/DDL Statements, SQLAnywhere, Complex Queries</div><div>CCL: Data Stream Aggregation, CCLScript, Custom Rows as Configuration, Applying Statistical Models</div><div>Source Control: Github, TFS, SourceTree, Git terminal</div><div>Due to the diversity of work I have done, new languages and libraries are quick and easy to learn</div></div>
                 </div>  
             </div>
         </div>
@@ -74,6 +77,10 @@
             <div class="block" id="contactImage">
                 <div class="titleContainer">
                     <span class="title">CONTACT</span><br>
+                    <a target="blank_" href="https://ca.linkedin.com/in/davinder-shinh-a6ab4aa8" class="icon" id="linkedin"></a>
+                    <a href="mailto:daveshinh@gmail.com" class="icon" id="email"></a>
+                    <div style="background:url(linkedin.png); width:40px; height:40px;"></div>
+
                     <div class="description"></div>
                 </div>  
             </div>
