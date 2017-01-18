@@ -372,6 +372,15 @@ user-drag: none;
 .button:hover {
 	background-color: rgb(40,120,140);
 }
+#hide {
+	position: fixed;
+	background-color: black;
+	top: 40px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index:100;
+}
 .alert {
 	position: fixed;
 	display: none;

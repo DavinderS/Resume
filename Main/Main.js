@@ -19,6 +19,7 @@ $(window).load(function() {
     var blockList = $(".blockContainer");
     $(".loadingPanel").fadeOut(500, function() {
         $(".hideInitial").fadeIn(500);
+        $("#hide").fadeOut(500);
     });
 
 
@@ -157,9 +158,10 @@ function calculateSliderPosition() {
 }
 function moveContent(initialPage, newPage) {
         page = newPage;
-        console.log()
-        $(blockList[initialPage]).fadeOut(500, function() {
-        $(blockList[newPage]).fadeIn(500, function() {
+        $("#hide").fadeIn(500, function() {
+            $(blockList[initialPage]).hide();
+           $(blockList[newPage]).show();
+        $("#hide").fadeOut(500, function() {
             scrollInProgress = false;
         });
     });
