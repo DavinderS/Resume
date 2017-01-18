@@ -280,44 +280,31 @@ user-drag: none;
 }
 
 #aboutImage {
-	background-image:url('code.jpg');
 
 }
 #gameImage {
-	background-image:url('game.jpg');
 }
 #carImage {
-	background-image:url('cluster.jpg');
 }
 #contactImage {
-	background-image:url('contact.jpg');
 }
 #vehicleImage {
-	background-image:url('vehicle.jpg');
 }
 #workImage {
-	background-image:url('work.jpg');
 }
 #sapLogo {
-	background-image:url('SAP_logo.png');
 }
 #ttcLogo {
-	background-image:url('TTC_logo.jpg');
 }
 #eitLogo {
-	background-image:url('EIT_Logo.jpg');
 }
 #communitechLogo {
-	background-image:url('Communitech_Logo.jpg');
 }
 #haaLogo {
-	background-image:url('HAA_Logo.png');
 }
 #linkedin {
-	background-image:url(linkedin.png);   
 }
 #email {
-	background-image:url(email.png);   
 }
 .logo {
 	vertical-align: top;
