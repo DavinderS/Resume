@@ -16,6 +16,7 @@ $(window).load(function() {
     var page = 0;
     var scrollRatio = 0;
     var topBarMobile = false;
+    var blockList = $(".blockContainer");
     $(".loadingPanel").fadeOut(500, function() {
         $(".hideInitial").fadeIn(500);
     });
@@ -33,10 +34,9 @@ $(window).load(function() {
     })
     $(".barBlock").click(function(e) {
         target = e.target.id.split("_")[1];
-        page = parseInt(target);
         scrollInProgress = true;
+        moveContent(page, parseInt(target));
         $('.selectedSlider').animate(calculateSliderPosition(),  500);
-        moveContent();
     })
     // Resizing
     resize = function() {
@@ -155,10 +155,11 @@ function calculateSliderPosition() {
         top: sliderPositionY + "px"
     }
 }
-function moveContent() {
-        $('.content').fadeOut(500, function() {
-        $('.content').css("top", page * -100 + "%");
-        $('.content').fadeIn(500, function() {
+function moveContent(initialPage, newPage) {
+        page = newPage;
+        console.log()
+        $(blockList[initialPage]).fadeOut(500, function() {
+        $(blockList[newPage]).fadeIn(500, function() {
             scrollInProgress = false;
         });
     });
@@ -169,16 +170,14 @@ function scrollHandler(delta) {
         if (delta >= 0) {
             if (!scrollInProgress && page!= 0) {
                 scrollInProgress = true;
-                page -= 1;
+                moveContent(page, page-1);
                 $('.selectedSlider').animate(calculateSliderPosition(), 500);
-                moveContent();
             }
         } else {
             if (!scrollInProgress  && page != 5) {
                 scrollInProgress = true;
-                page += 1;
+                moveContent(page, page+1);
                 $('.selectedSlider').animate(calculateSliderPosition(), 500);
-                moveContent();
             }
         }
     }
