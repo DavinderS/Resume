@@ -196,12 +196,18 @@ $(document).bind('touchmove', function(e) {
     swipeEndY = e.originalEvent.touches[0].screenY;
 })
 $(document).bind('touchend', function(e) {
-    console.log(swipeStartX, swipeEndX, swipeStartY, swipeEndY);
     var deltaX = swipeStartX - swipeEndX;
     var deltaY = swipeStartY - swipeEndY;
-    if(deltaX < -swipeToleranceX || deltaY < -swipeToleranceY) {
+    var biggerDelta;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        biggerDelta = deltaX;
+    } else {
+        biggerDelta = deltaY;
+    }
+    if(biggerDelta > swipeToleranceX) {
         scrollHandler(-1)
-    } else if(deltaX > swipeToleranceX || deltaY > swipeToleranceY) {
+    } else if(biggerDelta < -swipeToleranceX) {
         scrollHandler(1)
     }
 
