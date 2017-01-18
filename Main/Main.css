@@ -1,6 +1,7 @@
 body {
 	margin: 0px;
 	font-family: "Avant Garde",Avantgarde,"Century Gothic",CenturyGothic,AppleGothic,sans-serif;
+	font-size:1.3em;
 	color:white;
 	background-color:rgb(0,0,0);
 	touch-action: none;
@@ -23,8 +24,6 @@ user-drag: none;
 	position: fixed;
 	width:100%;
 	height: 40px;
-	z-index:3;
-	opacity: 1;
 }
 .topBarMobile {
 	height:80px;
@@ -38,7 +37,6 @@ user-drag: none;
 	text-align: center;
 	height:40px;
 	line-height: 40px;
-	opacity: 1;
 	display: inline-block;
 	cursor: pointer;
 }
@@ -50,36 +48,36 @@ user-drag: none;
 	width:16.6666666%;
 	min-width:90px;
 	height: 40px;
-	z-index: 2;
 	position: fixed;
 }
 .selectedSliderMobile {
 	width:33.333333%;
 }
-.barItem {
-	z-index: 5;
-	height:40px;
-	width:40px;
-	background-color:orange;
-	display:inline-block;
-}
-.fullScreenOverlay {
+
+#fullScreenOverlay {
 	position: fixed;
-	top:0;
+	top:40px;
 	bottom: 0;
-	width:100%;
+	left:100%;
+	width:calc(100% - 320px);
 	background-color:rgba(0,0,0,0.95);
 	z-index:6;
 	overflow-y: auto;
 	font-size:1.5em;
 	display: none;
 }
-
+.fullScreenOverlayMobile {
+	width: 100%;
+}
 .exitOverlay {
 	position: absolute;
 	font-size:30px;
 	top:40px;
 	right:40px;
+	width:40px;
+	text-align: center;
+	height:40px;
+	display:block;
 	color:white;
 	user-select: none;
 	cursor: pointer;
@@ -119,42 +117,18 @@ user-drag: none;
 	transform: scale(2,0.5) translateX(-25%);
 	font-size:30px;
     user-select: none;
-    cursor: pointer;
     animation: caretDownAnimation 1s linear infinite;
 }
-
-.caretUp {
+.caretDownOverlay {
 	position: absolute;
-	top: calc(0% + 20px);
+	bottom: calc(0% + 20px);
 	left: 50%;
 	transform: scale(2,0.5) translateX(-25%);
 	font-size:30px;
     user-select: none;
-    cursor: pointer;
-    animation: caretUpAnimation 1s linear infinite;
+    animation: caretDownAnimation 1s linear infinite;
 }
-@keyframes caretLeftAnimation {
-  0 {
-    left: calc(0% + 20px);
-  }
-  50% {
-    left: calc(0% + 10px);
-  }
-  100% {
-    left: calc(0% + 20px);
-  }
-}
-@keyframes caretRightAnimation {
-  0 {
-    right: calc(0% + 20px);
-  }
-  50% {
-    right: calc(0% + 10px);
-  }
-  100% {
-    right: calc(0% + 20px);
-  }
-}
+
 @keyframes caretDownAnimation {
   0% {
     bottom: calc(0% + 20px);
@@ -180,9 +154,8 @@ user-drag: none;
 .content {
 	position: absolute;
 	width:100%;
-    -webkit-overflow-scrolling: touch;
 	position: fixed;
-	top:0;
+	top:40px;
 	bottom: 0;
 	left:0;
 	right:0;
@@ -202,13 +175,12 @@ user-drag: none;
 .blockContainer {
 	overflow: hidden;
 	position: relative;
-	margin-top:40px;
 	height:calc(100vh - 40px);
 	width:100%;
 	display: none;
 }
 .blockContainerMobile {
-	margin-top:80px;
+	margin-top:40px;
 	height:calc(100vh - 80px);
 }
 .titleContainer {
@@ -339,7 +311,6 @@ user-drag: none;
 	text-align: center;
 	position: absolute;
 	left: 320px;
-	z-index:3;
 }
 .logoMobile{
 	max-width:initial;
