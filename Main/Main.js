@@ -107,9 +107,9 @@ $(window).load(function() {
         $(window).scrollTop($(".blockContainer").eq(page).offset().top);
     }
     document.onkeydown = function(e) {
-        if (e.keyCode == 40) {
+        if (e.keyCode == 40 || e.keyCode == 39) {
             scrollHandler(-1);
-        } else if (e.keyCode == 38) {
+        } else if (e.keyCode == 38 || e.keyCode == 37) {
             scrollHandler(1);
         }
     }
@@ -197,6 +197,13 @@ function moveContent(initialPage, newPage) {
         }
 }
 function scrollHandler(delta) {
+    if (overlayOpen)
+    {
+    disableScroll = false;
+    overlayOpen = false;
+    $("#fullScreenOverlay").hide();
+    $("#fullScreenOverlay").css("left", "100%");
+}
     if (!disableScroll)
     {
         if (delta >= 0) {
