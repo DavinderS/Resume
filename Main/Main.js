@@ -36,7 +36,6 @@ $(window).load(function() {
         target = e.target.id.split("_")[1];
         scrollInProgress = true;
         moveContent(page, parseInt(target));
-        $('.selectedSlider').animate(calculateSliderPosition(),  500);
     })
     // Resizing
     resize = function() {
@@ -47,7 +46,6 @@ $(window).load(function() {
         if (window.innerWidth < 545) {
             $(".topBar").addClass("topBarMobile");
             $(".barBlock").addClass("barBlockMobile");
-            $(".selectedSlider").addClass("selectedSliderMobile");
             $(".blockContainer").addClass("blockContainerMobile");
             $("#fullScreenOverlay").addClass("fullScreenOverlayMobile");
             if (overlayOpen) {
@@ -61,7 +59,6 @@ $(window).load(function() {
         {
             $(".topBar").removeClass("topBarMobile");
             $(".barBlock").removeClass("barBlockMobile");
-            $(".selectedSlider").removeClass("selectedSliderMobile");
             $(".blockContainer").removeClass("blockContainerMobile");
             $("#fullScreenOverlay").removeClass("fullScreenOverlayMobile");
              if (overlayOpen) {
@@ -71,10 +68,6 @@ $(window).load(function() {
             $(".logoText").show();
             topBarMobile = false;
         }
-        var sliderPositionObj = calculateSliderPosition();
-        $(".selectedSlider").css("top", sliderPositionObj.top);
-        $(".selectedSlider").css("left", sliderPositionObj.left);
-
         if (window.innerWidth < 750) {
             $(".plusIcon").addClass("plusIconMobile");
 
@@ -175,26 +168,6 @@ $(".exitOverlay").click(function() {
 
 
 })
-function calculateSliderPosition() {
-    var topBarBlocks = 6;
-    var sliderPositionX = (page * 100)/topBarBlocks;
-    var sliderPositionY = 0;
-    if(topBarMobile) {
-        topBarBlocks = 3;
-        sliderPositionX = (page * 100)/topBarBlocks;
-
-        if (page >= 3)
-        {
-            sliderPositionX = ((page - 3) * 100)/topBarBlocks;
-            sliderPositionY = 40;
-        }
-
-    }
-    return {
-        left:sliderPositionX + "%",
-        top: sliderPositionY + "px"
-    }
-}
 function moveContent(initialPage, newPage) {
         page = newPage;
         if (initialPage != newPage) {
@@ -215,13 +188,11 @@ function scrollHandler(delta) {
             if (!scrollInProgress && page!= 0) {
                 scrollInProgress = true;
                 moveContent(page, page-1);
-                $('.selectedSlider').animate(calculateSliderPosition(), 500);
             }
         } else {
             if (!scrollInProgress  && page != 5) {
                 scrollInProgress = true;
                 moveContent(page, page+1);
-                $('.selectedSlider').animate(calculateSliderPosition(), 500);
             }
         }
     }
