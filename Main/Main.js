@@ -172,6 +172,10 @@ function moveContent(initialPage, newPage) {
         page = newPage;
         if (initialPage != newPage) {
                     $("#hide").fadeIn(500, function() {
+            $("#barBlock_"+initialPage).css("opacity", 0.7);
+
+            $("#barBlock_"+newPage).css("opacity", 1);
+
             $(blockList[initialPage]).hide();
            $(blockList[newPage]).show();
         $("#hide").fadeOut(500, function() {

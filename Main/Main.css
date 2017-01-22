@@ -34,6 +34,7 @@ user-drag: none;
 }
 .barBlock {
 	min-width:90px;
+	opacity: 0.7;
 	width:16.6666666%;
 	text-align: center;
 	height:40px;
@@ -41,20 +42,12 @@ user-drag: none;
 	display: inline-block;
 	cursor: pointer;
 }
+#barBlock_0 {
+	opacity: 1;
+}
 .barBlockMobile {
 	width:33.3333333%;
 }
-.selectedSlider {
-	background-color: rgb(40, 100, 120);
-	width:16.6666666%;
-	min-width:90px;
-	height: 40px;
-	position: fixed;
-}
-.selectedSliderMobile {
-	width:33.333333%;
-}
-
 #fullScreenOverlay {
 	position: fixed;
 	bottom: 0;
