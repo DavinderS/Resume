@@ -20,6 +20,37 @@ user-drag: none;
 -webkit-user-select: none;
 -ms-user-select: none;
 }
+table {
+	width:90%; 
+	text-align: left; 
+	margin: 0 auto;
+	padding: 0;
+}
+td {
+	margin: 0;
+	padding: 0;
+}
+.tableRow{
+	cursor: pointer;
+	user-select:none;
+	height:60px;
+	padding-left: 20px;
+	color:rgb(230,230,230);
+}
+.tableRow:hover {
+	background-color: rgb(100,100,100);
+}
+#skillsText {
+	vertical-align: top;
+	padding:0 20px;
+	text-align: center;
+}
+tr {
+	margin:0;
+	padding:0;
+}
+table {
+}
 .topBar {
 	position: fixed;
 	width:100%;
@@ -211,9 +242,11 @@ user-drag: none;
 	text-align: center;
 	width:100%;
 	background-color: rgba(0,0,0,0.8);
-	max-height: 100%;
 	padding-top: 20px;
 	padding-bottom: 20px;
+	padding-right: 17px;
+	padding-left:17px;
+	max-height: 100%;
 }
 
 .title {
@@ -243,11 +276,11 @@ user-drag: none;
 	line-height:50px;
 }
 
-
 .description {
 	font-size:21px;
-	margin: 0px 25%;
-	line-height:40px;
+	margin: 0px 10%;
+	text-align: justify;
+	line-height:30px;
 }
 .descriptionTablet {
 	font-size:18px;
