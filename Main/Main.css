@@ -24,7 +24,6 @@ user-drag: none;
 	position: fixed;
 	width:100%;
 	height: 40px;
-	z-index:1;
 }
 .topBarMobile {
 	height:80px;
@@ -34,7 +33,6 @@ user-drag: none;
 }
 .barBlock {
 	min-width:90px;
-	opacity: 0.7;
 	width:16.6666666%;
 	text-align: center;
 	height:40px;
@@ -42,18 +40,26 @@ user-drag: none;
 	display: inline-block;
 	cursor: pointer;
 }
-#barBlock_0 {
-	opacity: 1;
-}
 .barBlockMobile {
 	width:33.3333333%;
 }
+.selectedSlider {
+	background-color: rgb(40, 100, 120);
+	width:16.6666666%;
+	min-width:90px;
+	height: 40px;
+	position: fixed;
+}
+.selectedSliderMobile {
+	width:33.333333%;
+}
+
 #fullScreenOverlay {
 	position: fixed;
+	top:40px;
 	bottom: 0;
 	left:100%;
 	width:calc(100% - 320px);
-	height:100%;
 	background-color:rgba(0,0,0,0.95);
 	z-index:6;
 	overflow-y: auto;
@@ -168,7 +174,7 @@ user-drag: none;
 	position: absolute;
 	width:100%;
 	position: fixed;
-	top:0;
+	top:40px;
 	bottom: 0;
 	left:0;
 	right:0;
@@ -188,11 +194,12 @@ user-drag: none;
 .blockContainer {
 	overflow: hidden;
 	position: relative;
-	height:100%;
+	height:calc(100vh - 40px);
 	width:100%;
 	display: none;
 }
 .blockContainerMobile {
+	margin-top:40px;
 	height:calc(100vh - 80px);
 }
 .titleContainer {
@@ -203,6 +210,7 @@ user-drag: none;
 	transform: translateY(-50%) translateX(-50%);
 	text-align: center;
 	width:100%;
+	background-color: rgba(0,0,0,0.8);
 	max-height: 100%;
 	padding-top: 20px;
 	padding-bottom: 20px;
@@ -235,6 +243,7 @@ user-drag: none;
 	line-height:50px;
 }
 
+
 .description {
 	font-size:21px;
 	margin: 0px 25%;
@@ -263,7 +272,7 @@ user-drag: none;
 .block {
 	background: fixed;
 	background-size: cover;
-	background-position: 50%;
+	background-position: 50% calc(50% + 40px);
 	background-repeat: no-repeat;
 	height: 100%;
 }
@@ -333,7 +342,7 @@ user-drag: none;
 }
 .overlay {
 	position: absolute;
-	height: calc(20% - 8px);
+	height: 20%;
 	width:100%;
 	display:inline-block;
 	background-color:rgba(0,0,0,0.5);
@@ -362,7 +371,7 @@ user-drag: none;
 #hide {
 	position: fixed;
 	background-color: black;
-	top: 0;
+	top: 40px;
 	left: 0;
 	right: 0;
 	bottom: 0;
