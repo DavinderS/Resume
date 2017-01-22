@@ -33,7 +33,7 @@ user-drag: none;
 }
 .barBlock {
 	min-width:90px;
-	width:calc(16.6666666% - 1px);
+	width:16.6666666%;
 	text-align: center;
 	height:40px;
 	line-height: 40px;
@@ -41,7 +41,7 @@ user-drag: none;
 	cursor: pointer;
 }
 .barBlockMobile {
-	width:calc(33.3333333% - 1px);
+	width:33.3333333%;
 }
 .selectedSlider {
 	background-color: rgb(40, 100, 120);
@@ -63,6 +63,7 @@ user-drag: none;
 	background-color:rgba(0,0,0,0.95);
 	z-index:6;
 	overflow-y: auto;
+	padding-right: 17px;
 	font-size:1.5em;
 	display: none;
 }
@@ -74,9 +75,11 @@ user-drag: none;
 	font-size:30px;
 	top:40px;
 	right:40px;
-	width:40px;
+	background:url("exit.png");
+	background-size: cover;
+	width:30px;
 	text-align: center;
-	height:40px;
+	height:30px;
 	display:block;
 	color:white;
 	user-select: none;
@@ -90,12 +93,21 @@ user-drag: none;
 
 }
 .overlayTitle {
-	width: 100%;
-	font-size:1.4em;
+	font-size:48px;
+	font-weight: 700;
 	text-align: center;
+	padding: 0 60px;
+	line-height: 50px;
+}
+.overlayDescription {
+	font-size:34px;
+	font-weight: 200;
 }
 .overlayText {
-	margin-top: 40px;
+	padding: 0 10%;
+	line-height: 35px;
+	margin-top: 60px;
+	font-size:21px;
 }
 .overlayBlock {
 	position: absolute;
@@ -113,18 +125,25 @@ user-drag: none;
 .caretDown {
 	position: absolute;
 	bottom: calc(0% + 20px);
+	width:40px;
+	height:40px;
+	background: url("arrow_1.png");
+	background-size:cover;
+	transform: translateX(-50%);
 	left: 50%;
-	transform: scale(2,0.5) translateX(-25%);
-	font-size:30px;
     user-select: none;
     animation: caretDownAnimation 1s linear infinite;
 }
 .caretDownOverlay {
-	position: absolute;
+	position: fixed;
+	display: none;
+	width:30px;
+	height:30px;
 	bottom: calc(0% + 20px);
-	left: 50%;
-	transform: scale(2,0.5) translateX(-25%);
-	font-size:30px;
+	right: 10px;
+	background: url("arrow_2.png");
+	background-size:cover;
+	transform: translateX(-50%);
     user-select: none;
     animation: caretDownAnimation 1s linear infinite;
 }
@@ -184,22 +203,23 @@ user-drag: none;
 	height:calc(100vh - 80px);
 }
 .titleContainer {
+	overflow-y: auto;
 	position: absolute;
 	top: 50%;
 	left:50%;
 	transform: translateY(-50%) translateX(-50%);
 	text-align: center;
 	width:100%;
-	background-color: rgba(0,0,0,0.8);
+	background-color: rgba(0,0,0,0.8);	
 	max-height: 100%;
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
 
 .title {
-	font-size: 48px;
+	font-size: 56px;
 	letter-spacing: 5px;
-
+	font-weight: 700;
 }
 .titleTablet {
 	font-size:36px;
@@ -209,21 +229,24 @@ user-drag: none;
 }
 
 .titleDescription {
-	font-size:36px;
+	font-size:18px;
 	letter-spacing: 5px;
 }
 .titleDescriptionTablet {
-	font-size:24px;
-}
-
-.titleDescriptionMobile {
 	font-size:18px;
 }
 
+.titleDescriptionMobile {
+	font-size:14px;
+}
+.titleSpacer {
+	line-height:50px;
+}
 
 .description {
-	font-size:24px;
-	margin: 0px 40px;
+	font-size:21px;
+	margin: 0px 25%;
+	line-height:40px;
 }
 .descriptionTablet {
 	font-size:18px;
@@ -249,6 +272,7 @@ user-drag: none;
 	background: fixed;
 	background-size: cover;
 	background-position: 50% calc(50% + 40px);
+	background-repeat: no-repeat;
 	height: 100%;
 }
 
