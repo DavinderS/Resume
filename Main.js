@@ -18,6 +18,9 @@ $(window).load(function() {
     var topBarMobile = false;
     var overlayOpen = false;
     var blockList = $(".blockContainer");
+    var activeSkill = 0;
+
+
     $(".loadingPanel").fadeOut(500, function() {
         $(".hideInitial").fadeIn(500);
         $("#hide").fadeOut(500);
@@ -186,21 +189,26 @@ $(".exitOverlay").click(function() {
 })
 $(".tableRow").click(function(e) {
     var target = e.target.innerText;
-    $("#skillsText").fadeOut(500, function() {
+    $("#skill_" + activeSkill).fadeOut(500, function() {
         if (target == "JavaScript") {
-            $("#skillsText").html("Strongest Language. Have been using JavaScript over the past 5 years whether through work, school or personal projects. Experience with AngularJS, Bootstrap, AG-Grid, AJAX, ArcGIS, MapBox, Leaflet, RaphaelJS and many more. You can view an article for one of the applications below <a class='button' target='blank_' href='http://www.artemis.bm/blog/2016/06/14/huang-associates-launches-rapid-pro-deal-tracker-ils-tools/'>ARTICLE</a>");
+            $("#skill_1").fadeIn(500);
+            activeSkill = 1;
         } else if (target == "Python") {
-            $("#skillsText").html("Very strong Python proficiency. Modified server for an existing production level application using SQLAlchemy, Flask and Redis. Followed strict guidelines and heavily documented due to it being sold to other companies <a class='button' target='blank_' href='http://www.artemis.bm/blog/2016/06/14/huang-associates-launches-rapid-pro-deal-tracker-ils-tools/'>ARTICLE</a>");
+            $("#skill_2").fadeIn(500);
+            activeSkill = 2;
         } else if (target == "Java") {
-            $("#skillsText").text("Very experienced with Java programming. Created an MQTT Broker Publisher and Subscriber. Worked with data streams and data conversion for an IOT application. Experience with GSON, Paho MQTT and Socket Programming. Currently working on an android application utilizing Android Studio");
+            $("#skill_3").fadeIn(500);;
+            activeSkill = 3; 
         } else if (target == "SQL") {
-            $("#skillsText").text("Used some form of SQL for nearly every co-op either through writing DDL/DML statements, create web services or using Java or Python libraries to grab data from a SQL database. Have worked with SQL Server, Business Objects Universe, DML/DDL Statements, SQLAnywhere, WEBI Reports. Worked with high complexity queries while working for TTC");
+            $("#skill_4").fadeIn(500);
+            activeSkill = 4;
         } else if (target == "Source Control") {
-            $("#skillsText").text("Worked with Github, Git, Team Foundation Server, SharePoint and SourceTree to store assets");
+            $("#skill_5").fadeIn(500);
+            activeSkill = 5;
         } else if (target == "Other") {
-            $("#skillsText").text("Web and Application development in a SharePoint environment, Continous Computational Language, CCLScript, SquareSpace code injection. Due to the diversity of languages and libraries I've already worked with, learning new ones is quick and easy");
+            $("#skill_6").fadeIn(500);
+            activeSkill = 6;
         }
-        $("#skillsText").fadeIn(500);
     });
     });
 $(".fullScreenOverlay")

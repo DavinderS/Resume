@@ -40,10 +40,11 @@ td {
 .tableRow:hover {
 	background-color: rgb(100,100,100);
 }
-#skillsText {
+.skillsText {
 	vertical-align: top;
 	padding:0 20px;
 	text-align: center;
+	display: none;
 }
 tr {
 	margin:0;
