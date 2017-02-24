@@ -192,13 +192,13 @@ $(".tableRow").click(function(e) {
         } else if (target == "Python") {
             $("#skillsText").html("Very strong Python proficiency. Modified server for an existing production level application using SQLAlchemy, Flask and Redis. Followed strict guidelines and heavily documented due to it being sold to other companies <a class='button' target='blank_' href='http://www.artemis.bm/blog/2016/06/14/huang-associates-launches-rapid-pro-deal-tracker-ils-tools/'>ARTICLE</a>");
         } else if (target == "Java") {
-            $("#skillsText").html("Very experienced with Java programming. Created an MQTT Broker Publisher and Subscriber. Worked with data streams and data conversion for an IOT application. Experience with GSON, Paho MQTT and Socket Programming.");
+            $("#skillsText").text("Very experienced with Java programming. Created an MQTT Broker Publisher and Subscriber. Worked with data streams and data conversion for an IOT application. Experience with GSON, Paho MQTT and Socket Programming. Currently working on an android application utilizing Android Studio");
         } else if (target == "SQL") {
-            $("#skillsText").html("Used some form of SQL for nearly every co-op either through writing DDL/DML statements, create web services or using Java or Python libraries to grab data from a SQL database. Have worked with SQL Server, Business Objects Universe, DML/DDL Statements, SQLAnywhere, WEBI Reports. Worked with high complexity queries while working for TTC");
+            $("#skillsText").text("Used some form of SQL for nearly every co-op either through writing DDL/DML statements, create web services or using Java or Python libraries to grab data from a SQL database. Have worked with SQL Server, Business Objects Universe, DML/DDL Statements, SQLAnywhere, WEBI Reports. Worked with high complexity queries while working for TTC");
         } else if (target == "Source Control") {
-            $("#skillsText").html("Worked with Github, Git, Team Foundation Server, SharePoint and SourceTree to store assets");
+            $("#skillsText").text("Worked with Github, Git, Team Foundation Server, SharePoint and SourceTree to store assets");
         } else if (target == "Other") {
-            $("#skillsText").html("Web and Application development in a SharePoint environment, Continous Computational Language, CCLScript, SquareSpace code injection. Due to the diversity of languages and libraries I've already worked with, learning new ones is quick and easy");
+            $("#skillsText").text("Web and Application development in a SharePoint environment, Continous Computational Language, CCLScript, SquareSpace code injection. Due to the diversity of languages and libraries I've already worked with, learning new ones is quick and easy");
         }
         $("#skillsText").fadeIn(500);
     });
