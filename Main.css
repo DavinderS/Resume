@@ -1,0 +1,444 @@
+body {
+	margin: 0px;
+	font-family: "Avant Garde",Avantgarde,"Century Gothic",CenturyGothic,AppleGothic,sans-serif;
+	font-size:18px;
+	color:white;
+	background-color:rgb(0,0,0);
+	touch-action: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+html {
+	height: 100vh;
+}
+li {
+	margin-bottom:10px;
+}
+img {
+user-drag: none; 
+-moz-user-select: none;
+-webkit-user-drag: none;
+-webkit-user-select: none;
+-ms-user-select: none;
+}
+table {
+	width:90%; 
+	margin: 0 auto;
+	padding: 0;
+}
+td {
+	margin: 0;
+	padding: 0;
+}
+.tableRow{
+	cursor: pointer;
+	user-select:none;
+	height:60px;
+	color:rgb(230,230,230);
+}
+.tableRow:hover {
+	background-color: rgb(100,100,100);
+}
+#skillsText {
+	vertical-align: top;
+	padding:0 5%;
+	text-align: center;
+	display: none;
+}
+tr {
+	margin:0;
+	padding:0;
+}
+
+.topBar {
+	position: fixed;
+	width:100%;
+	height: 50px;
+	z-index:5;
+}
+.topBarMobile {
+	height:100px;
+}
+.hideInitial {
+	display: none;
+}
+.barBlock {
+	min-width:90px;
+	width:16.6666666%;
+	text-align: center;
+	height:50px;
+	line-height: 50px;
+	display: inline-block;
+	cursor: pointer;
+	opacity: 0.7;
+}
+.barBlock:hover {
+	opacity:1;
+}
+.barBlockMobile {
+	width:33.3333333%;
+}
+.selectedSlider {
+	background-color: rgb(100,20,20);
+	width:16.6666666%;
+	min-width:90px;
+	height: 50px;
+	z-index:5;
+	position: fixed;
+}
+.selectedSliderMobile {
+	width:33.333333%;
+}
+
+.fullScreenOverlay {
+	position: fixed;
+	top:40px;
+	bottom: 0;
+	left:100%;
+	width:calc(100% - 320px);
+	background-color:rgba(0,0,0,0.95);
+	z-index:6;
+	overflow-y: auto;
+	padding-right: 17px;
+	font-size:24px;
+	display: none;
+}
+.fullScreenOverlayMobile {
+	width: 100%;
+}
+.exitOverlay {
+	position: absolute;
+	font-size:30px;
+	top:40px;
+	right:40px;
+	opacity: 0.7;
+	background:url("exit.png");
+	background-size: cover;
+	width:30px;
+	text-align: center;
+	height:30px;
+	display:block;
+	color:white;
+	user-select: none;
+	cursor: pointer;
+}
+.exitOverlay:hover {
+	opacity: 1;
+}
+.workPeriod {
+	width:calc(50% - 10px);
+	display:inline-block;
+	text-align: right;
+	margin-bottom:30px;
+
+}
+.overlayTitle {
+	font-size:48px;
+	font-weight: 700;
+	text-align: center;
+	padding: 0 60px;
+	line-height: 50px;
+}
+.overlayDescription {
+	font-size:34px;
+	font-weight: 200;
+}
+.overlayText {
+	padding: 0 10%;
+	line-height: 35px;
+	margin-top: 60px;
+	font-size:21px;
+}
+.overlayBlock {
+	position: absolute;
+	left: 20px;
+	right: 20px;
+	top: 80px;
+}
+.caretText {
+	position: absolute;
+	bottom: 60px;
+	left: 50%;
+	transform: translateX(-50%);
+	text-align: center;
+}
+.caretDown {
+	position: absolute;
+	bottom: calc(0% + 20px);
+	width:40px;
+	height:40px;
+	background: url("arrow_1.png");
+	background-size:cover;
+	transform: translateX(-50%);
+	left: 50%;
+    user-select: none;
+    animation: caretDownAnimation 1s linear infinite;
+}
+.caretDownOverlay {
+	position: fixed;
+	display: none;
+	width:30px;
+	height:30px;
+	bottom: calc(0% + 20px);
+	right: 10px;
+	background: url("arrow_2.png");
+	background-size:cover;
+	transform: translateX(-50%);
+    user-select: none;
+    animation: caretDownAnimation 1s linear infinite;
+}
+
+@keyframes caretDownAnimation {
+  0% {
+    bottom: calc(0% + 20px);
+  }
+  50% {
+    bottom: calc(0% + 10px);
+  }
+  100% {
+    bottom: calc(0% + 20px);
+  }
+}
+@keyframes caretUpAnimation {
+  0% {
+    top: calc(0% + 20px);
+  }
+  50% {
+    top: calc(0% + 10px);
+  }
+  100% {
+    top: calc(0% + 20px);
+  }
+}
+.content {
+	position: absolute;
+	width:100%;
+	position: fixed;
+	top:50px;
+	bottom: 0;
+	left:0;
+	right:0;
+}
+
+.moveDown {
+    animation-name: example;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
+}
+/* Safari 4.0 - 8.0 */
+@keyframes example {
+    0%   {left:0px; top:0px;}
+    100% {left:0px; top:-100%;}
+}
+.blockContainer {
+	background: fixed;
+	background-size: cover;
+	background-position: 50% calc(50% + 40px);
+	background-repeat: no-repeat;
+	overflow: hidden;
+	position: relative;
+	height:calc(100vh - 50px);
+	width:100%;
+	display: none;
+}
+.blockContainerMobile {
+	margin-top:40px;
+	height:calc(100vh - 100px);
+}
+.titleContainer {
+	position: absolute;
+	top: 50%;
+	left:50%;
+	transform: translateY(-50%) translateX(-50%);
+	text-align: center;
+	width:100%;
+	background-color: rgba(0,0,0,0.8);
+	max-height: 100%;
+}
+
+.title {
+	font-size: 56px;
+	letter-spacing: 5px;
+	font-weight: 700;
+}
+.titleTablet {
+	font-size:36px;
+}
+.titleMobile {
+	font-size:24px;
+}
+.red {
+	color:rgb(200,20,20);
+}
+.titleDescription {
+	font-size:18px;
+	letter-spacing: 5px;
+}
+.titleDescriptionTablet {
+	font-size:18px;
+}
+
+.titleDescriptionMobile {
+	font-size:14px;
+}
+.titleSpacer {
+	line-height:50px;
+}
+.spacer {
+	height:20px;
+	width:100%;
+}
+.description {
+	font-size:21px;
+	margin: 0px 10%;
+	text-align: justify;
+	line-height:30px;
+}
+.descriptionTablet {
+	font-size:18px;
+}
+.descriptionMobile {
+	font-size:18px;
+}
+
+
+.aboutBlock {
+	padding: 40px 20px 40px 20px;
+}
+.aboutTitle {
+	width:100px;
+	display: inline-block;
+	vertical-align: top;
+}
+.aboutText {
+	width:calc(100% - 100px);
+	display: inline-block;
+}
+
+#aboutImage {
+	background-image:url('code.png');
+}
+#gameImage {
+	background-image:url('game.png');
+}
+#carImage {
+	background-image:url('cluster.gif');
+}
+#contactImage {
+	background-image:url('contact.png');
+}
+#vehicleImage {
+	background-image:url('vehicle.png');
+}
+#workImage {
+	background-image:url('work.png');
+}
+#sapLogo {
+	background-image:url('SAP_logo.png');
+}
+#ttcLogo {
+	background-image:url('TTC_logo.png');
+}
+#eitLogo {
+	background-image:url('EIT_Logo.png');
+}
+#communitechLogo {
+	background-image:url('Communitech_Logo.png');
+}
+#haaLogo {
+	background-image:url('HAA_Logo.png');
+}
+#linkedin {
+	background-image:url(linkedin.png);   
+}
+#email {
+	background-image:url(email.png);   
+}
+.logo {
+	vertical-align: top;
+	height: 150px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: white;
+	max-width:320px;
+	width:100%;
+}
+.logoText {
+	pointer-events:none;
+	display:inline-block;
+	height:150px;
+	vertical-align: top;
+	width:calc(100% - 320px);
+	line-height: 150px;
+	text-align: center;
+	position: absolute;
+	left: 320px;
+}
+.logoMobile{
+	max-width:initial;
+}
+.overlay {
+	position: absolute;
+	height: 150px;
+	width:100%;
+	display:inline-block;
+	background-color:rgba(0,0,0,0.5);
+	cursor: pointer;
+}
+.overlay:hover {
+	background-color:rgba(0,0,0,0);
+
+}
+.button {
+	letter-spacing: 5px;
+	width:140px;
+	height:50px;
+	line-height:50px;
+	border: 2px solid white;
+	color:white;
+	text-decoration: none;
+	display: block;
+	margin: 20px auto;
+	cursor: pointer;
+    user-select: none;
+}
+.button:hover {
+	background-color: rgb(40,120,140);
+}
+#hide {
+	position: fixed;
+	background-color: black;
+	top: 40px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index:4;
+}
+.alert {
+	position: fixed;
+	display: none;
+	top:40px;
+	width:100%;
+	height: 40px;
+	background-color:rgba(200,0,0,0.5);
+	z-index: 5;
+	line-height: 40px;
+	text-align: center;
+}
+.top {
+	top: 10px;
+	transform:  translateX(-50%);
+}
+.icon {
+	background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.7;
+    width:80px;
+    height:80px;
+    display: inline-block;
+}
+.icon:hover {
+	opacity: 1;
+}

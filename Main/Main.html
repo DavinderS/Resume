@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="Jquery.js"></script>
+    <script src="../Jquery.js"></script>
     <script src="Main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/easing/EasePack.min.js"></script>
 
@@ -24,44 +24,47 @@
     <div id="hide"></div>
     <div class="content">
         <div class="alert">This game is not supported on mobile devices</div>
-        <div class="blockContainer hideInitial"  id="carImage">
+        <div class="blockContainer hideInitial">
+            <div class="block" id="carImage">
                 <div class="titleContainer">
-                <div class="spacer"></div>
                     <span class="title">DAVINDER SHINH</span><br class="titleSpacer">
-                    <span class="titleDescription red">FULL STACK DEVELOPER</span>
-                <div class="spacer"></div>
+                    <span class="titleDescription">FULL STACK DEVELOPER</span>
                 </div>  
-        </div>
-        <div class="blockContainer" id="aboutImage">
-                <div class="titleContainer">
-                <div class="spacer"></div>
-
-                    <span class="title">ABOUT</span><br class="titleSpacer" style="line-height:60px;">
-                    <div class="description">I am a developer that has experience with just about anything involving code. This includes responsive web development (Including this site), databases, client / server applications, continous computational language, socket programming, IOT applications and more. If there is a development task or language I do not have experience with, I am always ready and quick to learn</div>
-                <div class="spacer"></div>
             </div>
         </div>
-        <div class="blockContainer" style="overflow-y: auto;"  id="workImage">
+        <div class="blockContainer">
+            <div class="block" id="aboutImage">
+                <div class="titleContainer">
+                    <span class="title">ABOUT</span><br class="titleSpacer" style="line-height:60px;">
+                    <div class="description">I am a developer that has experience with just about anything involving code. This includes responsive web development (Including this site), databases, client / server applications, continous computational language, socket programming, IOT applications and more. If there is a development task or language I do not have experience with, I am always ready and quick to learn</div>
+                </div>  
+            </div>
+        </div>
+        <div class="blockContainer">
+            <div class="block" id="workImage">
             <div class="logoText">September - December 2016</div><div class="overlay"></div><div class="logo" id="sapLogo"></div>
             <div class="logoText">January - April 2016</div><div class="overlay"></div><div class="logo" id="haaLogo"></div>
             <div class="logoText">May - August 2014</div><div class="overlay"></div><div class="logo" id="ttcLogo"></div>
             <div class="logoText">September - December 2014</div><div class="overlay"></div><div class="logo" id="eitLogo"></div>
             <div class="logoText">January - April 2014</div><div class="overlay"></div><div class="logo" id="communitechLogo"></div>
+            </div>
             <div class="fullScreenOverlay">
                 <div class="overlayBlock">
             </div>
             <div class="exitOverlay"></div>
         </div>
         </div>
-        <div class="blockContainer" id="gameImage">
+        <div class="blockContainer">
+            <div class="block" id="gameImage">
                 <div class="titleContainer">
-                <div class="spacer"></div>
-                    <span class="title">ANDROID GAME</span><br>
-                    <div class="description" style="text-align: center;">WORK IN PROGRESS</div>
-                <div class="spacer"></div>
+                    <span class="title">JAVASCRIPT GAME</span><br>
+                    <div class="description">This is a game I developed during my free time. it's a 2D space shooter built entirely in JavaScript and HTML <br>(Desktop/Chrome only)</div>
+                    <a target="_blank" href="../Game/game.html" class="button" id="gameButton">PLAY</a>
                 </div>  
+            </div>
         </div>
-        <div class="blockContainer" id="vehicleImage">
+        <div class="blockContainer">
+            <div class="block" id="vehicleImage">
                 <div class="titleContainer">
                     <span class="title">SKILLSET</span><br>
                     <table>
@@ -71,7 +74,7 @@
   </tr>
   <tr>
     <td class="tableRow">JavaScript</td>
-<td id="skillsText" rowspan="6">Select a Language/Program on the left</td>
+    <td id="skillsText" rowspan="6">Select a Language/Program on the left</td>
   </tr>
     <tr>
     <td class="tableRow">Python</td>
@@ -91,14 +94,18 @@
 </table>
 
                 </div>  
+            </div>
         </div>
-        <div class="blockContainer" id="contactImage">
+        <div class="blockContainer">
+            <div class="block" id="contactImage">
                 <div class="titleContainer">
                     <span class="title">CONTACT</span><br>
                     <a target="blank_" href="https://ca.linkedin.com/in/davinder-shinh-a6ab4aa8" class="icon" id="linkedin"></a>
                     <a href="mailto:daveshinh@gmail.com" class="icon" id="email"></a>
+
                     <div class="description"></div>
                 </div>  
+            </div>
         </div>
     </div>
 </body>
