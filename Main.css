@@ -233,6 +233,7 @@ tr {
 .blockContainer {
 	background: fixed;
 	background-size: cover;
+	background-position: 50% 50%;
 	background-repeat: no-repeat;
 	overflow: hidden;
 	position: relative;
@@ -355,7 +356,8 @@ tr {
 }
 .logo {
 	vertical-align: top;
-	height: 150px;
+	height: 20%;
+	min-height:150px;
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -366,7 +368,8 @@ tr {
 .logoText {
 	pointer-events:none;
 	display:inline-block;
-	height:150px;
+	height:20%;
+	min-height:150px;
 	vertical-align: top;
 	width:calc(100% - 320px);
 	line-height: 150px;
@@ -379,7 +382,8 @@ tr {
 }
 .overlay {
 	position: absolute;
-	height: 150px;
+	height:20%;
+	min-height:150px;
 	width:100%;
 	display:inline-block;
 	background-color:rgba(0,0,0,0.5);
