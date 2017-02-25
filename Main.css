@@ -78,7 +78,7 @@ tr {
 	width:33.3333333%;
 }
 .selectedSlider {
-	background-color: rgb(40, 100, 120);
+	background-color: rgb(100,20,20);
 	width:16.6666666%;
 	min-width:90px;
 	height: 50px;
@@ -231,15 +231,19 @@ tr {
     100% {left:0px; top:-100%;}
 }
 .blockContainer {
+	background: fixed;
+	background-size: cover;
+	background-position: 50% calc(50% + 40px);
+	background-repeat: no-repeat;
 	overflow: hidden;
 	position: relative;
-	height:calc(100vh - 40px);
+	height:calc(100vh - 50px);
 	width:100%;
 	display: none;
 }
 .blockContainerMobile {
 	margin-top:40px;
-	height:calc(100vh - 80px);
+	height:calc(100vh - 100px);
 }
 .titleContainer {
 	position: absolute;
@@ -263,7 +267,9 @@ tr {
 .titleMobile {
 	font-size:24px;
 }
-
+.red {
+	color:rgb(200,20,20);
+}
 .titleDescription {
 	font-size:18px;
 	letter-spacing: 5px;
@@ -308,13 +314,6 @@ tr {
 	width:calc(100% - 100px);
 	display: inline-block;
 }
-.block {
-	background: fixed;
-	background-size: cover;
-	background-position: 50% calc(50% + 40px);
-	background-repeat: no-repeat;
-	height: 100%;
-}
 
 #aboutImage {
 	background-image:url('code.png');
@@ -323,7 +322,7 @@ tr {
 	background-image:url('game.png');
 }
 #carImage {
-	background-image:url('cluster.png');
+	background-image:url('cluster.gif');
 }
 #contactImage {
 	background-image:url('contact.png');
@@ -357,7 +356,7 @@ tr {
 }
 .logo {
 	vertical-align: top;
-	height: 20%;
+	height: 150px;
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -368,10 +367,10 @@ tr {
 .logoText {
 	pointer-events:none;
 	display:inline-block;
-	height:20%;
+	height:150px;
 	vertical-align: top;
 	width:calc(100% - 320px);
-	line-height: calc(20vh - 8px);
+	line-height: 150px;
 	text-align: center;
 	position: absolute;
 	left: 320px;
@@ -381,7 +380,7 @@ tr {
 }
 .overlay {
 	position: absolute;
-	height: 20%;
+	height: 150px;
 	width:100%;
 	display:inline-block;
 	background-color:rgba(0,0,0,0.5);
