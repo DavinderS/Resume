@@ -264,6 +264,7 @@ $(".fullScreenOverlay").scroll(function(e){
         $(".caretDownOverlay").fadeOut(500);
     }
 })
+/*
 $(document).bind('touchstart',function(e) {
     swipeStartX = e.originalEvent.touches[0].screenX;
     swipeStartY = e.originalEvent.touches[0].screenY;
@@ -296,6 +297,7 @@ $(document).bind('touchend', function(e) {
 $(window).bind('mousewheel', function(event) {
     scrollHandler(event.originalEvent.wheelDelta);
 });
+*/
 $(window).resize(resize);
 resize();
 })
