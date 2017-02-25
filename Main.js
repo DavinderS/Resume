@@ -138,7 +138,6 @@ $(window).load(function() {
         }
         else if (target == "ttcLogo") {
             $(".overlayBlock").html("<div class='overlayTitle'>GIS Developer / Programmer Analyst<br><span class='overlayDescription'>Toronto Transit Commission</span></div><div class='overlayText'>Used Crystal Reports to modify a universe and create reports for internal users<ul><li>Edited the existing universe for the reports which required extensive SQL</li><li>Created reports using WEB Intelligence rich client for internal users</li><li>Redesigned the universe to be more user friendly so users could create ad-hoc reports</li><li>Tested reports to verify the data was accurate and fixed the visual display, so that it matched the old reporting system</li></ul></div><div class='caretDownOverlay'></div>");
-
         }
         else if (target == "eitLogo") {
             $(".overlayBlock").html("<div class='overlayTitle'>Front End Web Developer<br><span class='overlayDescription'>Envision IT</span></div><div class='overlayText'>Developed the front end of a vacation tracking software for another company<ul><li>Used JavaScript, HTML and SQL to develop the application</li><li>Made it work with IE8 in a SharePoint environment</li><li>Worked in an AGILE environment</li><li>Used TFS with Urban Turtle to manage code</li><li>Worked alongside the back-end developer to help my client communicate with his REST web service</li><li>Converted an IE10 application to work with IE8</li></ul>Worked on a mapping Proof of Concept<ul><li>Used the ArcGIS JavaScript API to create a proof of concept</li><li>Tested custom popups, searching by point name and more to see if it would work for our application</li><li>Created deployment documentation for use in a SharePoint environemnt</li></ul></div><div class='caretDownOverlay'></div>");
@@ -189,26 +188,21 @@ $(".exitOverlay").click(function() {
 })
 $(".tableRow").click(function(e) {
     var target = e.target.innerText;
-    $("#skill_" + activeSkill).fadeOut(500, function() {
+    $("#skillsText").fadeOut(500, function() {
         if (target == "JavaScript") {
-            $("#skill_1").fadeIn(500);
-            activeSkill = 1;
+            $("#skillsText").html("Strongest Language. Have been using JavaScript over the past 5 years whether through work, school or personal projects. Experience with AngularJS, Bootstrap, AG-Grid, AJAX, ArcGIS, MapBox, Leaflet, RaphaelJS and many more. You can view an article for one of the applications below <a class='button' target='blank_' href='http://www.artemis.bm/blog/2016/06/14/huang-associates-launches-rapid-pro-deal-tracker-ils-tools/'>ARTICLE</a>");
         } else if (target == "Python") {
-            $("#skill_2").fadeIn(500);
-            activeSkill = 2;
+            $("#skillsText").html("Very strong Python proficiency. Modified server for an existing production level application using SQLAlchemy, Flask and Redis. Followed strict guidelines and heavily documented due to it being sold to other companies <a class='button' target='blank_' href='http://www.artemis.bm/blog/2016/06/14/huang-associates-launches-rapid-pro-deal-tracker-ils-tools/'>ARTICLE</a>");
         } else if (target == "Java") {
-            $("#skill_3").fadeIn(500);;
-            activeSkill = 3; 
+            $("#skillsText").text("Very experienced with Java programming. Created an MQTT Broker Publisher and Subscriber. Worked with data streams and data conversion for an IOT application. Experience with GSON, Paho MQTT and Socket Programming. Currently working on an android application utilizing Android Studio");
         } else if (target == "SQL") {
-            $("#skill_4").fadeIn(500);
-            activeSkill = 4;
+            $("#skillsText").text("Used some form of SQL for nearly every co-op either through writing DDL/DML statements, create web services or using Java or Python libraries to grab data from a SQL database. Have worked with SQL Server, Business Objects Universe, DML/DDL Statements, SQLAnywhere, WEBI Reports. Worked with high complexity queries while working for TTC");
         } else if (target == "Source Control") {
-            $("#skill_5").fadeIn(500);
-            activeSkill = 5;
+            $("#skillsText").text("Worked with Github, Git, Team Foundation Server, SharePoint and SourceTree to store assets");
         } else if (target == "Other") {
-            $("#skill_6").fadeIn(500);
-            activeSkill = 6;
+            $("#skillsText").text("Web and Application development in a SharePoint environment, Continous Computational Language, CCLScript, SquareSpace code injection. Due to the diversity of languages and libraries I've already worked with, learning new ones is quick and easy");
         }
+        $("#skillsText").fadeIn(500);
     });
     });
 $(".fullScreenOverlay")
