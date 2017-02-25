@@ -233,7 +233,6 @@ tr {
 .blockContainer {
 	background: fixed;
 	background-size: cover;
-	background-position: 50% calc(50% + 40px);
 	background-repeat: no-repeat;
 	overflow: hidden;
 	position: relative;
