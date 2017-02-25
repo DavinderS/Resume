@@ -356,8 +356,9 @@ tr {
 }
 .logo {
 	vertical-align: top;
-	height: 20%;
 	min-height:150px;
+	border-bottom:5px solid black;
+
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -367,8 +368,9 @@ tr {
 }
 .logoText {
 	pointer-events:none;
+	border-bottom:5px solid black;
+
 	display:inline-block;
-	height:20%;
 	min-height:150px;
 	vertical-align: top;
 	width:calc(100% - 320px);
@@ -382,8 +384,8 @@ tr {
 }
 .overlay {
 	position: absolute;
-	height:20%;
 	min-height:150px;
+	border-bottom:5px solid black;
 	width:100%;
 	display:inline-block;
 	background-color:rgba(0,0,0,0.5);
