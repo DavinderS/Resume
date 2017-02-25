@@ -237,12 +237,12 @@ tr {
 	background-repeat: no-repeat;
 	overflow: hidden;
 	position: relative;
-	height:100%;
+	height:calc(100vh - 50px);
 	width:100%;
 	display: none;
 }
 .blockContainerMobile {
-	margin-top:40px;
+	margin-top:50px;
 	height:calc(100vh - 100px);
 }
 .titleContainer {
