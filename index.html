@@ -1,105 +1,107 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <script src="Jquery.js"></script>
-    <script src="Main.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/easing/EasePack.min.js"></script>
+    <head>
+        <title>Davinder-Resume</title>
+        <meta name="theme-color" content="#e60000">
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+        <link rel="manifest" href="favicon/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+        <!-- End Favicon -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenLite.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/jquery.gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/CSSPlugin.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="Main.css" />
-    <link rel="stylesheet" type="text/css" href="Loader.css" />
-    <meta name="theme-color" content="#e60000">
-</head>
-<body>
+        <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+        <script src="js/Jquery.js"></script>
+        <script src="js/jsgrid.js"></script>
+        <link rel="stylesheet" type="text/css" href="jsgrid.css" />
+        <link rel="stylesheet" type="text/css" href="jsgrid-theme.css" />
+
+        <link rel="stylesheet" type="text/css" href="Main.css" />
+        <link rel="stylesheet" type="text/css" href="Loader.css" />
+    </head>
+    <body>
+        <script src="js/Main.js"></script>
         <div class="loadingPanel">
             <div class="loaderContainer">
                 <div class="loader">
                 </div>
             </div>
         </div>
-<div class="selectedSlider hideInitial"></div>
-<div class="topBar hideInitial" ><div class="barBlock" id="barBlock_0">INTRO</div><div class="barBlock" id="barBlock_1">ABOUT</div><div class="barBlock" id="barBlock_2">RESUME</div><div class="barBlock" id="barBlock_3">WORK</div><div class="barBlock" id="barBlock_4">SKILLS</div><div class="barBlock" id="barBlock_5" style="border-right: none;">CONTACT</div></div>
-    <div id="hide"></div>
-    <div class="content">
-        <div class="alert">This game is not supported on mobile devices</div>
-        <div class="blockContainer hideInitial"  id="carImage">
+        <div class="selectedSlider hideInitial"></div>
+        <div class="topBar hideInitial" ><div class="barBlock" id="barBlock_0">INTRO</div><div class="barBlock" id="barBlock_1">ABOUT</div><div class="barBlock" id="barBlock_2">RESUME</div><div class="barBlock" id="barBlock_3">WORK</div><div class="barBlock" id="barBlock_4">GAME</div><div class="barBlock" id="barBlock_5" style="border-right: none;">MORE</div></div>
+        <div id="hide"></div>
+        <div class="content">
+            <div id="alert"></div>
+            <div class="blockContainer hideInitial"  id="carImage">
                 <div class="titleContainer">
-                <div class="spacer"></div>
+                    <div class="spacer"></div>
                     <span class="title">DAVINDER SHINH</span><br class="titleSpacer">
                     <span class="titleDescription red">FULL STACK DEVELOPER</span>
-                <div class="spacer"></div>
+                    <div class="spacer"></div>
                 </div>  
-        </div>
-        <div class="blockContainer" id="aboutImage">
+            </div>
+            <div class="blockContainer" id="aboutImage">
                 <div class="titleContainer">
-                <div class="spacer"></div>
-
-                    <span class="title">ABOUT</span><br class="titleSpacer" style="line-height:60px;">
+                    <div class="spacer"></div>
+                    <span class="title">ABOUT</span><br class="titleSpacer">
                     <div class="description">I am a developer that has experience with just about anything involving code. This includes responsive web development (Including this site), databases, client / server applications, continous computational language, socket programming, IOT applications and more. If there is a development task or language I do not have experience with, I am always ready and quick to learn</div>
-                <div class="spacer"></div>
+                    <div class="spacer"></div>
+                </div>
             </div>
-        </div>
-        <div class="blockContainer" id="gameImage">
+            <div class="blockContainer" id="gameImage">
                 <div class="titleContainer">
-                <div class="spacer"></div>
+                    <div class="spacer"></div>
                     <span class="title">RESUME</span><br>
-                    <a href="Resume - Davinder.pdf" target="_black" class="description" style="text-align: center;">Click here for PDF version</a>
-                <div class="spacer"></div>
+                    <a href="Resume - Davinder.pdf" target="_blank" class="description" style="text-align: center;">Click here for PDF version</a>
+                    <div class="spacer"></div>
                 </div>  
-        </div>
-        <div class="blockContainer" style="overflow-y: auto;"  id="workImage">
-            <div class="logoText">September - December 2016</div><div class="overlay"></div><div class="logo" id="sapLogo"></div>
-            <div class="logoText">January - April 2016</div><div class="overlay"></div><div class="logo" id="haaLogo"></div>
-            <div class="logoText">May - August 2014</div><div class="overlay"></div><div class="logo" id="ttcLogo"></div>
-            <div class="logoText">September - December 2014</div><div class="overlay"></div><div class="logo" id="eitLogo"></div>
-            <div class="logoText">January - April 2014</div><div class="overlay"></div><div class="logo" id="communitechLogo"></div>
-            <div class="fullScreenOverlay">
-                <div class="overlayBlock">
             </div>
-            <div class="exitOverlay"></div>
-        </div>
-        </div>
-        <div class="blockContainer" id="vehicleImage">
+            <div class="blockContainer" style="overflow-y: auto;"  id="workImage">
+                <div class="logoText">September - December 2016</div><div class="overlay"></div><div class="logo" id="sapLogo"></div>
+                <div class="logoText">January - April 2016</div><div class="overlay"></div><div class="logo" id="haaLogo"></div>
+                <div class="logoText">May - August 2014</div><div class="overlay"></div><div class="logo" id="ttcLogo"></div>
+                <div class="logoText">September - December 2014</div><div class="overlay"></div><div class="logo" id="eitLogo"></div>
+                <div class="logoText">January - April 2014</div><div class="overlay"></div><div class="logo" id="communitechLogo"></div>
+                <div class="fullScreenOverlay">
+                    <div class="overlayBlock">
+                    </div>
+                    <div class="exitOverlay"></div>
+                </div>
+            </div>
+            <div class="blockContainer" id="vehicleImage">
                 <div class="titleContainer">
-                    <span class="title">SKILLSET</span><br>
-                    <table>
-  <tr>
-    <th style="width:200px; text-align: center; line-height:35px;">Language/Program</th>
-    <th style="text-align: center; line-height:35px;" >Experience</th> 
-  </tr>
-  <tr>
-    <td class="tableRow">JavaScript</td>
-<td id="skillsText" rowspan="6">Select a Language/Program on the left</td>
-  </tr>
-    <tr>
-    <td class="tableRow">Python</td>
-  </tr>
-    <tr>
-    <td class="tableRow">Java</td>
-  </tr>
-  <tr>
-    <td class="tableRow">SQL</td>
-  </tr>
-<tr>
-    <td class="tableRow">Source Control</td>
-  </tr>
-  <tr>
-    <td class="tableRow">Other</td>
-  </tr>
-</table>
+                    <span class="title">GAME</span><br>
+                                        <div class="description">This is a game I developed during my free time to test the capabilities of Canvas. The repository is public as well (Desktop only)</div>
+                    <a class='button' id='gameButton' target='blank_' href='game/game.html'>GAME</a><a class='button' id='gameButton' target='blank_' href='https://github.com/DavinderS'>CODE</a>
+                    
 
+                    <div class="spacer"></div>
                 </div>  
-        </div>
-        <div class="blockContainer" id="contactImage">
-                <div class="titleContainer">
-                    <span class="title">CONTACT</span><br>
-                    <a target="blank_" href="https://ca.linkedin.com/in/davinder-shinh-a6ab4aa8" class="icon" id="linkedin"></a>
-                    <a href="mailto:daveshinh@gmail.com" class="icon" id="email"></a>
-                    <div class="description"></div>
+            </div>
+            <div class="blockContainer" id="contactImage">
+                <div class="moreTitleContainer">
+                    <span class="title">MORE</span><br>
+                    <div class="description">I would like to show all of the other projects I have done in the past, however a lot of them are internal which only allows me to describe them. If there is something that you would like to see, you can use this page to send me a suggestion. This page uses Google Firebase's real time database. (Your comments will be publicly shown in the table below). If you would like to send me a private message, you can email me at <a href="mailto:daveshinh@gmail.com" target="_top">DaveShinh@gmail.com</a></div>
+                    <div class="commentSection">
+                        <div class="inputContainer"> Name or Company: <input type="text" id="commenter" maxlength="20" placeholder="Max 20 characters" /></div>
+                        <div class="inputContainer"> Comment: <textarea id="comment" maxlength="50" placeholder="Max 150 characters"></textarea></div>
+                        <a type="button" class="button" id="submit" onclick="submitComment()" >SUBMIT</a>
+                    </div>
+                    <div id="comments"></div>
                 </div>  
+            </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>

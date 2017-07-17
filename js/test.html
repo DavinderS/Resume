@@ -1,0 +1,20 @@
+<script>
+
+
+class Animal {
+	constructor() {
+		this.voice = "Hello";
+		this.speak = function() {console.log(this.voice)};
+	}
+}
+class Cat extends Animal {
+	constructor() {
+		super()
+		this.voice = "meow";
+	}
+}
+
+var a = new Cat();
+a.speak();
+
+</script>

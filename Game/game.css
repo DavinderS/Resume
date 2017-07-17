@@ -6,3 +6,6 @@ tspan {
    user-select: none;
     cursor: default;
 }
+body {
+	background-color:black;
+}

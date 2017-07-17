@@ -69,10 +69,11 @@ tr {
 	line-height: 50px;
 	display: inline-block;
 	cursor: pointer;
-	opacity: 0.7;
+	-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
 }
 .barBlock:hover {
-	opacity:1;
+	color:rgb(200,20,20);
 }
 .barBlockMobile {
 	width:33.3333333%;
@@ -85,13 +86,45 @@ tr {
 	z-index:5;
 	position: fixed;
 }
+#commenter {
+	vertical-align: middle;
+
+	padding: 8px;
+    border: none;
+    border-bottom: 1px solid white;
+    background-color:transparent;
+    color:white;
+	margin-top:20px;
+    width:200px;
+}
+#comment {
+	vertical-align: middle;
+	padding: 8px;
+    border: none;
+    border-bottom: 1px solid white;
+    background-color:transparent;
+    color:white;
+    width:200px;
+    margin-top:5px;
+}
+#submit {
+	margin-bottom:0px;
+}
+#comments {
+	margin:30px auto 0 auto;
+}
+.inputContainer {
+	vertical-align: bottom;
+	width:400px;
+	display: inline-block;
+}
 .selectedSliderMobile {
 	width:33.333333%;
 }
 
 .fullScreenOverlay {
 	position: fixed;
-	top:40px;
+	top:50px;
 	bottom: 0;
 	left:100%;
 	width:calc(100% - 320px);
@@ -103,6 +136,7 @@ tr {
 	display: none;
 }
 .fullScreenOverlayMobile {
+	top:100px;
 	width: 100%;
 }
 .exitOverlay {
@@ -111,7 +145,7 @@ tr {
 	top:40px;
 	right:40px;
 	opacity: 0.7;
-	background:url("exit.png");
+	background:url("images/exit.png");
 	background-size: cover;
 	width:30px;
 	text-align: center;
@@ -166,7 +200,7 @@ tr {
 	bottom: calc(0% + 20px);
 	width:40px;
 	height:40px;
-	background: url("arrow_1.png");
+	background: url("images/arrow_1.png");
 	background-size:cover;
 	transform: translateX(-50%);
 	left: 50%;
@@ -180,7 +214,7 @@ tr {
 	height:30px;
 	bottom: calc(0% + 20px);
 	right: 10px;
-	background: url("arrow_2.png");
+	background: url("images/arrow_2.png");
 	background-size:cover;
 	transform: translateX(-50%);
     user-select: none;
@@ -235,7 +269,7 @@ tr {
 	background-size: cover;
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
-	overflow: hidden;
+	overflow: auto;
 	position: relative;
 	height:calc(100vh - 50px);
 	width:100%;
@@ -245,6 +279,7 @@ tr {
 	margin-top:50px;
 	height:calc(100vh - 100px);
 }
+
 .titleContainer {
 	position: absolute;
 	top: 50%;
@@ -253,9 +288,12 @@ tr {
 	text-align: center;
 	width:100%;
 	background-color: rgba(0,0,0,0.8);
-	max-height: 100%;
 }
-
+.moreTitleContainer {
+	text-align: center;
+	width:100%;
+	background-color: rgba(0,0,0,0.8);
+}
 .title {
 	font-size: 56px;
 	letter-spacing: 5px;
@@ -317,43 +355,43 @@ tr {
 }
 
 #aboutImage {
-	background-image:url('code.png');
+	background-image:url('images/code.png');
 }
 #gameImage {
-	background-image:url('cardshake.png');
+	background-image:url('images/cardshake.png');
 }
 #carImage {
-	background-image:url('cluster.gif');
+	background-image:url('images/cluster.gif');
 }
 #contactImage {
-	background-image:url('contact.png');
+	background-image:url('images/contact.png');
 }
 #vehicleImage {
-	background-image:url('vehicle.png');
+	background-image:url('images/game.png');
 }
 #workImage {
-	background-image:url('work.png');
+	background-image:url('images/work.png');
 }
 #sapLogo {
-	background-image:url('SAP_logo.png');
+	background-image:url('images/SAP_logo.png');
 }
 #ttcLogo {
-	background-image:url('TTC_logo.png');
+	background-image:url('images/TTC_logo.png');
 }
 #eitLogo {
-	background-image:url('EIT_Logo.png');
+	background-image:url('images/EIT_Logo.png');
 }
 #communitechLogo {
-	background-image:url('Communitech_Logo.png');
+	background-image:url('images/Communitech_Logo.png');
 }
 #haaLogo {
-	background-image:url('HAA_Logo.png');
+	background-image:url('images/HAA_Logo.png');
 }
 #linkedin {
-	background-image:url(linkedin.png);   
+	background-image:url('images/linkedin.png');   
 }
 #email {
-	background-image:url(email.png);   
+	background-image:url(images/email.png);   
 }
 .logo {
 	vertical-align: top;
@@ -404,13 +442,16 @@ tr {
 	border: 2px solid white;
 	color:white;
 	text-decoration: none;
-	display: block;
-	margin: 20px auto;
+	display: inline-block;
+	margin: 20px 40px;
 	cursor: pointer;
     user-select: none;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
 }
 .button:hover {
-	background-color: rgb(40,120,140);
+	color:black;
+	background-color:white;
 }
 #hide {
 	position: fixed;
@@ -421,16 +462,19 @@ tr {
 	bottom: 0;
 	z-index:4;
 }
-.alert {
+#alert {
 	position: fixed;
 	display: none;
-	top:40px;
+	top:50px;
 	width:100%;
-	height: 40px;
-	background-color:rgba(200,0,0,0.5);
+	height: 50px;
+	background-color:rgba(150,0,0, 0.75);
 	z-index: 5;
-	line-height: 40px;
+	line-height: 50px;
 	text-align: center;
+}
+.alertMobile {
+	top:100px;
 }
 .top {
 	top: 10px;
