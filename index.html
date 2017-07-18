@@ -69,6 +69,7 @@
                 </div>  
             </div>
             <div class="blockContainer" style="overflow-y: auto;"  id="workImage">
+            <div class="titleContainer"></div>
                 <div class="logoText">September - December 2016</div><div class="overlay"></div><div class="logo" id="sapLogo"></div>
                 <div class="logoText">January - April 2016</div><div class="overlay"></div><div class="logo" id="haaLogo"></div>
                 <div class="logoText">May - August 2014</div><div class="overlay"></div><div class="logo" id="ttcLogo"></div>
@@ -84,22 +85,21 @@
                 <div class="titleContainer">
                     <span class="title">GAME</span><br>
                                         <div class="description">This is a game I developed during my free time to test the capabilities of Canvas. The repository is public as well (Desktop only)</div>
-                    <a class='button' id='gameButton' target='blank_' href='game/game.html'>GAME</a><a class='button' id='gameButton' target='blank_' href='https://github.com/DavinderS'>CODE</a>
+                    <a class='button' id='gameButton' target='blank_' href='game/game.html'>PLAY</a><a class='button' id='gameButton' target='blank_' href='https://github.com/DavinderS'>CODE</a>
                     
 
                     <div class="spacer"></div>
                 </div>  
             </div>
             <div class="blockContainer" id="contactImage">
-                <div class="moreTitleContainer">
+                <div class="titleContainer">
                     <span class="title">MORE</span><br>
-                    <div class="description">I would like to show all of the other projects I have done in the past, however a lot of them are internal which only allows me to describe them. If there is something that you would like to see, you can use this page to send me a suggestion. This page uses Google Firebase's real time database. (Your comments will be publicly shown in the table below). If you would like to send me a private message, you can email me at <a href="mailto:daveshinh@gmail.com" target="_top">DaveShinh@gmail.com</a></div>
+                    <div class="description">I would like to show all of the other projects I have done in the past, however a lot of them are internal which only allows me to describe them. If there is something that you would like to see, you can use this page to send me a suggestion. This page uses Google Firebase's real time database.</div>
                     <div class="commentSection">
-                        <div class="inputContainer"> Name or Company: <input type="text" id="commenter" maxlength="20" placeholder="Max 20 characters" /></div>
-                        <div class="inputContainer"> Comment: <textarea id="comment" maxlength="50" placeholder="Max 150 characters"></textarea></div>
-                        <a type="button" class="button" id="submit" onclick="submitComment()" >SUBMIT</a>
+                         <div class="inputLabel">Name or Company: </div><div class="inputContainer"><input type="text" id="commenter" maxlength="20" placeholder="Max 20 characters" /></div>
+                        <div class="inputLabel">Comment: </div><div class="inputContainer"> <textarea id="comment" maxlength="50" placeholder="Max 150 characters"></textarea></div>
+                        <div class="inputLabel" style="margin-bottom: 0px;"><a type="button" class="button" id="submit" onclick="submitComment()" >SUBMIT</a></div>
                     </div>
-                    <div id="comments"></div>
                 </div>  
             </div>
         </div>

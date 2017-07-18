@@ -11,15 +11,17 @@ $(window).load(function() {
     // Once the window is loaded, fade the loading panel out and show the page
     $(".loadingPanel").fadeOut(500, function() {
         $(".hideInitial").fadeIn(500);
+        $(".titleContainer")[0].style.top = Math.max(($(".blockContainer")[0].clientHeight/2) - ($(".titleContainer")[page].clientHeight/2),0) + "px"
+
         $("#hide").fadeOut(500);
     });
 
     function showAlert(text, warning) {
         $("#alert").text(text);
         if (warning) {
-            $("#alert").css("background-color","rgba(150,0,0, 0.75)");
+            $("#alert").css("background-color","rgba(150,0,0, 0.9)");
         } else {
-            $("#alert").css("background-color","rgba(0,150,0, 0.75)");
+            $("#alert").css("background-color","rgba(0,150,0, 0.9)");
         }
 
 
@@ -63,6 +65,8 @@ $(window).load(function() {
             $("#hide").fadeIn(500, function() {
                 $($(".blockContainer")[initialPage]).hide();
                 $($(".blockContainer")[newPage]).show();
+        $(".titleContainer")[page].style.top = Math.max(($(".blockContainer")[page].clientHeight/2) - ($(".titleContainer")[page].clientHeight/2),0) + "px"
+                
                 $("#hide").fadeOut(500, function() {
                     scrollInProgress = false;
                 });
@@ -70,7 +74,6 @@ $(window).load(function() {
 
             // update the page number before you move the slider
             page = newPage;
-
             // Move the slider back into position
             $('.selectedSlider').animate(calculateSliderPosition(),  500, function() {
                 disableScroll = false;
@@ -87,6 +90,8 @@ $(window).load(function() {
 
     // Resizing
     function resize() {
+        // Cannot do this in CSS unfortunately
+        $(".titleContainer")[page].style.top = Math.max(($(".blockContainer")[page].clientHeight/2) - ($(".titleContainer")[page].clientHeight/2),0) + "px"
         // Complete animations instantly on resize to prevent conflicts 
         if (animationInProgress)
         {
@@ -267,28 +272,6 @@ $(window).load(function() {
 
     const dbRefObject = firebase.database().ref("Comments");
 
-    var refreshData = function(snapshot) {
-        var comments = snapshot.val();
-        // Convert the comments into an array of {name:x comment:x} objects
-        var formattedComments = $.map(comments, function(value, index) {
-            return [value];
-        });
-        // Initialize JsGrid
-        $("#comments").jsGrid({
-            width: "80%",
-            marginLeft: "10%",
-            height: "400px",
-            paging:true,
-            sorting: true,
-            data: formattedComments,
-            fields: [
-            { name: "name", title:"Name or Company", type: "text", width: 50, validate: "required" },
-            { name: "comment", title:"Comment", type: "text", width: 150, validate: "required"},
-            ]
-        })
-    }
-    
-    firebase.database().ref("Comments").once('value').then(refreshData);
 
     submitComment = function() {
         var comment = $("#comment").val();
@@ -297,7 +280,6 @@ $(window).load(function() {
             dbRefObject.push({"name":commenter,"comment":comment}, function() {
                 firebase.database().ref("Comments").once('value').then(function(snapshot) {
                     showAlert("Success", false);
-                    refreshData(snapshot);
                 });
             });
             $("#comment").val("");

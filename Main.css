@@ -88,35 +88,30 @@ tr {
 }
 #commenter {
 	vertical-align: middle;
-
 	padding: 8px;
     border: none;
     border-bottom: 1px solid white;
-    background-color:transparent;
-    color:white;
-	margin-top:20px;
-    width:200px;
+    width:400px;
 }
 #comment {
 	vertical-align: middle;
 	padding: 8px;
     border: none;
     border-bottom: 1px solid white;
-    background-color:transparent;
-    color:white;
-    width:200px;
-    margin-top:5px;
+    width:400px;
+    height:80px;
+}
+.inputLabel {
+	width:416px;
+	margin:20px auto 10px auto;
+	text-align: left;
 }
 #submit {
-	margin-bottom:0px;
+	margin:0px auto 10px auto;
+	text-align: center;
 }
 #comments {
 	margin:30px auto 0 auto;
-}
-.inputContainer {
-	vertical-align: bottom;
-	width:400px;
-	display: inline-block;
 }
 .selectedSliderMobile {
 	width:33.333333%;
@@ -282,9 +277,6 @@ tr {
 
 .titleContainer {
 	position: absolute;
-	top: 50%;
-	left:50%;
-	transform: translateY(-50%) translateX(-50%);
 	text-align: center;
 	width:100%;
 	background-color: rgba(0,0,0,0.8);
@@ -328,7 +320,7 @@ tr {
 }
 .description {
 	font-size:21px;
-	margin: 0px 10%;
+	margin: 0px 20%;
 	text-align: justify;
 	line-height:30px;
 	color:white;
@@ -463,6 +455,7 @@ tr {
 }
 #alert {
 	position: fixed;
+	font-weight: bold;
 	display: none;
 	top:50px;
 	width:100%;
