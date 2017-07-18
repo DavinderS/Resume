@@ -23,11 +23,11 @@ function Player(raphaelPaper) {
     this.healthBar = paper.rect(0, 0, 100, 10);
     this.healthBar.attr("fill", "#F00");
     this.healthBar.transform("t" + (this.x - this.width / 2) + "," + (this.y - this.height / 2 - 10));
-    this.image = paper.image("spaceship.png", 0, 0, this.width, this.height).attr("fill", "F00");
+    this.image = paper.image("images/spaceship.png", 0, 0, this.width, this.height).attr("fill", "F00");
     this.thrusterWidth = thrusterWidth;
     this.thrusterHeight = thrusterHeight;
-    this.thruster = paper.image("thruster.png", 0, 0, thrusterHeight, thrusterWidth);
-    this.thruster2 = paper.image("thruster.png", 0, 0, thrusterHeight, thrusterWidth);
+    this.thruster = paper.image("images/thruster.png", 0, 0, thrusterHeight, thrusterWidth);
+    this.thruster2 = paper.image("images/thruster.png", 0, 0, thrusterHeight, thrusterWidth);
     this.health = 1000;
     this.maxHealth = 1000;
     this.moneyText = paper.text(0, 0, "money: 0").attr("fill", "#FFF");

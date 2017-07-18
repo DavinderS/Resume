@@ -15,8 +15,8 @@ Enemies.prototype.createEnemy = function(offsetX, offsetY, width, height, health
     var rotationSpeed = 1 || rotationSpeed
 
     // Set enemy images Images
-    var imageURL = image || "enemy.png"
-    var imageHitURL = imageHit || "enemy_hit.png"
+    var imageURL = image || "images/enemy.png"
+    var imageHitURL = imageHit || "images/enemy_hit.png"
 
     // Set Enemy Initial Location
     if (rand < 0.25) {
@@ -128,7 +128,7 @@ Enemies.prototype.updateDeathAnimations = function() {
         if (this.deathAnimationTimers[i].deathTimer > 20) {
             this.deathAnimationTimers.splice(i, 1)
         } else {
-            this.deathAnimationTimers[i].image = paper.image("Explosions/explosions_" + Math.floor(this.deathAnimationTimers[i].deathTimer / 2) + ".png", enemyAttrs.x, enemyAttrs.y, enemyAttrs.width, enemyAttrs.height);
+            this.deathAnimationTimers[i].image = paper.image("images/Explosions/explosions_" + Math.floor(this.deathAnimationTimers[i].deathTimer / 2) + ".png", enemyAttrs.x, enemyAttrs.y, enemyAttrs.width, enemyAttrs.height);
             this.deathAnimationTimers[i].image.transform("t0,0r" + this.deathAnimationTimers[i].r)
         }
     }

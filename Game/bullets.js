@@ -166,11 +166,11 @@
 	                            shake.time = 1
 	                        }
 	                        enemyFactory.deathAnimationTimers.push({
-	                            image: paper.image("Explosions/explosions_0.png", enemies[j].x, enemies[j].y, enemies[j].width, enemies[j].height).transform("t0,0r" + enemies[j].rotation),
+	                            image: paper.image("images/Explosions/explosions_0.png", enemies[j].x, enemies[j].y, enemies[j].width, enemies[j].height).transform("t0,0r" + enemies[j].rotation),
 	                            r: enemies[j].rotation,
 	                            deathTimer: 0
 	                        })
-	                        if (enemies[j].imageURL == "boss.png")
+	                        if (enemies[j].imageURL == "images/boss.png")
 	                            player.money += 490
 	                        enemies[j].image.remove()
 	                        enemies[j].healthBar.remove()
@@ -179,7 +179,7 @@
 	                        player.moneyText.attr("text", "money: " + player.money)
 	                        enemyFactory.createEnemy(player.screenOffsetX, player.screenOffsetY, 100, 100, 1000, 2)
 	                        if (player.money == 100)
-	                            enemyFactory.createEnemy(player.screenOffsetX, player.screenOffsetY, 300, 300, 10000, 1, 0.5, "boss.png", "boss_hit.png")
+	                            enemyFactory.createEnemy(player.screenOffsetX, player.screenOffsetY, 300, 300, 10000, 1, 0.5, "images/boss.png", "images/boss_hit.png")
 	                    }
 	                    this.removeBullet(i);
 	                    break;

@@ -1,96 +1,20 @@
-/*$(window).on('beforeunload', function() {
-    $(window).scrollTop(0);
-});*/
 $(window).load(function() {
-    var currentBlock = 0;
+    // Global
     var scrollInProgress = false;
-    var swipeStartX = 0;
-    var swipeStartY = 0;
-    var swipeEndX = 0;
-    var swipeEndY = 0;
-    var swipeToleranceX = 30;
-    var swipeToleranceY = 30;
-    var contentPosition = 0;
     var disableScroll = false;
     var animationInProgress;
-    var page = 0;   
-    var scrollRatio = 0;
+    var page = 0;
     var topBarMobile = false;
     var overlayOpen = false;
-    var blockList = $(".blockContainer");
-    var activeSkill = 0;
-
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyAL2JFL1rW_AQmM0LuJtfiQ1tdOwF73_0w",
-        authDomain: "resume-73f6f.firebaseapp.com",
-        databaseURL: "https://resume-73f6f.firebaseio.com",
-        projectId: "resume-73f6f",
-        storageBucket: "",
-        messagingSenderId: "975412699394"
-    };
-    firebase.initializeApp(config);
-    const dbRefObject = firebase.database().ref("Comments");
-    //console.log(dbRefObject.child("Comments").push({"name":"Me","comment":"hi"}));
-    //console.log(dbRefObject.child("Comments"));
-    var refreshData = function(snapshot) {
-        var comments = snapshot.val();
-        var formattedComments = $.map(comments, function(value, index) {
-            return [value];
-        });
-
-        $("#comments").jsGrid({
-            width: "80%",
-            marginLeft: "10%",
-            height: "400px",
-            paging:true,
-            sorting: true,
-            data: formattedComments,
-            fields: [
-            { name: "name", title:"Name or Company", type: "text", width: 50, validate: "required" },
-            { name: "comment", title:"Comment", type: "text", width: 150, validate: "required"},
-            ]
-        })
-    }
-        
-    firebase.database().ref("Comments").once('value').then(refreshData);
-    submitComment = function() {
-        var comment = $("#comment").val();
-        var commenter = $("#commenter").val();
-        if (comment != "" && commenter != "") {
-            dbRefObject.push({"name":commenter,"comment":comment}, function() {
-                
-            firebase.database().ref("Comments").once('value').then(function(snapshot) {
-                showAlert("Success", false);
-                refreshData(snapshot);
-            });
-                
-
-            });
-            $("#comment").val("");
-            $("#commenter").val("");
-            //submit
-        } else {
-            showAlert("Please fill out both fields", true)
-        }
-    }
 
 
+    // Once the window is loaded, fade the loading panel out and show the page
     $(".loadingPanel").fadeOut(500, function() {
         $(".hideInitial").fadeIn(500);
         $("#hide").fadeOut(500);
     });
-    
-    // GAME
-    // Check if they are using PC
-    $("#gameButton").click(function(e) {
-      if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
-            e.preventDefault();
-            showAlert("This game is not supported on mobile devices", true);
-        }
-    })
 
-    showAlert = function(text, warning) {
+    function showAlert(text, warning) {
         $("#alert").text(text);
         if (warning) {
             $("#alert").css("background-color","rgba(150,0,0, 0.75)");
@@ -106,20 +30,63 @@ $(window).load(function() {
         })
     }
     // ALL
-    $(".barBlock").click(function(e) {
-        var target = e.target.id.split("_")[1];
+    // Used to manage the location of the slider on the top nav bar
+    function calculateSliderPosition() {
+        var topBarBlocks = 6;
+        var sliderPositionX = (page * 100)/topBarBlocks;
+        var sliderPositionY = 0;
+        if(topBarMobile) {
+            topBarBlocks = 3;
+            sliderPositionX = (page * 100)/topBarBlocks;
+            if (page >= 3)
+            {
+                sliderPositionX = ((page - 3) * 100)/topBarBlocks;
+                sliderPositionY = 50;
+            }
+        }
+        return {
+            left: sliderPositionX + "%",
+            top: sliderPositionY + "px"
+        }
+    }
+
+    function changePage(event) {
+        var target = event.target.id.split("_")[1];
+        // need this for the callback
+        var initialPage = page;
+        var newPage = parseInt(target);
+
         scrollInProgress = true;
-        moveContent(page, parseInt(target));
-        $('.selectedSlider').animate(calculateSliderPosition(),  500, function() {
-            disableScroll = false;
-            overlayOpen = false;
-            $(".fullScreenOverlay").hide();
-            $(".fullScreenOverlay").css("left", "100%");
-        });
-    })
+
+        if (page != newPage) {
+            // Hide the old page and fade in the new one. Using a black div (#hide) is more efficient than fading all the other elements
+            $("#hide").fadeIn(500, function() {
+                $($(".blockContainer")[initialPage]).hide();
+                $($(".blockContainer")[newPage]).show();
+                $("#hide").fadeOut(500, function() {
+                    scrollInProgress = false;
+                });
+            });
+
+            // update the page number before you move the slider
+            page = newPage;
+
+            // Move the slider back into position
+            $('.selectedSlider').animate(calculateSliderPosition(),  500, function() {
+                disableScroll = false;
+                overlayOpen = false;
+                $(".fullScreenOverlay").hide();
+                $(".fullScreenOverlay").css("left", "100%");
+            });
+
+            
+        }
+    }
+
+    $(".barBlock").click(changePage);
 
     // Resizing
-    resize = function() {
+    function resize() {
         // Complete animations instantly on resize to prevent conflicts 
         if (animationInProgress)
         {
@@ -152,34 +119,35 @@ $(window).load(function() {
 
         // All pages
         if (window.innerWidth < 545) {
+            if (overlayOpen) {
+                $(".fullScreenOverlay").css("left", "0px")
+            }
             $("#alert").addClass("alertMobile");
             $(".topBar").addClass("topBarMobile");
             $(".barBlock").addClass("barBlockMobile");
             $(".selectedSlider").addClass("selectedSliderMobile");
             $(".blockContainer").addClass("blockContainerMobile");
             $(".fullScreenOverlay").addClass("fullScreenOverlayMobile");
-            if (overlayOpen) {
-                $(".fullScreenOverlay").css("left", "0px")
-            }
+            // Work page
             $(".logo").addClass("logoMobile");
             $(".logoText").hide();
             topBarMobile = true;
         } else
         {
-           if (overlayOpen) {
-            $(".fullScreenOverlay").css("left", "320px")
+            if (overlayOpen) {
+                $(".fullScreenOverlay").css("left", "320px")
+            }
+            $("#alert").removeClass("alertMobile");
+            $(".topBar").removeClass("topBarMobile");
+            $(".barBlock").removeClass("barBlockMobile");
+            $(".selectedSlider").removeClass("selectedSliderMobile");
+            $(".blockContainer").removeClass("blockContainerMobile");
+            $(".fullScreenOverlay").removeClass("fullScreenOverlayMobile");
+            // Work page
+            $(".logo").removeClass("logoMobile");
+            $(".logoText").show();
+            topBarMobile = false;
         }
-        $("#alert").removeClass("alertMobile");
-        $(".topBar").removeClass("topBarMobile");
-        $(".barBlock").removeClass("barBlockMobile");
-        $(".selectedSlider").removeClass("selectedSliderMobile");
-        $(".blockContainer").removeClass("blockContainerMobile");
-        $(".fullScreenOverlay").removeClass("fullScreenOverlayMobile");
-        $(".logo").removeClass("logoMobile");
-        $(".logoText").show();
-        topBarMobile = false;
-    }
-
         // Recalculate the slider position
         var sliderPositionObj = calculateSliderPosition();
         $(".selectedSlider").css("top", sliderPositionObj.top);
@@ -187,7 +155,10 @@ $(window).load(function() {
         $(window).scrollTop($(".blockContainer").eq(page).offset().top);
     }
 
-    populateOverlay = function(target) {        
+
+
+    // Work
+    function populateOverlay(target) {        
         if (target == "sapLogo") {
             $(".overlayBlock").html("<div class='overlayTitle'>Application Developer<br><span class='overlayDescription'>SAP</span></div><div class='overlayText'>Worked on a IOT MQTT client, publisher and Transformer<ul><li>Created an MQTT client and publisher using Java and Paho MQTT library</li><li>Worked directly with solutions architect to determine best solution for project</li><li>Received sensor data from MQTT protocol as JSON and used GSON to parse and reformat data</li><li>Once data was converted, sent it into a StreamingLite project</li><li>Created CCL/CCLScript to be run in StreamingLite to aggregate and filter incoming data</li><li>Integrated code from analytics tool to also be used in StreamingLite project </li><li>Created a presentation explaining the capabilities and limits for CCL/CCLScript</li><liPresented to the development team and executives, presentation consisted of explanation, live demo and question and answer session</li><li>Wrote extensive comments and documentation to allow other developers to take over with minimal issues</li></ul></div><div class='caretDownOverlay'></div>");
         }
@@ -208,34 +179,44 @@ $(window).load(function() {
             $(".caretDownOverlay").fadeIn(500);
         }
     }
-    $(".overlay").click(function(e) {
-        var target = e.currentTarget.nextSibling.id;
-        disableScroll = true;
-        $(".fullScreenOverlay").show();
+
+    function openOverlay(event) {
+        var target = event.currentTarget.nextSibling.id;
         var overlayLeft = 320;
+        disableScroll = true;
+
+        $(".fullScreenOverlay").show();
+
         if (topBarMobile) {
             overlayLeft = 0;
         }
-        if (!overlayOpen)
+        if (overlayOpen)
         {
-            populateOverlay(target);
-            $(".fullScreenOverlay").animate({left:overlayLeft+"px"}, 500);
-            overlayOpen = true;
-        } else {
+            // Hide the Caret
             $(".caretDownOverlay").fadeOut(500);
+
+            // Scroll back to the top if it isn't already there
             if ($(".fullScreenOverlay").scrollTop() != 0)
             {
                 $(".fullScreenOverlay").animate({scrollTop: 0}, 200);   
             }
+            // Since the overlay is open, move it off the screen
             $(".fullScreenOverlay").animate({left:"100%"}, 500, function() {
+                // update the overlay html
                 populateOverlay(target);
-            });
-            $(".fullScreenOverlay").animate({left:overlayLeft+"px"}, 500);
-        }
+                // Bring the updated overlay back
+                $(".fullScreenOverlay").animate({left:overlayLeft+"px"}, 500);
 
-        
-    })
-    $(".exitOverlay").click(function() {
+            });
+        } else {
+            // Show the overlay
+            populateOverlay(target);
+            $(".fullScreenOverlay").animate({left:overlayLeft+"px"}, 500);
+            overlayOpen = true;
+        }
+    }
+
+    function closeOverlay() {
         disableScroll = false;
         $(".caretDownOverlay").fadeOut(500);
         $(".fullScreenOverlay").animate({left:"100%"}, 500, function(e) {
@@ -245,68 +226,89 @@ $(window).load(function() {
             }
             overlayOpen = false;
         });
+    }
 
+    // on the work page, hide the caret if you're not scrolled all the way to the top
+    function toggleCaret() {
+       if ($(".fullScreenOverlay").scrollTop() == 0) {
+            $(".caretDownOverlay").fadeIn(500);
+        } else {
+            $(".caretDownOverlay").fadeOut(500);
+        }
+    }
+
+    $(".fullScreenOverlay").scroll(toggleCaret())
+    $(".overlay").click(openOverlay);
+    $(".exitOverlay").click(closeOverlay);
+
+
+    // GAME
+    $("#gameButton").click(function(e) {
+        // Check if they are using PC
+        if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
+            e.preventDefault();
+            showAlert("This game is not supported on mobile devices", true);
+        }
     })
 
-    function calculateSliderPosition() {
-        var topBarBlocks = 6;
-        var sliderPositionX = (page * 100)/topBarBlocks;
-        var sliderPositionY = 0;
-        if(topBarMobile) {
-            topBarBlocks = 3;
-            sliderPositionX = (page * 100)/topBarBlocks;
 
-            if (page >= 3)
-            {
-                sliderPositionX = ((page - 3) * 100)/topBarBlocks;
-                sliderPositionY = 50;
-            }
+    // MORE
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAL2JFL1rW_AQmM0LuJtfiQ1tdOwF73_0w",
+        authDomain: "resume-73f6f.firebaseapp.com",
+        databaseURL: "https://resume-73f6f.firebaseio.com",
+        projectId: "resume-73f6f",
+        storageBucket: "",
+        messagingSenderId: "975412699394"
+    };
+    firebase.initializeApp(config);
 
-        }
-        return {
-            left:sliderPositionX + "%",
-            top: sliderPositionY + "px"
-        }
+
+    const dbRefObject = firebase.database().ref("Comments");
+
+    var refreshData = function(snapshot) {
+        var comments = snapshot.val();
+        // Convert the comments into an array of {name:x comment:x} objects
+        var formattedComments = $.map(comments, function(value, index) {
+            return [value];
+        });
+        // Initialize JsGrid
+        $("#comments").jsGrid({
+            width: "80%",
+            marginLeft: "10%",
+            height: "400px",
+            paging:true,
+            sorting: true,
+            data: formattedComments,
+            fields: [
+            { name: "name", title:"Name or Company", type: "text", width: 50, validate: "required" },
+            { name: "comment", title:"Comment", type: "text", width: 150, validate: "required"},
+            ]
+        })
     }
-    function moveContent(initialPage, newPage) {
-        page = newPage;
-        if (initialPage != newPage) {
-            $("#hide").fadeIn(500, function() {
-                $(blockList[initialPage]).hide();
-                $(blockList[newPage]).show();
-                $("#hide").fadeOut(500, function() {
-                    scrollInProgress = false;
+    
+    firebase.database().ref("Comments").once('value').then(refreshData);
+
+    submitComment = function() {
+        var comment = $("#comment").val();
+        var commenter = $("#commenter").val();
+        if (comment != "" && commenter != "") {
+            dbRefObject.push({"name":commenter,"comment":comment}, function() {
+                firebase.database().ref("Comments").once('value').then(function(snapshot) {
+                    showAlert("Success", false);
+                    refreshData(snapshot);
                 });
             });
+            $("#comment").val("");
+            $("#commenter").val("");
+            //submit
+        } else {
+            showAlert("Please fill out both fields", true)
         }
     }
-    function scrollHandler(delta) {
-        if (!disableScroll)
-        {
-            if (delta >= 0) {
-                if (!scrollInProgress && page!= 0) {
-                    scrollInProgress = true;
-                    moveContent(page, page-1);
-                    $('.selectedSlider').animate(calculateSliderPosition(), 500);
-                }
-            } else {
-                if (!scrollInProgress  && page != 5) {
-                    scrollInProgress = true;
-                    moveContent(page, page+1);
-                    $('.selectedSlider').animate(calculateSliderPosition(), 500);
-                }
-            }
-        }
-    }
-    function toggleCaret() {
-     if ($(".fullScreenOverlay").scrollTop() == 0) {
-        $(".caretDownOverlay").fadeIn(500);
-    } else {
-        $(".caretDownOverlay").fadeOut(500);
-    }
-}
 
-$(".fullScreenOverlay").scroll(toggleCaret())
+
 $(window).resize(resize);
 resize();
 })

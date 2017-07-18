@@ -25,7 +25,7 @@ window.onload = function() {
     var stars = {
         x: 0,
         y: 0,
-        image: paper.image("space.jpg", 0, 0, background.width, background.width * 0.7),
+        image: paper.image("images/space.jpg", 0, 0, background.width, background.width * 0.7),
     }
 
     var player = new Player(paper);
