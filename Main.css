@@ -320,7 +320,9 @@ tr {
 }
 .description {
 	font-size:21px;
-	margin: 0px 20%;
+	min-width: 450px;
+	width:80%;
+	margin: 0 auto;
 	text-align: justify;
 	line-height:30px;
 	color:white;
